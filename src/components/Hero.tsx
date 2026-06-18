@@ -65,12 +65,19 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 animate-fade-up"
             style={{ animationDelay: '0.3s', animationFillMode: 'both' }}
           >
-            <a href="#" className="btn-primary text-base px-8 py-3.5 w-full sm:w-auto justify-center">
-              Start free trial
+            <a
+              href="https://forms.gle/sb2mHm97oRNFRmUY9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-base px-8 py-3.5 w-full sm:w-auto justify-center"
+            >
+              Join waitlist
               <ArrowRight size={16} />
             </a>
             <a
-              href="#"
+              href="https://forms.gle/sb2mHm97oRNFRmUY9"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-secondary text-base px-8 py-3.5 w-full sm:w-auto justify-center"
             >
               <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center">

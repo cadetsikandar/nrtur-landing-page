@@ -57,10 +57,12 @@ export default function Navbar() {
             Sign in
           </a>
           <a
-            href="#"
+            href="https://forms.gle/sb2mHm97oRNFRmUY9"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-primary text-sm py-2 px-5"
           >
-            Start free trial
+            Join waitlist
           </a>
         </div>
 
@@ -95,8 +97,13 @@ export default function Navbar() {
             <a href="#" className="text-sm text-white/60 hover:text-white py-2 px-3 text-center transition-colors">
               Sign in
             </a>
-            <a href="#" className="btn-primary text-sm justify-center">
-              Start free trial
+            <a
+              href="https://forms.gle/sb2mHm97oRNFRmUY9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-sm justify-center"
+            >
+              Join waitlist
             </a>
           </div>
         </div>

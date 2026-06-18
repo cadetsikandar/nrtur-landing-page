@@ -8,7 +8,7 @@ const plans = [
     monthlyPrice: 29,
     yearlyPrice: 23,
     description: 'Perfect for solo operators and tiny teams just getting started.',
-    cta: 'Start free trial',
+    cta: 'Join waitlist',
     popular: false,
     features: [
       'Up to 2 users',
@@ -26,7 +26,7 @@ const plans = [
     monthlyPrice: 59,
     yearlyPrice: 47,
     description: 'For growing teams that need more pipelines, automations, and power.',
-    cta: 'Start free trial',
+    cta: 'Join waitlist',
     popular: true,
     features: [
       'Up to 5 users',
@@ -46,7 +46,7 @@ const plans = [
     monthlyPrice: 99,
     yearlyPrice: 79,
     description: 'For established teams that need full control, compliance, and scale.',
-    cta: 'Start free trial',
+    cta: 'Join waitlist',
     popular: false,
     features: [
       'Unlimited users',
@@ -155,7 +155,9 @@ export default function Pricing() {
               </div>
 
               <a
-                href="#"
+                href="https://forms.gle/sb2mHm97oRNFRmUY9"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`flex items-center justify-center gap-2 py-3 px-5 rounded-xl font-semibold text-sm transition-all duration-200 mb-7 ${
                   plan.popular
                     ? 'bg-brand-500 hover:bg-brand-400 text-white shadow-brand hover:shadow-brand-lg hover:-translate-y-0.5'

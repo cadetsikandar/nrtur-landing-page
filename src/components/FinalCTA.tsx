@@ -41,18 +41,15 @@ export default function FinalCTA() {
           Start your free trial today and feel the difference in the first hour.
         </p>
 
-        {/* Email capture */}
-        <div className="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-8">
-          <input
-            type="email"
-            placeholder="you@company.com"
-            className="flex-1 bg-white/[0.05] border border-white/[0.10] rounded-xl px-5 py-3.5 text-white placeholder-white/25 text-sm focus:outline-none focus:border-brand-500/50 focus:bg-white/[0.07] transition-all"
-          />
+        {/* CTA */}
+        <div className="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-8 justify-center">
           <a
-            href="#"
+            href="https://forms.gle/sb2mHm97oRNFRmUY9"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-primary text-sm px-7 py-3.5 whitespace-nowrap justify-center"
           >
-            Start for free
+            Join waitlist
             <ArrowRight size={15} />
           </a>
         </div>
