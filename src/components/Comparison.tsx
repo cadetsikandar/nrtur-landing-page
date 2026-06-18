@@ -109,8 +109,11 @@ export default function Comparison() {
           <div className="grid grid-cols-[1fr_160px_160px] bg-brand-500/[0.04] border-t border-brand-500/15">
             <div className="px-6 py-5" />
             <div className="px-4 py-5 flex justify-center border-l border-brand-500/15">
-              <a href="#" className="btn-primary text-sm py-2 px-5">
-                Get started
+              <a 
+              href="https://forms.gle/sb2mHm97oRNFRmUY9"
+              target="_blank"
+              rel="noopener noreferrer" className="btn-primary text-sm py-2 px-5">
+                Join Waitlist
               </a>
             </div>
             <div className="px-4 py-5 flex justify-center border-l border-white/[0.06]">
