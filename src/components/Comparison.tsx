@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const rows = [
@@ -126,7 +128,7 @@ export default function Comparison() {
 
         {/* Link to full comparison hub */}
         <p className="reveal text-center mt-7">
-          <Link to="/comparisons/" className="text-sm text-brand-400 font-medium hover:text-brand-300 transition-colors">
+          <Link href="/compare/" className="text-sm text-brand-400 font-medium hover:text-brand-300 transition-colors">
             See how nrtur compares to Salesforce, Pipedrive &amp; Zoho →
           </Link>
         </p>

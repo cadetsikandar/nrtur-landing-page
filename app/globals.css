@@ -16,7 +16,7 @@
   body {
     background-color: #07070f;
     color: #f1f5f9;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
     overflow-x: hidden;
   }
 

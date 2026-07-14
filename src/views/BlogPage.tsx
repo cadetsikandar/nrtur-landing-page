@@ -1,26 +1,13 @@
-import { useEffect, useMemo, useState, type FormEvent } from 'react'
-import { Link } from 'react-router-dom'
-import { ArrowRightLeft, ArrowRight, ArrowUpRight, GitBranch, Building2, BookOpen, Check, type LucideIcon } from 'lucide-react'
+'use client'
+
+import { useMemo, useState, type FormEvent } from 'react'
+import Link from 'next/link'
+import { ArrowRight, Check } from 'lucide-react'
 import { useRotatingPhrase } from '../hooks/useRotatingPhrase'
-import {
-  fetchInitialPosts,
-  fetchMorePosts,
-  getPostUrl,
-  SEED_POSTS,
-  TAG_ACCENTS,
-  TAG_LABELS,
-  type Post,
-  type TagSlug,
-} from '../lib/ghost'
+import { getPostUrl, TAG_LABELS, type Post, type TagSlug } from '../lib/ghost'
+import PostCard, { ArtPanel, AuthorAvatar, TagPill } from '../components/PostCard'
 
 const HEADLINE_PHRASES = ['for closing more deals.', 'for staying lean.', 'for switching CRMs.']
-
-const TAG_ICONS: Record<TagSlug, LucideIcon> = {
-  alternatives: ArrowRightLeft,
-  comparisons: GitBranch,
-  'use-cases': Building2,
-  guides: BookOpen,
-}
 
 type FilterTag = 'all' | TagSlug
 
@@ -34,91 +21,14 @@ const FILTER_CHIPS: { slug: FilterTag; label: string }[] = [
 
 const PAGE_SIZE = 6
 
-function TagPill({ tagSlug, tagName }: { tagSlug: TagSlug; tagName: string }) {
-  const accent = TAG_ACCENTS[tagSlug]
-  return (
-    <span
-      className="self-start text-[11px] font-semibold px-2 py-0.5 rounded-full"
-      style={{ color: accent.text, background: accent.bg, border: `1px solid ${accent.border}` }}
-    >
-      {tagName}
-    </span>
-  )
-}
-
-function AuthorAvatar({ post, size }: { post: Post; size: number }) {
-  return (
-    <span
-      className="rounded-full inline-flex items-center justify-center font-bold text-white shrink-0"
-      style={{ width: size, height: size, background: post.authorColor, fontSize: size * 0.4 }}
-    >
-      {post.authorInitials}
-    </span>
-  )
-}
-
-/** Richer gradient art header for post cards — tag-tinted mesh + glow + texture + a glass icon tile. */
-function ArtPanel({ tagSlug, variant }: { tagSlug: TagSlug; variant: 'featured' | 'card' }) {
-  const a = TAG_ACCENTS[tagSlug]
-  const Icon = TAG_ICONS[tagSlug]
-  const featured = variant === 'featured'
-  return (
-    <div
-      className={`relative overflow-hidden border-white/5 ${
-        featured ? 'min-h-[220px] border-b md:border-b-0 md:border-r' : 'h-[140px] border-b'
-      }`}
-      style={{ background: '#0c0c1a' }}
-    >
-      {/* tag-tinted gradient wash */}
-      <div className="absolute inset-0" style={{ background: `linear-gradient(140deg, ${a.gradientFrom}, ${a.gradientTo})` }} />
-      {/* colored corner glow */}
-      <div
-        className={`absolute -top-8 -left-6 rounded-full blur-3xl ${featured ? 'w-52 h-52' : 'w-36 h-36'}`}
-        style={{ background: a.text, opacity: 0.22 }}
-      />
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute inset-0 bg-noise opacity-[0.1] mix-blend-overlay" />
-      {/* oversized faded watermark icon (featured only) */}
-      {featured && (
-        <Icon size={190} strokeWidth={1} className="absolute -bottom-10 -right-8" style={{ color: a.text, opacity: 0.07 }} />
-      )}
-      {/* crisp icon in a glass tile */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div
-          className={`${
-            featured ? 'w-[72px] h-[72px] rounded-2xl' : 'w-14 h-14 rounded-xl'
-          } bg-white/10 border border-white/15 backdrop-blur-sm flex items-center justify-center shadow-[0_8px_24px_rgba(0,0,0,0.35)]`}
-        >
-          <Icon size={featured ? 34 : 24} strokeWidth={1.75} style={{ color: a.text }} />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export default function BlogPage() {
+export default function BlogPage({ initialPosts }: { initialPosts: Post[] }) {
   const { phrase } = useRotatingPhrase(HEADLINE_PHRASES)
 
-  const [posts, setPosts] = useState<Post[]>(SEED_POSTS)
-  const [usedLiveApi, setUsedLiveApi] = useState(false)
-  const [nextGhostPage, setNextGhostPage] = useState<number | null>(null)
+  const [posts] = useState<Post[]>(initialPosts)
   const [tag, setTag] = useState<FilterTag>('all')
   const [page, setPage] = useState(1)
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
-
-  useEffect(() => {
-    let cancelled = false
-    fetchInitialPosts().then((result) => {
-      if (cancelled) return
-      setPosts(result.posts)
-      setUsedLiveApi(result.usedLiveApi)
-      setNextGhostPage(result.nextPage)
-    })
-    return () => {
-      cancelled = true
-    }
-  }, [])
 
   const featuredPost = useMemo(() => posts.find((p) => p.featured) ?? posts[0], [posts])
   const restPosts = useMemo(() => posts.filter((p) => p !== featuredPost), [posts, featuredPost])
@@ -128,26 +38,15 @@ export default function BlogPage() {
   )
   const shownPosts = useMemo(() => filteredPosts.slice(0, page * PAGE_SIZE), [filteredPosts, page])
 
-  const hasMoreLocally = shownPosts.length < filteredPosts.length
-  const canFetchMoreFromGhost = usedLiveApi && nextGhostPage !== null
-  const showLoadMore = hasMoreLocally || canFetchMoreFromGhost
+  const showLoadMore = shownPosts.length < filteredPosts.length
 
   function handleTagChange(next: FilterTag) {
     setTag(next)
     setPage(1)
   }
 
-  async function handleLoadMore() {
-    if (hasMoreLocally) {
-      setPage((p) => p + 1)
-      return
-    }
-    if (canFetchMoreFromGhost && nextGhostPage !== null) {
-      const result = await fetchMorePosts(nextGhostPage)
-      setPosts((prev) => [...prev, ...result.posts])
-      setNextGhostPage(result.nextPage)
-      setPage((p) => p + 1)
-    }
+  function handleLoadMore() {
+    setPage((p) => p + 1)
   }
 
   function handleSubscribe(e: FormEvent<HTMLFormElement>) {
@@ -206,7 +105,7 @@ export default function BlogPage() {
           {/* Featured */}
           {featuredPost && (
             <Link
-              to={getPostUrl(featuredPost)}
+              href={getPostUrl(featuredPost)}
               className="animate-fade-up group grid grid-cols-1 md:grid-cols-[1.1fr_1fr] glass-card overflow-hidden mb-10 transition-all duration-300 hover:border-white/10 hover:shadow-card-hover"
             >
               <ArtPanel tagSlug={featuredPost.tagSlug} variant="featured" />
@@ -239,35 +138,9 @@ export default function BlogPage() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {shownPosts.map((post, i) => {
-              return (
-                <Link
-                  key={post.id}
-                  to={getPostUrl(post)}
-                  className="animate-fade-up group flex flex-col glass-card overflow-hidden transition-all duration-300 hover:border-white/10 hover:-translate-y-1 hover:shadow-card-hover"
-                  style={{ animationDelay: `${(i % 3) * 0.06}s`, animationFillMode: 'both' }}
-                >
-                  <ArtPanel tagSlug={post.tagSlug} variant="card" />
-                  <div className="p-5 flex flex-col flex-1">
-                    <TagPill tagSlug={post.tagSlug} tagName={post.tagName} />
-                    <h3 className="mt-3 mb-2 text-base font-bold text-white leading-snug">{post.title}</h3>
-                    <p className="mb-4 text-[13px] text-white/40 leading-relaxed flex-1">{post.excerpt}</p>
-                    <div className="flex items-center gap-1.5 text-xs text-white/30">
-                      <AuthorAvatar post={post} size={18} />
-                      <span className="text-white/45">{post.authorName}</span>
-                      <span>·</span>
-                      <span>{post.dateLabel}</span>
-                      <span>·</span>
-                      <span>{post.readingTime} min</span>
-                      <ArrowUpRight
-                        size={15}
-                        className="ml-auto flex-shrink-0 text-white/25 group-hover:text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
-                      />
-                    </div>
-                  </div>
-                </Link>
-              )
-            })}
+            {shownPosts.map((post, i) => (
+              <PostCard key={post.id} post={post} index={i} />
+            ))}
           </div>
 
           {shownPosts.length === 0 && (

@@ -1,3 +1,5 @@
+'use client'
+
 import { ArrowRight, Play, Star, Clock, CreditCard, Unlock } from 'lucide-react'
 import { useRotatingPhrase } from '../hooks/useRotatingPhrase'
 import HeroDemoWindow from './hero/HeroDemoWindow'

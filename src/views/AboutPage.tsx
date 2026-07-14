@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, type ReactNode } from 'react'
 import {
   Linkedin,
@@ -225,101 +227,6 @@ function CompanyLogo({ slug, name, initials }: { slug: string; name: string; ini
   )
 }
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'AboutPage',
-      '@id': 'https://nrtur.io/about/#aboutpage',
-      url: 'https://nrtur.io/about/',
-      name: 'About nrtur',
-      about: { '@id': 'https://nrtur.io/#organization' },
-    },
-    {
-      '@type': 'Organization',
-      '@id': 'https://nrtur.io/#organization',
-      name: 'nrtur',
-      legalName: 'nrtur, Inc.',
-      slogan: 'The CRM small teams actually want to use.',
-      url: 'https://nrtur.io/',
-      logo: 'https://nrtur.io/nrtur-logo.png',
-      description:
-        'A CRM should get out of your team’s way, not become another piece of software to manage — nrtur gives small teams enterprise-grade CRM power without the enterprise price tag or complexity.',
-      email: 'hello@nrtur.io',
-      foundingDate: '2024',
-      address: { '@type': 'PostalAddress', addressRegion: 'Wyoming', addressCountry: 'US' },
-      sameAs: ['https://twitter.com/nrtur', 'https://www.linkedin.com/company/nrtur', 'https://github.com/nrtur'],
-      founder: [{ '@id': 'https://nrtur.io/about#touqeer-hassan' }],
-      employee: [
-        { '@id': 'https://nrtur.io/about#shahbaz-khalid' },
-        { '@id': 'https://nrtur.io/about#sikandar-ali' },
-        { '@id': 'https://nrtur.io/about#mujahid-raja' },
-        { '@id': 'https://nrtur.io/about#qamar-ul-islam' },
-        { '@id': 'https://nrtur.io/about#saqib-hassan' },
-      ],
-    },
-    {
-      '@type': 'Person',
-      '@id': 'https://nrtur.io/about#touqeer-hassan',
-      name: 'Touqeer Hassan',
-      jobTitle: 'Founder',
-      worksFor: { '@id': 'https://nrtur.io/#organization' },
-      homeLocation: { '@type': 'Place', name: 'Wyoming, USA' },
-      image: 'https://nrtur.io/team/touqeer-hassan.jpeg',
-      sameAs: ['https://www.linkedin.com/in/touqeerhassan/'],
-    },
-    {
-      '@type': 'Person',
-      '@id': 'https://nrtur.io/about#shahbaz-khalid',
-      name: 'Shahbaz Khalid',
-      jobTitle: 'Software Engineer',
-      worksFor: { '@id': 'https://nrtur.io/#organization' },
-      homeLocation: { '@type': 'Place', name: 'Rawalpindi, Pakistan' },
-      image: 'https://nrtur.io/team/shahbaz-khalid.jpg',
-      sameAs: ['https://www.linkedin.com/in/shahbazkhalidweb/'],
-    },
-    {
-      '@type': 'Person',
-      '@id': 'https://nrtur.io/about#sikandar-ali',
-      name: 'Sikandar Ali',
-      jobTitle: 'Software Engineer',
-      worksFor: { '@id': 'https://nrtur.io/#organization' },
-      homeLocation: { '@type': 'Place', name: 'Islamabad, Pakistan' },
-      image: 'https://nrtur.io/team/Sikandar-Ali.png',
-      sameAs: ['https://www.linkedin.com/in/sikandar-ali-nrtur'],
-    },
-    {
-      '@type': 'Person',
-      '@id': 'https://nrtur.io/about#mujahid-raja',
-      name: 'Mujahid Raja',
-      jobTitle: 'Software Engineer',
-      worksFor: { '@id': 'https://nrtur.io/#organization' },
-      homeLocation: { '@type': 'Place', name: 'Islamabad, Pakistan' },
-      image: 'https://nrtur.io/team/Mujahid-raja.png',
-      sameAs: ['https://www.linkedin.com/in/mujahid-raja-nrtur'],
-    },
-    {
-      '@type': 'Person',
-      '@id': 'https://nrtur.io/about#qamar-ul-islam',
-      name: 'Qamar Ul Islam',
-      jobTitle: 'Backend Engineer',
-      worksFor: { '@id': 'https://nrtur.io/#organization' },
-      homeLocation: { '@type': 'Place', name: 'Rawalpindi, Pakistan' },
-      image: 'https://nrtur.io/team/Qamar.png',
-      sameAs: ['https://www.linkedin.com/in/qamar-ul-islam-193378202/'],
-    },
-    {
-      '@type': 'Person',
-      '@id': 'https://nrtur.io/about#saqib-hassan',
-      name: 'Saqib Hassan',
-      jobTitle: 'Founding Engineer & Technical Lead',
-      worksFor: { '@id': 'https://nrtur.io/#organization' },
-      homeLocation: { '@type': 'Place', name: 'Islamabad, Pakistan' },
-      image: 'https://nrtur.io/team/Saqib-hassan.png',
-      sameAs: ['https://www.linkedin.com/in/saqib-hassan-2b79511b3/'],
-    },
-  ],
-}
 
 /** "Signal Field" — the nrtur mark as a glowing source, ringed by orbits, with glassy
  *  product-moment chips floating around it. Photo-free; distinct from the Mission window. */
@@ -565,8 +472,6 @@ export default function AboutPage() {
 
   return (
     <>
-      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-
       <div ref={contentRef}>
         {/* Hero — asymmetric split (copy left, visual right) */}
         <section className="relative pt-32 pb-16 overflow-hidden">
