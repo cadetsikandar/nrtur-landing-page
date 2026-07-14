@@ -1,3 +1,5 @@
+'use client'
+
 import { ArrowRight, Clock, CreditCard, Unlock, ArrowRightLeft } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 

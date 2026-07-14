@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { Check, X } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
@@ -11,25 +13,6 @@ const phrases = [
   'the annual lock-ins.',
 ]
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'CollectionPage',
-      '@id': 'https://nrtur.io/comparisons/#page',
-      url: 'https://nrtur.io/comparisons/',
-      name: 'nrtur vs HubSpot, Salesforce, Pipedrive & Zoho CRM',
-      about: { '@id': 'https://nrtur.io/#organization' },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://nrtur.io/' },
-        { '@type': 'ListItem', position: 2, name: 'Comparisons', item: 'https://nrtur.io/comparisons/' },
-      ],
-    },
-  ],
-}
 
 function CellValue({ value, highlight }: { value: string | boolean; highlight?: boolean }) {
   if (value === true) {
@@ -66,11 +49,6 @@ export default function ComparePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       {/* Header */}
       <section className="relative pt-32 pb-10 overflow-hidden">
         <div className="orb w-[500px] h-[500px] bg-brand-600/15 -top-52 left-1/2 -translate-x-1/2" />

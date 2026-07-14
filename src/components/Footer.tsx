@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { Twitter, Linkedin, Github, Mail } from 'lucide-react'
 
 const links = {
@@ -10,17 +10,17 @@ const links = {
     { label: 'Status', href: '#' },
   ],
   Compare: [
-    { label: 'vs HubSpot', href: '/comparisons/' },
-    { label: 'vs Salesforce', href: '/comparisons/' },
-    { label: 'vs Pipedrive', href: '/comparisons/' },
-    { label: 'vs Zoho CRM', href: '/comparisons/' },
+    { label: 'vs HubSpot', href: '/compare/' },
+    { label: 'vs Salesforce', href: '/compare/' },
+    { label: 'vs Pipedrive', href: '/compare/' },
+    { label: 'vs Zoho CRM', href: '/compare/' },
   ],
   Resources: [
-    { label: 'Documentation', href: '#' },
-    { label: 'API Reference', href: '#' },
     { label: 'Blog', href: '/blog/' },
-    { label: 'Help Center', href: '#' },
-    { label: 'Community', href: '#' },
+    { label: 'Alternatives', href: '/alternatives/' },
+    { label: 'Comparisons', href: '/comparisons/' },
+    { label: 'Use Cases', href: '/use-cases/' },
+    { label: 'Guides', href: '/guides/' },
   ],
   Company: [
     { label: 'About', href: '/about/' },
@@ -46,7 +46,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-12">
           {/* Brand column */}
           <div className="col-span-2">
-            <Link to="/" className="flex items-center gap-2.5 mb-5">
+            <Link href="/" className="flex items-center gap-2.5 mb-5">
               <img src="/nrtur-logo.png" alt="nrtur logo" className="w-8 h-8 object-contain" />
               <span className="text-white font-bold text-lg tracking-tight">nrtur</span>
             </Link>
@@ -93,7 +93,7 @@ export default function Footer() {
                   <li key={item.label}>
                     {item.href.startsWith('/') ? (
                       <Link
-                        to={item.href}
+                        href={item.href}
                         className="text-sm text-white/40 hover:text-white/70 transition-colors"
                       >
                         {item.label}

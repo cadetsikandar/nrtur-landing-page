@@ -1,3 +1,5 @@
+'use client'
+
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import {
   Users, GitBranch, Mail, Zap, Shield, BarChart3,

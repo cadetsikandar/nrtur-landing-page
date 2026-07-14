@@ -1,11 +1,14 @@
+'use client'
+
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
 const links = [
   { label: 'Features', href: '/#features' },
   { label: 'Pricing', href: '/#pricing' },
-  { label: 'Compare', href: '/comparisons/' },
+  { label: 'Compare', href: '/compare/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'About', href: '/about/' },
   { label: 'FAQ', href: '/faq/' },
@@ -13,7 +16,7 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const { pathname } = useLocation()
+  const pathname = usePathname()
 
   const isActive = (href: string) => {
     if (href.startsWith('/#')) return false
@@ -24,7 +27,7 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50 bg-[rgba(7,7,15,0.82)] backdrop-blur-2xl border-b border-white/[0.06]">
       <nav className="max-w-[1280px] mx-auto px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group">
+        <Link href="/" className="flex items-center gap-2.5 group">
           <img
             src="/nrtur-logo.png"
             alt="nrtur logo"
@@ -39,7 +42,7 @@ export default function Navbar() {
           {links.map((link) => (
             <Link
               key={link.label}
-              to={link.href}
+              href={link.href}
               className={`text-sm px-4 py-2 rounded-lg transition-all duration-150 ${
                 isActive(link.href)
                   ? 'text-white/90 bg-white/[0.06]'
@@ -89,7 +92,7 @@ export default function Navbar() {
           {links.map((link) => (
             <Link
               key={link.label}
-              to={link.href}
+              href={link.href}
               onClick={() => setOpen(false)}
               className={`text-sm py-3 px-3 rounded-lg transition-all ${
                 isActive(link.href) ? 'text-white bg-white/[0.06]' : 'text-white/60 hover:text-white hover:bg-white/[0.04]'

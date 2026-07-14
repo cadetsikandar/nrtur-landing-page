@@ -1,6 +1,6 @@
-/// <reference types="vite/client" />
-// Ghost Content API client + typed seed-data fallback for the Blog page.
-// Set VITE_GHOST_URL and VITE_GHOST_CONTENT_API_KEY in a .env file to fetch live posts instead of seed data.
+// Ghost Content API client + typed seed-data fallback for the Blog (server-side, ISR).
+// Set GHOST_URL and GHOST_CONTENT_API_KEY in the environment to fetch live posts + bodies
+// instead of seed data. Fetches use Next.js ISR (revalidate) so pages rebuild in the background.
 
 export type TagSlug = 'alternatives' | 'comparisons' | 'use-cases' | 'guides'
 
@@ -17,6 +17,8 @@ export interface Post {
   dateLabel: string
   readingTime: number
   featured?: boolean
+  /** Full HTML body — only present when fetched live from Ghost (seed posts have none). */
+  bodyHtml?: string
 }
 
 export const TAG_LABELS: Record<TagSlug, string> = {
@@ -25,6 +27,8 @@ export const TAG_LABELS: Record<TagSlug, string> = {
   'use-cases': 'Use Cases',
   guides: 'Guides',
 }
+
+export const TAG_SLUGS: TagSlug[] = ['alternatives', 'comparisons', 'use-cases', 'guides']
 
 export const TAG_ACCENTS: Record<TagSlug, { text: string; bg: string; border: string; gradientFrom: string; gradientTo: string }> = {
   alternatives: { text: '#60a5fa', bg: 'rgba(59,130,246,0.1)', border: 'rgba(59,130,246,0.2)', gradientFrom: 'rgba(59,130,246,0.25)', gradientTo: 'rgba(99,102,241,0.15)' },
@@ -75,6 +79,7 @@ interface GhostRawPost {
   slug: string
   title: string
   excerpt: string
+  html?: string | null
   feature_image?: string | null
   published_at: string
   reading_time: number
@@ -101,8 +106,7 @@ function colorFor(name: string): string {
 }
 
 function normalizeTagSlug(rawSlug: string | undefined): TagSlug {
-  const known: TagSlug[] = ['alternatives', 'comparisons', 'use-cases', 'guides']
-  return (known.find((s) => s === rawSlug) ?? 'guides') as TagSlug
+  return (TAG_SLUGS.find((s) => s === rawSlug) ?? 'guides') as TagSlug
 }
 
 function mapGhostPost(raw: GhostRawPost): Post {
@@ -121,34 +125,27 @@ function mapGhostPost(raw: GhostRawPost): Post {
     authorColor: colorFor(authorName),
     dateLabel,
     readingTime: raw.reading_time,
+    bodyHtml: raw.html ?? undefined,
   }
 }
 
 function getGhostConfig(): { url: string; key: string } | null {
-  const url = import.meta.env.VITE_GHOST_URL
-  const key = import.meta.env.VITE_GHOST_CONTENT_API_KEY
+  const url = process.env.GHOST_URL
+  const key = process.env.GHOST_CONTENT_API_KEY
   if (!url || !key) return null
   return { url, key }
 }
 
-async function fetchGhostPage(page: number): Promise<{ posts: Post[]; nextPage: number | null }> {
+const REVALIDATE_SECONDS = 3600 // ISR: rebuild affected pages at most once an hour
+
+async function ghostGet(pathAndQuery: string): Promise<GhostPostsResponse> {
   const config = getGhostConfig()
   if (!config) throw new Error('Ghost not configured')
-
-  const params = new URLSearchParams({
-    key: config.key,
-    include: 'tags,authors',
-    limit: '9',
-    page: String(page),
-  })
-  const response = await fetch(`${config.url.replace(/\/$/, '')}/ghost/api/content/posts/?${params.toString()}`)
+  const sep = pathAndQuery.includes('?') ? '&' : '?'
+  const url = `${config.url.replace(/\/$/, '')}/ghost/api/content/${pathAndQuery}${sep}key=${config.key}`
+  const response = await fetch(url, { next: { revalidate: REVALIDATE_SECONDS } })
   if (!response.ok) throw new Error(`Ghost Content API request failed: ${response.status}`)
-
-  const data = (await response.json()) as GhostPostsResponse
-  return {
-    posts: data.posts.map(mapGhostPost),
-    nextPage: data.meta?.pagination?.next ?? null,
-  }
+  return (await response.json()) as GhostPostsResponse
 }
 
 export interface FetchPostsResult {
@@ -157,23 +154,55 @@ export interface FetchPostsResult {
   usedLiveApi: boolean
 }
 
-// Loads the first page of posts. Tries the live Ghost Content API when configured;
-// silently falls back to local seed content when unconfigured or the request fails
-// (the expected/normal state for local development without a live Ghost instance).
+/** First page of posts for the blog index. Live Ghost when configured, else seed content. */
 export async function fetchInitialPosts(): Promise<FetchPostsResult> {
   if (getGhostConfig()) {
     try {
-      const { posts, nextPage } = await fetchGhostPage(1)
-      return { posts, nextPage, usedLiveApi: true }
+      const data = await ghostGet('posts/?include=tags,authors&limit=9&page=1')
+      return { posts: data.posts.map(mapGhostPost), nextPage: data.meta?.pagination?.next ?? null, usedLiveApi: true }
     } catch {
-      // fall through to seed content below
+      // fall through to seed content
     }
   }
   return { posts: SEED_POSTS, nextPage: null, usedLiveApi: false }
 }
 
-// Fetches the next page from Ghost for "Load more" when running against a live instance.
-export async function fetchMorePosts(page: number): Promise<FetchPostsResult> {
-  const { posts, nextPage } = await fetchGhostPage(page)
-  return { posts, nextPage, usedLiveApi: true }
+/** All posts for one tag cluster (/alternatives, /comparisons, /use-cases, /guides). */
+export async function fetchPostsByTag(tag: TagSlug): Promise<Post[]> {
+  if (getGhostConfig()) {
+    try {
+      const data = await ghostGet(`posts/?include=tags,authors&limit=all&filter=tag:${tag}`)
+      return data.posts.map(mapGhostPost)
+    } catch {
+      // fall through to seed content
+    }
+  }
+  return SEED_POSTS.filter((p) => p.tagSlug === tag)
+}
+
+/** A single post by slug, including its full HTML body (live Ghost only). */
+export async function fetchPostBySlug(slug: string): Promise<Post | null> {
+  if (getGhostConfig()) {
+    try {
+      const data = await ghostGet(`posts/slug/${slug}/?include=tags,authors`)
+      const raw = data.posts?.[0]
+      if (raw) return mapGhostPost(raw)
+    } catch {
+      // fall through to seed content
+    }
+  }
+  return SEED_POSTS.find((p) => p.slug === slug) ?? null
+}
+
+/** Every post's routing params — powers generateStaticParams for article + cluster pages. */
+export async function getAllPosts(): Promise<Post[]> {
+  if (getGhostConfig()) {
+    try {
+      const data = await ghostGet('posts/?include=tags,authors&limit=all')
+      return data.posts.map(mapGhostPost)
+    } catch {
+      // fall through to seed content
+    }
+  }
+  return SEED_POSTS
 }
