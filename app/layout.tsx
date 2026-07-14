@@ -5,6 +5,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import HashScroll from '@/components/HashScroll'
+import Analytics from '@/components/Analytics'
 import { SITE_URL } from '@/lib/metadata'
 
 const inter = Inter({
@@ -31,6 +32,17 @@ export const metadata: Metadata = {
     url: SITE_URL,
   },
   icons: { icon: '/favicon.svg' },
+  // Search-engine ownership verification. Each meta tag renders only when its
+  // env var is set — Google Search Console (URL-prefix property) and Bing
+  // Webmaster Tools. Tokens are public by design, so they're plain env vars.
+  verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.BING_SITE_VERIFICATION
+      ? { other: { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } }
+      : {}),
+  },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -42,6 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   )
