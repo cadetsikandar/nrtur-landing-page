@@ -7,7 +7,8 @@ import {
   Check,
   ArrowRight,
   Sparkles,
-  Quote,
+  Search,
+  TrendingUp,
   Users,
   Rocket,
   type LucideIcon,
@@ -43,15 +44,15 @@ const team: TeamMember[] = [
     photo: '/team/touqeer-hassan.jpeg',
   },
   {
-    slug: 'shahbaz-khalid',
-    name: 'Shahbaz Khalid',
-    initials: 'SK',
-    role: 'Software Engineer',
-    location: 'Bahria Phase 1, Rawalpindi',
-    bio: 'Full-stack engineer who builds and ships the features that keep nrtur fast, reliable, and easy to live in day to day.',
-    linkedin: 'https://www.linkedin.com/in/shahbazkhalidweb/',
-    ring: 'from-violet-600 to-blue-600',
-    photo: '/team/shahbaz-khalid.jpg',
+    slug: 'saqib-hassan',
+    name: 'Saqib Hassan',
+    initials: 'SH',
+    role: 'Founding Engineer & Technical Lead',
+    location: 'Islamabad, Pakistan',
+    bio: "Founding engineer and technical lead — owns nrtur's architecture and the hard engineering calls that keep the product fast and dependable as it grows.",
+    linkedin: 'https://www.linkedin.com/in/saqib-hassan-2b79511b3/',
+    ring: 'from-pink-600 to-rose-600',
+    photo: '/team/Saqib-hassan.png',
   },
   {
     slug: 'sikandar-ali',
@@ -86,6 +87,17 @@ const team: TeamMember[] = [
     ring: 'from-blue-600 to-cyan-600',
     photo: '/team/Qamar.png',
   },
+  {
+    slug: 'shahbaz-khalid',
+    name: 'Shahbaz Khalid',
+    initials: 'SK',
+    role: 'Software Engineer',
+    location: 'Bahria Phase 1, Rawalpindi',
+    bio: 'Full-stack engineer who builds and ships the features that keep nrtur fast, reliable, and easy to live in day to day.',
+    linkedin: 'https://www.linkedin.com/in/shahbazkhalidweb/',
+    ring: 'from-violet-600 to-blue-600',
+    photo: '/team/shahbaz-khalid.jpg',
+  },
 ]
 
 const values = [
@@ -106,34 +118,27 @@ const values = [
   },
 ]
 
-const numbers = [
-  { value: '28+', label: 'Years of combined experience' },
-  { value: '4', label: 'SaaS companies built before nrtur' },
-  { value: '$40M+', label: 'Total ARR scaled' },
-  { value: '32', label: 'Countries where nrtur runs' },
-]
-
 const journey = [
   {
     year: '2024',
     dot: 'bg-brand-400',
     label: 'text-brand-400',
-    title: 'Founded in Austin',
-    body: 'A two-week prototype built to fix overpriced, over-complex CRMs.',
+    title: 'The idea',
+    body: 'Frustrated by bloated, overpriced CRMs, we set out to build the one we actually wanted for a team our size.',
   },
   {
-    year: 'Spring 2025',
+    year: 'Now',
     dot: 'bg-violet-400',
     label: 'text-violet-400',
-    title: 'Early access opens',
-    body: 'First 300 teams onboarded 1:1. Their feedback shaped every screen in the product today.',
+    title: 'Building the prototype',
+    body: 'A small remote team is building nrtur in the open and shaping it around real feedback.',
   },
   {
-    year: 'Today',
+    year: 'Next',
     dot: 'bg-emerald-400 animate-glow-pulse',
     label: 'text-emerald-400',
-    title: '2,400+ teams and counting',
-    body: 'Shipping weekly, onboarding new early-access teams, and saying no to feature bloat daily.',
+    title: 'Early access',
+    body: 'Opening up to the first teams soon — join the waitlist to be one of them.',
   },
 ]
 
@@ -242,7 +247,7 @@ const jsonLd = {
         'A CRM should get out of your team’s way, not become another piece of software to manage — nrtur gives small teams enterprise-grade CRM power without the enterprise price tag or complexity.',
       email: 'hello@nrtur.io',
       foundingDate: '2024',
-      address: { '@type': 'PostalAddress', addressLocality: 'Austin', addressRegion: 'TX', addressCountry: 'US' },
+      address: { '@type': 'PostalAddress', addressRegion: 'Wyoming', addressCountry: 'US' },
       sameAs: ['https://twitter.com/nrtur', 'https://www.linkedin.com/company/nrtur', 'https://github.com/nrtur'],
       founder: [{ '@id': 'https://nrtur.io/about#touqeer-hassan' }],
       employee: [
@@ -250,6 +255,7 @@ const jsonLd = {
         { '@id': 'https://nrtur.io/about#sikandar-ali' },
         { '@id': 'https://nrtur.io/about#mujahid-raja' },
         { '@id': 'https://nrtur.io/about#qamar-ul-islam' },
+        { '@id': 'https://nrtur.io/about#saqib-hassan' },
       ],
     },
     {
@@ -302,40 +308,187 @@ const jsonLd = {
       image: 'https://nrtur.io/team/Qamar.png',
       sameAs: ['https://www.linkedin.com/in/qamar-ul-islam-193378202/'],
     },
+    {
+      '@type': 'Person',
+      '@id': 'https://nrtur.io/about#saqib-hassan',
+      name: 'Saqib Hassan',
+      jobTitle: 'Founding Engineer & Technical Lead',
+      worksFor: { '@id': 'https://nrtur.io/#organization' },
+      homeLocation: { '@type': 'Place', name: 'Islamabad, Pakistan' },
+      image: 'https://nrtur.io/team/Saqib-hassan.png',
+      sameAs: ['https://www.linkedin.com/in/saqib-hassan-2b79511b3/'],
+    },
   ],
 }
 
-/** Overlapping cluster of the team avatar rings — the hero image-slot fallback. */
-function TeamCluster() {
+/** "Signal Field" — the nrtur mark as a glowing source, ringed by orbits, with glassy
+ *  product-moment chips floating around it. Photo-free; distinct from the Mission window. */
+function SignalField() {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3.5">
-      <div className="flex -space-x-4">
-        {team.map((m) => (
-          <div key={m.slug} className={`w-16 h-16 rounded-full p-[2px] bg-gradient-to-br ${m.ring} ring-2 ring-black/25`}>
-            <div className="w-full h-full rounded-full bg-[#07070f]/50 backdrop-blur-sm flex items-center justify-center text-sm font-black text-white/85">
-              {m.initials}
+    <div className="absolute inset-0 overflow-hidden">
+      {/* Cool jewel mesh (indigo/violet + a single restrained emerald spark) */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 55% 50% at 22% 14%,rgba(99,102,241,0.28),transparent 60%),radial-gradient(ellipse 55% 55% at 82% 88%,rgba(139,92,246,0.22),transparent 62%),radial-gradient(ellipse 35% 35% at 16% 84%,rgba(52,211,153,0.10),transparent 60%)',
+        }}
+      />
+      {/* Edge-masked grid — softly vignetted so lines fade before the panel border */}
+      <div
+        className="absolute inset-0 grid-bg opacity-[0.25]"
+        style={{
+          maskImage: 'radial-gradient(ellipse 72% 72% at 50% 50%,#000 38%,transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 72% 72% at 50% 50%,#000 38%,transparent 80%)',
+        }}
+      />
+      <div className="absolute inset-0 bg-noise opacity-[0.10] mix-blend-overlay" />
+      {/* Panel-scale glows (plain blurred divs, not .orb) */}
+      <div className="absolute -top-8 -left-6 w-40 h-40 rounded-full bg-brand-600/25 blur-3xl" />
+      <div className="absolute -bottom-8 -right-6 w-40 h-40 rounded-full bg-violet-600/20 blur-2xl" />
+
+      {/* Center source: glow + rings + butterfly mark */}
+      <div className="absolute left-1/2 top-[47%] -translate-x-1/2 -translate-y-1/2 z-10">
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 rounded-full"
+          style={{ background: 'radial-gradient(circle,rgba(129,140,248,0.35),transparent 70%)' }}
+        />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full border border-white/[0.07]" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 animate-spin-slow">
+          <div className="absolute inset-0 rounded-full border border-white/[0.05]" />
+          <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-brand-300" />
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1 h-1 rounded-full bg-violet-400" />
+        </div>
+        <div
+          className="relative w-14 h-14 rounded-2xl bg-white/[0.06] border border-white/[0.10] backdrop-blur-md grid place-items-center"
+          style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(99,102,241,0.25)' }}
+        >
+          <img
+            src="/nrtur-logo.png"
+            alt="nrtur"
+            className="w-8 h-8 object-contain animate-float"
+            style={{ filter: 'drop-shadow(0 0 12px rgba(129,140,248,0.55))' }}
+          />
+        </div>
+      </div>
+
+      {/* Chip A — Deal won */}
+      <div className="absolute top-[7%] left-[4%] w-[50%] z-30" style={{ transform: 'rotate(-2deg)' }}>
+        <div className="animate-float" style={{ animationDuration: '7s' }}>
+          <div
+            className="flex items-center gap-2.5 rounded-2xl bg-white/[0.07] border border-white/[0.10] backdrop-blur-md p-2.5"
+            style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(99,102,241,0.30), 0 0 60px rgba(99,102,241,0.18)' }}
+          >
+            <div className="relative w-8 h-8 rounded-lg grid place-items-center flex-shrink-0" style={{ background: 'rgba(52,211,153,0.14)' }}>
+              <Check size={16} className="text-emerald-400" />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 animate-pulse-dot" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-[13px] font-semibold text-white leading-tight">Deal won</p>
+              <p className="text-[11px] text-white/45 leading-tight truncate">$12,400 · Acme Corp</p>
             </div>
           </div>
-        ))}
+        </div>
       </div>
-      <div className="inline-flex items-center gap-1.5 bg-black/25 backdrop-blur-sm rounded-full px-3 py-1">
-        <MapPin size={12} className="text-white/85" />
-        <span className="text-xs font-medium text-white/85">Remote-first</span>
+
+      {/* Chip B — KPI pill with micro bars */}
+      <div className="absolute top-[15%] right-[4%] w-[40%] z-20" style={{ transform: 'rotate(3deg)' }}>
+        <div className="animate-float" style={{ animationDuration: '8s', animationDelay: '-2s' }}>
+          <div className="rounded-2xl bg-white/[0.07] border border-white/[0.10] backdrop-blur-md p-2.5" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.55)' }}>
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <TrendingUp size={13} className="text-brand-300" />
+              <span className="text-[15px] font-black gradient-text-brand leading-none">+38%</span>
+            </div>
+            <div className="flex items-end gap-[3px] h-6 mb-1">
+              {[40, 58, 50, 72, 100].map((h, i) => (
+                <div key={i} className="flex-1 rounded-sm bg-gradient-to-t from-brand-600 to-brand-400" style={{ height: `${h}%`, opacity: i === 4 ? 1 : 0.7 }} />
+              ))}
+            </div>
+            <p className="text-[10px] uppercase tracking-wider text-white/40">Reply rate · 7d</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Chip C — Automation ran */}
+      <div className="absolute bottom-[9%] left-[3%] w-[44%] z-20" style={{ transform: 'rotate(2deg)' }}>
+        <div className="animate-float" style={{ animationDuration: '6.5s', animationDelay: '-1s' }}>
+          <div className="flex items-center gap-2.5 rounded-2xl bg-white/[0.07] border border-white/[0.10] backdrop-blur-md p-2.5" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.55)' }}>
+            <div className="relative w-8 h-8 rounded-lg grid place-items-center flex-shrink-0" style={{ background: 'rgba(99,102,241,0.14)' }}>
+              <Zap size={15} className="text-brand-300" />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-brand-400 animate-pulse-dot" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-[13px] font-semibold text-white leading-tight">Automation ran</p>
+              <p className="text-[11px] text-white/45 leading-tight truncate">3 tasks · just now</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Chip D — New contact (gradient monogram, not a photo) */}
+      <div className="absolute bottom-[12%] right-[3%] w-[46%] z-30" style={{ transform: 'rotate(-2deg)' }}>
+        <div className="animate-float" style={{ animationDuration: '7.5s', animationDelay: '-3s' }}>
+          <div className="flex items-center gap-2.5 rounded-2xl bg-white/[0.07] border border-white/[0.10] backdrop-blur-md p-2.5" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.55)' }}>
+            <div className="w-8 h-8 rounded-full grid place-items-center flex-shrink-0 text-[11px] font-black text-white" style={{ background: 'linear-gradient(135deg,#4f46e5,#8b5cf6)' }}>
+              MK
+            </div>
+            <div className="min-w-0">
+              <p className="text-[13px] font-semibold text-white leading-tight">New contact</p>
+              <p className="text-[11px] text-white/45 leading-tight truncate">Maya Kade · loop.io</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
-/** Static, non-interactive window-chrome frame echoing the product's look — the Mission visual. */
+/** Static, non-interactive mini-CRM pipeline echoing the product — the Mission visual. */
+const ownerRing: Record<string, string> = {
+  TH: 'from-brand-600 to-violet-600',
+  SK: 'from-violet-600 to-blue-600',
+  SA: 'from-emerald-600 to-teal-600',
+  MR: 'from-amber-600 to-orange-600',
+  QI: 'from-blue-600 to-cyan-600',
+}
+const dealTag: Record<string, { cls: string; bar: string }> = {
+  New: { cls: 'bg-slate-500/15 text-slate-300', bar: '#94a3b8' },
+  Demo: { cls: 'bg-blue-500/15 text-blue-400', bar: '#60a5fa' },
+  Proposal: { cls: 'bg-amber-500/15 text-amber-400', bar: '#fbbf24' },
+  Won: { cls: 'bg-emerald-500/15 text-emerald-400', bar: '#34d399' },
+}
+const pipelineCols = [
+  {
+    label: 'Prospecting',
+    dot: 'bg-slate-400',
+    count: 2,
+    deals: [
+      { company: 'Northwind Ltd', value: '$4.2k', owner: 'SK', t: 'New' },
+      { company: 'Acme Digital', value: '$2.8k', owner: 'MR', t: 'New' },
+    ],
+  },
+  {
+    label: 'Qualified',
+    dot: 'bg-brand-400',
+    count: 2,
+    deals: [
+      { company: 'DevAXL', value: '$9.5k', owner: 'TH', t: 'Proposal' },
+      { company: 'BrightLabs', value: '$6.1k', owner: 'SA', t: 'Demo' },
+    ],
+  },
+  {
+    label: 'Won',
+    dot: 'bg-emerald-400',
+    count: 1,
+    deals: [{ company: 'Meridian Co', value: '$12k', owner: 'QI', t: 'Won' }],
+  },
+]
+
 function MissionMockup() {
-  const cols = [
-    { label: 'Prospecting', dot: 'bg-slate-400', cards: 2 },
-    { label: 'Qualified', dot: 'bg-brand-400', cards: 2 },
-    { label: 'Won', dot: 'bg-emerald-400', cards: 1 },
-  ]
   return (
     <div className="relative">
       <div className="absolute -inset-8 bg-brand-500/10 rounded-3xl blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-10 -right-8 w-44 h-44 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="relative rounded-2xl overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_32px_100px_rgba(0,0,0,0.6)]">
         {/* Chrome */}
         <div className="bg-[#0b0b18] px-4 py-3 flex items-center gap-3 border-b border-white/[0.05]">
@@ -346,28 +499,60 @@ function MissionMockup() {
           </div>
           <div className="flex-1 flex justify-center">
             <div className="bg-white/[0.05] border border-white/[0.06] rounded-md px-3 py-1 text-[11px] text-white/25 w-44 text-center">
-              app.nrtur.com
+              app.nrtur.com/deals
             </div>
           </div>
+          <div className="flex items-center gap-1.5">
+            <span className="w-6 h-6 rounded-md bg-white/[0.04] border border-white/[0.06] grid place-items-center">
+              <Search size={11} className="text-white/30" />
+            </span>
+            <span className="text-[10px] text-brand-400 font-medium bg-brand-500/10 border border-brand-500/20 rounded-md px-2 py-0.5">
+              + New
+            </span>
+          </div>
         </div>
-        {/* Faux pipeline body */}
-        <div className="bg-[#09091a] p-4 grid grid-cols-3 gap-3" style={{ minHeight: 240 }}>
-          {cols.map((col) => (
+        {/* Pipeline body */}
+        <div className="bg-[#09091a] p-3.5 grid grid-cols-3 gap-2.5" style={{ minHeight: 248 }}>
+          {pipelineCols.map((col) => (
             <div key={col.label}>
               <div className="flex items-center gap-1.5 mb-2">
                 <span className={`w-1.5 h-1.5 rounded-full ${col.dot}`} />
-                <span className="text-[10px] font-semibold text-white/40">{col.label}</span>
+                <span className="text-[10px] font-semibold text-white/45">{col.label}</span>
+                <span className="text-[9px] bg-white/[0.06] rounded-full w-4 h-4 grid place-items-center text-white/35 ml-auto">
+                  {col.count}
+                </span>
               </div>
               <div className="flex flex-col gap-2">
-                {Array.from({ length: col.cards }).map((_, i) => (
-                  <div key={i} className="rounded-lg bg-white/[0.03] border border-white/[0.05] p-2.5">
-                    <div className="h-1.5 w-3/4 rounded bg-white/10 mb-1.5" />
-                    <div className="h-1.5 w-1/2 rounded bg-brand-500/30" />
+                {col.deals.map((d) => (
+                  <div
+                    key={d.company}
+                    className="rounded-lg bg-white/[0.03] border border-white/[0.05] p-2"
+                    style={{ borderLeft: `2px solid ${dealTag[d.t].bar}` }}
+                  >
+                    <div className="flex items-center justify-between gap-1">
+                      <span className="text-[11px] font-semibold text-white/80 truncate">{d.company}</span>
+                      <span className="text-[10px] text-white/45 tabular-nums">{d.value}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 mt-1.5">
+                      <span
+                        className={`w-4 h-4 rounded-full bg-gradient-to-br ${ownerRing[d.owner]} grid place-items-center text-[7px] font-black text-white/90`}
+                      >
+                        {d.owner}
+                      </span>
+                      <span className={`text-[9px] font-medium px-1.5 py-0.5 rounded-full ${dealTag[d.t].cls}`}>
+                        {d.t === 'Won' ? 'Won ✓' : d.t}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           ))}
+        </div>
+        {/* Footer */}
+        <div className="bg-[#0b0b18] border-t border-white/[0.05] px-3.5 py-2 flex items-center justify-between">
+          <span className="text-[10px] text-white/35">Pipeline</span>
+          <span className="text-[10px] font-semibold text-white/60 tabular-nums">$34.6k</span>
         </div>
       </div>
     </div>
@@ -420,7 +605,7 @@ export default function AboutPage() {
                 style={{ animationDelay: '0.3s', animationFillMode: 'both' }}
               >
                 <MapPin size={14} className="text-brand-400" />
-                <span className="text-sm text-white/55 font-medium">Remote-first · HQ in Austin, Texas</span>
+                <span className="text-sm text-white/55 font-medium">Remote-first · HQ in Wyoming, USA</span>
               </div>
             </div>
 
@@ -428,13 +613,12 @@ export default function AboutPage() {
             <div className="relative animate-fade-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
               <div className="orb w-[360px] h-[360px] bg-violet-600/20 top-0 right-0" />
               <ImageSlot
-                src="/about/team.jpg"
-                alt="The nrtur team"
+                alt="nrtur in action"
                 icon={Users}
-                gradient="from-brand-600 to-violet-600"
+                gradient="from-[#0b0b18] to-[#07070f]"
                 className="relative shadow-card"
               >
-                <TeamCluster />
+                <SignalField />
               </ImageSlot>
             </div>
           </div>
@@ -477,28 +661,51 @@ export default function AboutPage() {
                 How we got here
               </h2>
               <p className="text-base text-white/45 leading-relaxed max-w-md">
-                Three operators — one from Pipedrive, one from Stripe, one from Notion — sat down
-                with the same complaint: every CRM they&rsquo;d used was either too expensive or too
-                complex for a team their size. nrtur started as a two-week prototype to fix that,
-                and it never stopped being that opinionated.
+                nrtur started in 2024 as a simple prototype — our answer to every bloated,
+                overpriced CRM we&rsquo;d had to fight at other companies. It&rsquo;s still early:
+                a small remote team building in the open and shaping the product around real
+                feedback.
               </p>
             </div>
             {/* Visual — first on mobile, second (right) on desktop */}
             <div className="reveal order-1 md:order-2">
               <ImageSlot
                 src="/about/story.jpg"
-                alt="nrtur’s early days in Austin"
+                alt="nrtur’s early days"
                 icon={Rocket}
-                gradient="from-violet-600 to-blue-600"
+                gradient="from-[#0a0a16] to-[#0d0b1e]"
                 className="shadow-card"
               >
-                <div className="absolute inset-0 grid-bg opacity-60" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-[120px] font-black text-white/10 leading-none select-none">2024</span>
+                {/* Dawn mesh: indigo/violet night sky melting into an amber/pink horizon */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      'radial-gradient(ellipse 60% 45% at 25% 8%,rgba(99,102,241,0.22),transparent 60%),radial-gradient(ellipse 55% 50% at 78% 18%,rgba(139,92,246,0.18),transparent 62%),radial-gradient(ellipse 75% 45% at 30% 102%,rgba(245,158,11,0.16),transparent 60%),radial-gradient(ellipse 60% 40% at 82% 98%,rgba(244,114,182,0.12),transparent 60%)',
+                  }}
+                />
+                <div className="absolute inset-0 grid-bg opacity-40" />
+                <div className="absolute inset-0 bg-noise opacity-[0.12] mix-blend-overlay" />
+
+                {/* Est. 2024 lockup */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-6">
+                  <span className="text-[11px] font-bold tracking-[0.35em] uppercase text-white/40">Est.</span>
+                  <span className="text-[44px] sm:text-[56px] leading-none font-black gradient-text-brand">2024</span>
+                  <span className="h-px w-16 bg-white/10" />
+                  <span className="text-xs text-white/45">Wyoming · Remote-first</span>
                 </div>
-                <div className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 bg-black/25 backdrop-blur-sm rounded-full px-3 py-1">
-                  <MapPin size={12} className="text-white/85" />
-                  <span className="text-xs font-medium text-white/85">Austin, TX · 2024</span>
+
+                {/* Journey constellation — mirrors the milestones band below */}
+                <div className="absolute left-[14%] right-[14%] bottom-[14%]">
+                  <div className="absolute top-1 left-0 right-0 h-px bg-gradient-to-r from-brand-500/40 via-violet-500/40 to-emerald-500/40" />
+                  <div className="relative flex items-start justify-between">
+                    {journey.map((s) => (
+                      <div key={s.year} className="flex flex-col items-center gap-1.5">
+                        <span className={`w-2 h-2 rounded-full ${s.dot}`} />
+                        <span className={`text-[9px] font-bold uppercase tracking-wider ${s.label}`}>{s.year}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </ImageSlot>
             </div>
@@ -512,7 +719,7 @@ export default function AboutPage() {
               <span>The journey</span>
             </div>
             <h2 className="reveal reveal-delay-1 text-3xl sm:text-4xl font-black tracking-tight text-white mb-8">
-              From prototype to 2,400+ teams
+              Where we are today
             </h2>
             <div className="relative">
               {/* Connector line — shows through the gaps between cards */}
@@ -543,8 +750,8 @@ export default function AboutPage() {
               Meet the team
             </h2>
             <p className="reveal reveal-delay-2 max-w-md text-base text-white/45 leading-relaxed mb-10">
-              A small, senior team &mdash; remote-first across the US, and the same people who
-              answer your emails.
+              A small, remote-first team building nrtur &mdash; and the same people who answer
+              your emails.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -582,26 +789,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* By the Numbers — full-bleed stat band */}
-        <section className="relative bg-white/[0.02] border-y border-white/[0.06] py-16 sm:py-20">
-          <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="reveal section-label mb-4">
-              <span>By the numbers</span>
-            </div>
-            <h2 className="reveal reveal-delay-1 text-3xl sm:text-4xl font-black tracking-tight text-white mb-10">
-              The track record behind nrtur
-            </h2>
-            <div className="reveal grid grid-cols-2 sm:grid-cols-4 gap-5">
-              {numbers.map((n) => (
-                <div key={n.label} className="glass-card p-6 text-left">
-                  <p className="text-4xl sm:text-5xl font-black gradient-text-brand mb-2">{n.value}</p>
-                  <p className="text-xs text-white/35 leading-tight">{n.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Customer Spotlight — DevAXL (full-width proof band) */}
         <section className="relative py-16 sm:py-24">
           <div className="max-w-5xl mx-auto px-6 lg:px-8">
@@ -619,43 +806,14 @@ export default function AboutPage() {
                     How DevAXL runs client systems on nrtur
                   </h3>
                   <p className="text-sm text-white/45 leading-relaxed mb-5 max-w-xl">
-                    DevAXL, an IT systems and managed-services agency, juggles multiple client
-                    environments at once. They joined nrtur&rsquo;s pre-access program to replace
-                    scattered spreadsheets with one pipeline view their whole team can trust.
+                    DevAXL, an IT and managed-services agency, is one of our first pre-access
+                    partners — using nrtur to manage systems across their clients while the
+                    product is still taking shape.
                   </p>
-                  <figure className="border-l-2 border-emerald-500/40 pl-4 mb-6 max-w-xl">
-                    <Quote size={16} className="text-emerald-400/60 mb-2" />
-                    <blockquote className="text-[15px] text-white/70 italic leading-relaxed mb-3.5">
-                      We run systems for a roomful of clients at once, and nrtur finally gave us
-                      one pipeline view the whole team actually trusts. Getting in during
-                      pre-access meant we could shape it around how a services shop really
-                      works &mdash; instead of retrofitting our process to someone else&rsquo;s CRM.
-                    </blockquote>
-                    <figcaption className="flex items-center gap-2.5">
-                      <span className="w-7 h-7 rounded-full bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center text-[10px] font-bold text-emerald-300">
-                        DX
-                      </span>
-                      <span className="text-xs text-white/50">
-                        <span className="text-white/75 font-semibold">Operations Lead</span> · DevAXL
-                      </span>
-                    </figcaption>
-                  </figure>
                   <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full">
                     Pre-access partner
                   </span>
                 </div>
-              </div>
-            </div>
-
-            {/* Investor trust strip — paired under the spotlight */}
-            <div className="reveal mt-8 glass-card p-6 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-              <img src="/nrtur-logo.png" alt="nrtur" className="w-10 h-10 object-contain flex-shrink-0" />
-              <div className="flex-1">
-                <p className="text-sm font-semibold text-white/70 mb-0.5">Backed by operators, not just VCs</p>
-                <p className="text-sm text-white/35">
-                  Our early investors include founders from Pipedrive, Close.com, and Apollo —
-                  people who know CRM inside and out.
-                </p>
               </div>
             </div>
           </div>
@@ -694,8 +852,8 @@ export default function AboutPage() {
                   Come build with us.
                 </h2>
                 <p className="max-w-md mx-auto text-base text-white/45 leading-relaxed mb-7">
-                  We're onboarding early-access teams every week — and we read every piece of
-                  feedback ourselves.
+                  We're opening up early access soon — join the waitlist and help shape what
+                  nrtur becomes.
                 </p>
                 <a
                   href="https://forms.gle/sb2mHm97oRNFRmUY9"
