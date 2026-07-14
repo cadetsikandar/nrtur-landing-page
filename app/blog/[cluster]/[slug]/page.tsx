@@ -65,20 +65,20 @@ export default async function ArticlePage({
         publisher: {
           '@type': 'Organization',
           name: 'nrtur',
-          logo: { '@type': 'ImageObject', url: 'https://nrtur.io/nrtur-logo.png' },
+          logo: { '@type': 'ImageObject', url: 'https://www.nrtur.io/nrtur-logo.png' },
         },
         mainEntityOfPage: canonical,
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://nrtur.io/' },
-          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://nrtur.io/blog/' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.nrtur.io/' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.nrtur.io/blog/' },
           {
             '@type': 'ListItem',
             position: 3,
             name: TAG_LABELS[post.tagSlug],
-            item: `https://nrtur.io/${post.tagSlug}/`,
+            item: `https://www.nrtur.io/${post.tagSlug}/`,
           },
           { '@type': 'ListItem', position: 4, name: post.title, item: canonical },
         ],

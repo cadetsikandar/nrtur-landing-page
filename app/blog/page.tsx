@@ -19,15 +19,15 @@ export default async function Page() {
     '@graph': [
       {
         '@type': 'Blog',
-        '@id': 'https://nrtur.io/blog/#blog',
-        url: 'https://nrtur.io/blog/',
+        '@id': 'https://www.nrtur.io/blog/#blog',
+        url: 'https://www.nrtur.io/blog/',
         name: 'The nrtur blog',
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://nrtur.io/' },
-          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://nrtur.io/blog/' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.nrtur.io/' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.nrtur.io/blog/' },
         ],
       },
     ],

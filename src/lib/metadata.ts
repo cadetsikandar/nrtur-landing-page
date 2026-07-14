@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-export const SITE_URL = 'https://nrtur.io'
+export const SITE_URL = 'https://www.nrtur.io'
 
 /** Build per-route metadata with a canonical URL (trailing-slash consistent) + OpenGraph.
  *  `path` should include a leading and trailing slash, e.g. "/about/". */

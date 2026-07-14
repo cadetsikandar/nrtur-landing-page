@@ -209,20 +209,13 @@ function FounderPhoto({ src, name, initials, ring }: { src: string; name: string
   )
 }
 
-function CompanyLogo({ slug, name, initials }: { slug: string; name: string; initials: string }) {
-  const [errored, setErrored] = useState(false)
-
+function CompanyLogo({ name, initials }: { name: string; initials: string }) {
   return (
-    <div className="relative w-16 h-16 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
+    <div
+      className="relative w-16 h-16 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden"
+      aria-label={`${name} logo`}
+    >
       <span className="text-lg font-black text-white/40">{initials}</span>
-      {!errored && (
-        <img
-          src={`/customers/${slug}.png`}
-          alt={`${name} logo`}
-          className="absolute inset-0 w-full h-full object-contain p-2.5"
-          onError={() => setErrored(true)}
-        />
-      )}
     </div>
   )
 }
@@ -575,7 +568,6 @@ export default function AboutPage() {
             {/* Visual — first on mobile, second (right) on desktop */}
             <div className="reveal order-1 md:order-2">
               <ImageSlot
-                src="/about/story.jpg"
                 alt="nrtur’s early days"
                 icon={Rocket}
                 gradient="from-[#0a0a16] to-[#0d0b1e]"
@@ -705,7 +697,7 @@ export default function AboutPage() {
                 </span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-6 items-start text-left">
-                <CompanyLogo slug="devaxl" name="DevAXL" initials="DX" />
+                <CompanyLogo name="DevAXL" initials="DX" />
                 <div>
                   <h3 className="text-xl sm:text-2xl font-black text-white mb-2.5">
                     How DevAXL runs client systems on nrtur

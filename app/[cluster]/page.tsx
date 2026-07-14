@@ -57,18 +57,18 @@ export default async function ClusterPage({ params }: { params: { cluster: strin
     '@graph': [
       {
         '@type': 'CollectionPage',
-        '@id': `https://nrtur.io/${cluster}/#collection`,
-        url: `https://nrtur.io/${cluster}/`,
+        '@id': `https://www.nrtur.io/${cluster}/#collection`,
+        url: `https://www.nrtur.io/${cluster}/`,
         name: `${label} · nrtur blog`,
         description,
-        isPartOf: { '@id': 'https://nrtur.io/blog/#blog' },
+        isPartOf: { '@id': 'https://www.nrtur.io/blog/#blog' },
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://nrtur.io/' },
-          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://nrtur.io/blog/' },
-          { '@type': 'ListItem', position: 3, name: label, item: `https://nrtur.io/${cluster}/` },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.nrtur.io/' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.nrtur.io/blog/' },
+          { '@type': 'ListItem', position: 3, name: label, item: `https://www.nrtur.io/${cluster}/` },
         ],
       },
     ],

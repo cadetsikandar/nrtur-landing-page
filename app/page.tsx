@@ -25,11 +25,11 @@ const orgJsonLd = {
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': 'https://nrtur.io/#organization',
+      '@id': 'https://www.nrtur.io/#organization',
       name: 'nrtur',
       legalName: 'nrtur, Inc.',
-      url: 'https://nrtur.io/',
-      logo: 'https://nrtur.io/nrtur-logo.png',
+      url: 'https://www.nrtur.io/',
+      logo: 'https://www.nrtur.io/nrtur-logo.png',
       slogan: 'The CRM small teams actually want to use.',
       description:
         "nrtur is an affordable CRM for small teams — manage contacts, close deals, and automate follow-ups without HubSpot's complexity or price tag.",
@@ -41,10 +41,10 @@ const orgJsonLd = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://nrtur.io/#website',
-      url: 'https://nrtur.io/',
+      '@id': 'https://www.nrtur.io/#website',
+      url: 'https://www.nrtur.io/',
       name: 'nrtur',
-      publisher: { '@id': 'https://nrtur.io/#organization' },
+      publisher: { '@id': 'https://www.nrtur.io/#organization' },
     },
   ],
 }
