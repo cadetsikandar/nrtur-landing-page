@@ -1,28 +1,29 @@
+import { Link } from 'react-router-dom'
 import { Twitter, Linkedin, Github, Mail } from 'lucide-react'
 
 const links = {
   Product: [
-    { label: 'Features', href: '#features' },
-    { label: 'Pricing', href: '#pricing' },
+    { label: 'Features', href: '/#features' },
+    { label: 'Pricing', href: '/#pricing' },
     { label: 'Changelog', href: '#' },
     { label: 'Roadmap', href: '#' },
     { label: 'Status', href: '#' },
   ],
   Compare: [
-    { label: 'vs HubSpot', href: '#comparison' },
-    { label: 'vs Salesforce', href: '#' },
-    { label: 'vs Pipedrive', href: '#' },
-    { label: 'vs Zoho CRM', href: '#' },
+    { label: 'vs HubSpot', href: '/comparisons/' },
+    { label: 'vs Salesforce', href: '/comparisons/' },
+    { label: 'vs Pipedrive', href: '/comparisons/' },
+    { label: 'vs Zoho CRM', href: '/comparisons/' },
   ],
   Resources: [
     { label: 'Documentation', href: '#' },
     { label: 'API Reference', href: '#' },
-    { label: 'Blog', href: '#' },
+    { label: 'Blog', href: '/blog/' },
     { label: 'Help Center', href: '#' },
     { label: 'Community', href: '#' },
   ],
   Company: [
-    { label: 'About', href: '#' },
+    { label: 'About', href: '/about/' },
     { label: 'Careers', href: '#' },
     { label: 'Press', href: '#' },
     { label: 'Contact', href: '#' },
@@ -45,12 +46,10 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-12">
           {/* Brand column */}
           <div className="col-span-2">
-            <a href="#" className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-violet-600 flex items-center justify-center shadow-brand">
-                <span className="text-white font-black text-sm">n</span>
-              </div>
+            <Link to="/" className="flex items-center gap-2.5 mb-5">
+              <img src="/nrtur-logo.png" alt="nrtur logo" className="w-8 h-8 object-contain" />
               <span className="text-white font-bold text-lg tracking-tight">nrtur</span>
-            </a>
+            </Link>
             <p className="text-sm text-white/35 leading-relaxed mb-6 max-w-52">
               The CRM built for small teams who'd rather close deals than configure software.
             </p>
@@ -92,12 +91,21 @@ export default function Footer() {
               <ul className="space-y-3">
                 {items.map((item) => (
                   <li key={item.label}>
-                    <a
-                      href={item.href}
-                      className="text-sm text-white/40 hover:text-white/70 transition-colors"
-                    >
-                      {item.label}
-                    </a>
+                    {item.href.startsWith('/') ? (
+                      <Link
+                        to={item.href}
+                        className="text-sm text-white/40 hover:text-white/70 transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.href}
+                        className="text-sm text-white/40 hover:text-white/70 transition-colors"
+                      >
+                        {item.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

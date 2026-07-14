@@ -1,2 +1,18 @@
-dist
+# Dependencies
 node_modules
+
+# Build output
+dist
+dist-ssr
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS / tooling
+.DS_Store
+.vite
+.claude
+*.local
+*.log

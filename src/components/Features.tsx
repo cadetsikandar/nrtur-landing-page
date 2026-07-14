@@ -1,7 +1,7 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import {
   Users, GitBranch, Mail, Zap, Shield, BarChart3,
-  ArrowRight, Globe, Clock, Layers,
+  Globe, Clock, Layers,
 } from 'lucide-react'
 
 const features = [
@@ -137,11 +137,6 @@ export default function Features() {
                       {h}
                     </span>
                   ))}
-                </div>
-
-                {/* Hover arrow */}
-                <div className="flex items-center gap-1 text-brand-400 text-sm font-medium mt-5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  Learn more <ArrowRight size={14} />
                 </div>
               </div>
             )

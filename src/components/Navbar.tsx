@@ -1,50 +1,53 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 
 const links = [
-  { label: 'Features', href: '#features' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Compare', href: '#comparison' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Features', href: '/#features' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Compare', href: '/comparisons/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'About', href: '/about/' },
+  { label: 'FAQ', href: '/faq/' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
 
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 24)
-    window.addEventListener('scroll', handler)
-    return () => window.removeEventListener('scroll', handler)
-  }, [])
+  const isActive = (href: string) => {
+    if (href.startsWith('/#')) return false
+    return pathname === href || pathname === href.replace(/\/$/, '')
+  }
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#07070f]/90 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_1px_0_rgba(255,255,255,0.04)]'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header className="fixed top-0 inset-x-0 z-50 bg-[rgba(7,7,15,0.82)] backdrop-blur-2xl border-b border-white/[0.06]">
+      <nav className="max-w-[1280px] mx-auto px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-violet-600 flex items-center justify-center shadow-brand">
-            <span className="text-white font-black text-sm tracking-tight">n</span>
-          </div>
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <img
+            src="/nrtur-logo.png"
+            alt="nrtur logo"
+            className="w-[34px] h-[34px] object-contain"
+            style={{ filter: 'drop-shadow(0 2px 14px rgba(124,58,237,0.5))' }}
+          />
           <span className="text-white font-bold text-lg tracking-tight">nrtur</span>
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-1">
           {links.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
-              className="text-sm text-white/50 hover:text-white/90 px-4 py-2 rounded-lg hover:bg-white/[0.04] transition-all duration-150"
+              to={link.href}
+              className={`text-sm px-4 py-2 rounded-lg transition-all duration-150 ${
+                isActive(link.href)
+                  ? 'text-white/90 bg-white/[0.06]'
+                  : 'text-white/50 hover:text-white/90 hover:bg-white/[0.04]'
+              }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -79,19 +82,21 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         className={`md:hidden transition-all duration-300 overflow-hidden ${
-          open ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+          open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="bg-[#07070f]/95 backdrop-blur-xl border-b border-white/[0.06] px-6 pb-6 pt-2 flex flex-col gap-1">
           {links.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               onClick={() => setOpen(false)}
-              className="text-sm text-white/60 hover:text-white py-3 px-3 rounded-lg hover:bg-white/[0.04] transition-all"
+              className={`text-sm py-3 px-3 rounded-lg transition-all ${
+                isActive(link.href) ? 'text-white bg-white/[0.06]' : 'text-white/60 hover:text-white hover:bg-white/[0.04]'
+              }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <div className="mt-3 pt-3 border-t border-white/[0.06] flex flex-col gap-2">
             <a href="#" className="text-sm text-white/60 hover:text-white py-2 px-3 text-center transition-colors">

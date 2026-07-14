@@ -1,11 +1,11 @@
+import { ArrowRight, Clock, CreditCard, Unlock, ArrowRightLeft } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
 
-const guarantees = [
-  '14-day free trial',
-  'No credit card required',
-  'Cancel anytime',
-  'Free data migration help',
+const trustChips = [
+  { icon: Clock, label: '14-day free trial', bg: 'bg-brand-500/[0.15]', border: 'border-brand-500/20', iconColor: 'text-brand-400' },
+  { icon: CreditCard, label: 'No credit card required', bg: 'bg-emerald-500/[0.14]', border: 'border-emerald-500/20', iconColor: 'text-emerald-400' },
+  { icon: Unlock, label: 'Cancel anytime', bg: 'bg-amber-500/[0.14]', border: 'border-amber-500/20', iconColor: 'text-amber-400' },
+  { icon: ArrowRightLeft, label: 'Free data migration help', bg: 'bg-violet-500/[0.14]', border: 'border-violet-500/20', iconColor: 'text-violet-400' },
 ]
 
 export default function FinalCTA() {
@@ -32,7 +32,7 @@ export default function FinalCTA() {
         </div>
 
         {/* Headline */}
-        <h2 className="reveal reveal-delay-1 text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight gradient-text mb-6">
+        <h2 className="reveal reveal-delay-1 text-5xl sm:text-6xl lg:text-[68px] font-black tracking-tight leading-[1.05] text-white mb-6">
           Your team deserves<br />a better CRM.
         </h2>
 
@@ -42,7 +42,7 @@ export default function FinalCTA() {
         </p>
 
         {/* CTA */}
-        <div className="reveal reveal-delay-3 flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-8 justify-center">
+        <div className="reveal reveal-delay-3 flex justify-center gap-3 mb-8">
           <a
             href="https://forms.gle/sb2mHm97oRNFRmUY9"
             target="_blank"
@@ -54,24 +54,19 @@ export default function FinalCTA() {
           </a>
         </div>
 
-        {/* Guarantees */}
-        <div className="reveal reveal-delay-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-16">
-          {guarantees.map((g) => (
-            <div key={g} className="flex items-center gap-1.5 text-sm text-white/30">
-              <CheckCircle2 size={13} className="text-emerald-400" />
-              {g}
+        {/* Trust chips */}
+        <div className="reveal reveal-delay-4 flex flex-wrap items-center justify-center gap-2.5">
+          {trustChips.map(({ icon: Icon, label, bg, border, iconColor }) => (
+            <div
+              key={label}
+              className="inline-flex items-center gap-[9px] bg-white/[0.03] border border-white/[0.07] rounded-full py-1.5 pl-[7px] pr-4"
+            >
+              <span className={`w-[26px] h-[26px] rounded-full ${bg} border ${border} inline-flex items-center justify-center flex-shrink-0`}>
+                <Icon size={13} className={iconColor} />
+              </span>
+              <span className="text-[13px] text-white/60 font-medium">{label}</span>
             </div>
           ))}
-        </div>
-
-        {/* Divider with logos/social proof */}
-        <div className="reveal border-t border-white/[0.05] pt-12">
-          <p className="text-sm text-white/25 mb-6">Join 2,400+ teams already using nrtur</p>
-          <div className="flex flex-wrap items-center justify-center gap-6 text-white/15 font-semibold text-sm">
-            {['Meridian Agency', 'Bloom Creative', 'Vertex Labs', 'Summit Digital', 'Forge & Co'].map((name) => (
-              <span key={name}>{name}</span>
-            ))}
-          </div>
         </div>
       </div>
     </section>

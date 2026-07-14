@@ -24,6 +24,49 @@ const workflows = [
   { trigger: 'Deal inactive 7 days', steps: ['Send re-engagement email', 'Flag deal for manager review'], active: false, runs: 47 },
 ]
 
+const pipelineStages = [
+  {
+    name: 'Prospecting',
+    dotColor: 'bg-slate-400',
+    total: '$42k',
+    count: 8,
+    deals: [
+      { company: 'Meridian Agency', value: '$8,400', owner: 'SC', tag: 'Follow up', tagColor: 'bg-blue-500/15 text-blue-400' },
+      { company: 'Bloom Creative', value: '$12,000', owner: 'JK', tag: 'New lead', tagColor: 'bg-emerald-500/15 text-emerald-400' },
+    ],
+  },
+  {
+    name: 'Qualified',
+    dotColor: 'bg-brand-400',
+    total: '$81k',
+    count: 5,
+    deals: [
+      { company: 'Pivot Studio', value: '$22,500', owner: 'SC', tag: 'Proposal sent', tagColor: 'bg-amber-500/15 text-amber-400' },
+      { company: 'Atlas Consult', value: '$18,000', owner: 'MR', tag: 'Demo done', tagColor: 'bg-brand-500/15 text-brand-400' },
+    ],
+  },
+  {
+    name: 'Proposal',
+    dotColor: 'bg-violet-400',
+    total: '$67k',
+    count: 4,
+    deals: [
+      { company: 'Summit Digital', value: '$31,000', owner: 'JK', tag: 'Negotiating', tagColor: 'bg-orange-500/15 text-orange-400' },
+      { company: 'Nova Growth', value: '$15,500', owner: 'RL', tag: 'Review', tagColor: 'bg-pink-500/15 text-pink-400' },
+    ],
+  },
+  {
+    name: 'Closed Won',
+    dotColor: 'bg-emerald-400',
+    total: '$134k',
+    count: 11,
+    deals: [
+      { company: 'Forge & Co', value: '$44,000', owner: 'SC', tag: 'Won 🎉', tagColor: 'bg-emerald-500/15 text-emerald-400' },
+      { company: 'Kapoor & Assoc', value: '$28,000', owner: 'MR', tag: 'Won 🎉', tagColor: 'bg-emerald-500/15 text-emerald-400' },
+    ],
+  },
+]
+
 const emailThreads = [
   { from: 'Sarah Chen', subject: 'Re: Proposal for Q3 engagement', preview: "Love what you've shared — can we jump on a call to finalize the scope?", time: '11:42 AM', unread: true, avatar: 'SC', color: 'bg-blue-500' },
   { from: 'James Whitfield', subject: 'Summit Digital contract renewal', preview: "We're ready to proceed. Need the updated agreement before end of week.", time: 'Yesterday', unread: false, avatar: 'JW', color: 'bg-violet-500' },
@@ -69,6 +112,53 @@ function ContactsView() {
           <p className="text-[12px] font-semibold text-white/50 text-right">{c.value}</p>
         </div>
       ))}
+    </div>
+  )
+}
+
+function PipelineView() {
+  return (
+    <div className="flex flex-col h-full">
+      <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/[0.05]">
+        <div>
+          <p className="text-sm font-semibold text-white">Sales Pipeline</p>
+          <p className="text-[11px] text-white/30">Q2 2025 · 28 open deals · $324k total · drag &amp; drop across stages</p>
+        </div>
+        <div className="bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs px-3 py-1.5 rounded-lg whitespace-nowrap">+ New Deal</div>
+      </div>
+      <div className="flex gap-3 p-5 overflow-x-auto">
+        {pipelineStages.map((stage) => (
+          <div key={stage.name} className="flex-1 min-w-[140px]">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-1.5">
+                <span className={`w-1.5 h-1.5 rounded-full ${stage.dotColor}`} />
+                <span className="text-[11px] font-semibold text-white/50">{stage.name}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[10px] text-white/25">{stage.total}</span>
+                <span className="text-[10px] bg-white/[0.06] rounded-full w-4 h-4 flex items-center justify-center text-white/30">{stage.count}</span>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              {stage.deals.map((deal) => (
+                <div key={deal.company} className="bg-white/[0.03] border border-white/[0.05] rounded-xl p-2.5">
+                  <p className="text-xs font-medium text-white/80 mb-1.5">{deal.company}</p>
+                  <p className="text-[11px] font-semibold text-white/50 mb-2">{deal.value}</p>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-5 h-5 rounded-full bg-brand-500/20 border border-brand-500/20 flex items-center justify-center text-[9px] font-bold text-brand-400">
+                      {deal.owner}
+                    </span>
+                    <span className={`text-[9px] font-medium px-1.5 py-0.5 rounded-full ${deal.tagColor}`}>{deal.tag}</span>
+                  </div>
+                </div>
+              ))}
+              <div className="border border-dashed border-white/[0.06] rounded-xl p-2 flex items-center justify-center">
+                <span className="text-[10px] text-white/15">+ Add deal</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -250,7 +340,7 @@ export default function Showcase() {
         {/* Product window */}
         <div className="reveal reveal-delay-4">
           <div className="relative">
-            <div className="absolute -inset-4 bg-brand-500/5 rounded-3xl blur-2xl" />
+            <div className="absolute -inset-4 bg-brand-500/5 rounded-3xl blur-2xl pointer-events-none" />
             <div className="relative rounded-2xl overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_32px_100px_rgba(0,0,0,0.6)]">
               {/* Window chrome */}
               <div className="bg-[#0b0b18] px-4 py-3 flex items-center gap-3 border-b border-white/[0.05]">
@@ -269,11 +359,7 @@ export default function Showcase() {
               {/* Content */}
               <div className="bg-[#09091a]" style={{ minHeight: 380 }}>
                 {active === 'contacts' && <ContactsView />}
-                {active === 'pipeline' && (
-                  <div className="flex items-center justify-center h-64 text-white/20">
-                    <p className="text-sm">Full pipeline view — drag & drop deals across stages</p>
-                  </div>
-                )}
+                {active === 'pipeline' && <PipelineView />}
                 {active === 'email' && <EmailView />}
                 {active === 'automations' && <AutomationsView />}
                 {active === 'analytics' && <AnalyticsView />}

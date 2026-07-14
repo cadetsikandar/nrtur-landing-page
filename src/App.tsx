@@ -1,34 +1,21 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import TrustedBy from './components/TrustedBy'
-import Comparison from './components/Comparison'
-import Features from './components/Features'
-import Showcase from './components/Showcase'
-import Pricing from './components/Pricing'
-import Testimonials from './components/Testimonials'
-import Team from './components/Team'
-import FAQ from './components/FAQ'
-import FinalCTA from './components/FinalCTA'
-import Footer from './components/Footer'
+import { Routes, Route } from 'react-router-dom'
+import Layout from './layouts/Layout'
+import Home from './pages/Home'
+import ComparePage from './pages/ComparePage'
+import BlogPage from './pages/BlogPage'
+import AboutPage from './pages/AboutPage'
+import FAQPage from './pages/FAQPage'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#07070f] text-white overflow-x-hidden">
-      <div className="noise-overlay" />
-      <Navbar />
-      <main>
-        <Hero />
-        <TrustedBy />
-        <Comparison />
-        <Features />
-        <Showcase />
-        <Pricing />
-        <Testimonials />
-        <Team />
-        <FAQ />
-        <FinalCTA />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/comparisons" element={<ComparePage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/faq" element={<FAQPage />} />
+      </Route>
+    </Routes>
   )
 }
