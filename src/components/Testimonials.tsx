@@ -34,6 +34,15 @@ const testimonials = [
     color: 'bg-emerald-500',
     stars: 5,
   },
+  {
+    quote:
+      'As a growing clothing brand, our real deals are wholesale buyers and stockists — and I was tracking them across my inbox and notes. nrtur put every buyer and supplier conversation in one pipeline, so nothing slips between drops.',
+    company: 'MinsaBloom',
+    role: 'Early-access partner · Fashion ecommerce',
+    avatar: 'MB',
+    color: 'bg-rose-500',
+    stars: 5,
+  },
 ]
 
 export default function Testimonials() {
@@ -44,7 +53,7 @@ export default function Testimonials() {
       <div className="absolute inset-0 bg-[#07070f]" />
       <div className="orb w-[600px] h-[600px] bg-brand-600/8 top-0 left-1/2 -translate-x-1/2 absolute pointer-events-none" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="reveal section-label mb-4"><span>Early access</span></div>
@@ -57,7 +66,7 @@ export default function Testimonials() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {testimonials.map((t, i) => (
             <div
               key={t.company}

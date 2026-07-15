@@ -1,6 +1,12 @@
-// Real early-access clients. Cycled to fill the marquee, then duplicated so the
-// scroll loops seamlessly (second half mirrors the first).
-const clients = ['DevAXL', 'Prowork', 'Nawaytech', 'MinsaBloom']
+// Real early-access clients. Logos live in public/Clients (exact case — matters
+// on Linux/Vercel). Cycled to fill the marquee, then duplicated so it loops
+// seamlessly (second half mirrors the first).
+const clients = [
+  { name: 'DevAXL', logo: '/Clients/devaxl-logo.png' },
+  { name: 'Prowork', logo: '/Clients/prowork-logo.png' },
+  { name: 'Nawaytech', logo: '/Clients/Nawaytech-logo.png' },
+  { name: 'MinsaBloom', logo: '/Clients/MinsaBloom.jpg' },
+]
 const half = [...clients, ...clients, ...clients]
 const companies = [...half, ...half]
 
@@ -11,7 +17,7 @@ export default function TrustedBy() {
 
       <div className="relative z-10">
         <p className="text-center text-sm font-medium text-white/25 tracking-widest uppercase mb-10 px-6">
-          Trusted by fast-moving teams at
+          Trusted by early-access teams at
         </p>
 
         {/* Marquee */}
@@ -21,14 +27,16 @@ export default function TrustedBy() {
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#07070f] to-transparent z-10 pointer-events-none" />
 
           <div className="flex animate-marquee whitespace-nowrap">
-            {companies.map((company, i) => (
+            {companies.map((c, i) => (
               <div
                 key={i}
-                className="inline-flex items-center mx-8 text-white/20 font-semibold text-lg tracking-tight hover:text-white/40 transition-colors duration-300 cursor-default"
-                style={{ fontVariantNumeric: 'tabular-nums' }}
+                className="inline-flex items-center justify-center mx-3 h-16 w-[168px] flex-shrink-0 rounded-xl bg-white/[0.92] border border-white/10 opacity-80 hover:opacity-100 transition-opacity duration-300"
               >
-                <span className="mr-3 text-brand-500/30 text-xs">◆</span>
-                {company}
+                <img
+                  src={c.logo}
+                  alt={`${c.name} logo`}
+                  className="h-8 max-w-[128px] w-auto object-contain"
+                />
               </div>
             ))}
           </div>
