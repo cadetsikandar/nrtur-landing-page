@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Play, Star, Clock, CreditCard, Unlock } from 'lucide-react'
+import { ArrowRight, Play, Sparkles, Clock, CreditCard, Unlock } from 'lucide-react'
 import { useRotatingPhrase } from '../hooks/useRotatingPhrase'
 import HeroDemoWindow from './hero/HeroDemoWindow'
 
@@ -20,19 +20,11 @@ const trustChips = [
   { icon: Unlock, label: 'Cancel anytime', bg: 'bg-amber-500/[0.14]', border: 'border-amber-500/20', color: 'text-amber-400' },
 ]
 
-const proofAvatars = [
-  { initials: 'SC', color: 'bg-blue-500' },
-  { initials: 'MR', color: 'bg-violet-500' },
-  { initials: 'JW', color: 'bg-emerald-500' },
-  { initials: 'PK', color: 'bg-amber-500' },
-  { initials: 'LN', color: 'bg-pink-500' },
-]
-
 const stats = [
-  { value: '2,400+', label: 'Teams' },
-  { value: '99.9%', label: 'Uptime SLA' },
   { value: '$29', label: 'Per user·mo' },
-  { value: '5 min', label: 'Setup' },
+  { value: '5 min', label: 'Average setup' },
+  { value: '$0', label: 'Setup fees' },
+  { value: '1–5', label: 'Team size it fits' },
 ]
 
 export default function Hero() {
@@ -98,17 +90,18 @@ export default function Hero() {
               Join waitlist
               <ArrowRight size={16} />
             </a>
-            <a
-              href="https://forms.gle/sb2mHm97oRNFRmUY9"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() =>
+                document.getElementById('hero-demo')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }
               className="btn-secondary text-base px-8 py-3.5 w-full sm:w-auto justify-center"
             >
               <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center">
                 <Play size={9} className="text-white/60 ml-0.5" />
               </div>
-              Watch demo
-            </a>
+              See it in action
+            </button>
           </div>
 
           {/* Trust chips */}
@@ -129,39 +122,23 @@ export default function Hero() {
             ))}
           </div>
 
-          {/* Proof row */}
+          {/* Positioning line — honest at prototype stage (no fabricated proof) */}
           <div
-            className="flex items-center justify-center gap-[18px] animate-fade-up"
+            className="flex items-center justify-center gap-2.5 animate-fade-up"
             style={{ animationDelay: '0.45s', animationFillMode: 'both' }}
           >
-            <div className="flex">
-              {proofAvatars.map((a, i) => (
-                <span
-                  key={a.initials}
-                  className={`w-7 h-7 rounded-full ${a.color} border-2 border-[#07070f] flex items-center justify-center text-[9px] font-bold text-white ${i > 0 ? '-ml-2' : ''}`}
-                >
-                  {a.initials}
-                </span>
-              ))}
-            </div>
-            <div className="w-px h-[26px] bg-white/10" />
-            <div className="text-left">
-              <div className="flex items-center gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={12} className="text-amber-400 fill-amber-400" />
-                ))}
-                <span className="text-xs font-bold text-white ml-1">4.9/5</span>
-              </div>
-              <p className="text-xs text-white/40 mt-0.5">
-                Loved by <span className="text-white/75 font-semibold">2,400+ small teams</span> in early access
-              </p>
-            </div>
+            <Sparkles size={15} className="text-brand-400 flex-shrink-0" />
+            <p className="text-sm text-white/45">
+              Built for teams of 1–5 —{' '}
+              <span className="text-white/70 font-semibold">no bloat, no lock-in, no sales calls.</span>
+            </p>
           </div>
         </div>
 
         {/* Interactive product demo */}
         <div
-          className="max-w-[1152px] mx-auto w-full px-6 lg:px-8 animate-fade-up"
+          id="hero-demo"
+          className="max-w-[1152px] mx-auto w-full px-6 lg:px-8 scroll-mt-24 animate-fade-up"
           style={{ animationDelay: '0.5s', animationFillMode: 'both' }}
         >
           <HeroDemoWindow />
