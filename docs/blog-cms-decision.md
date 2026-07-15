@@ -38,13 +38,13 @@ The requirements come straight from how we're using the blog (SEO clusters, "alt
 - **Small attack surface.** No third-party plugin soup; far less to keep patched than WordPress.
 - **Already done.** The integration exists (`src/lib/ghost.ts`, Content API, ISR, seed fallback). Switching away would be throwing that work out.
 
-**Cost:** Ghost(Pro) managed hosting from ~$9–11/mo (Starter), or self-host on a ~$6/mo VPS if we want free software + own the ops. Modest either way. It needs Node.js + MySQL, so it can't run on cheap cPanel shared hosting — irrelevant for us since it's headless and separate from our Vercel frontend.
+**Cost (headless gotcha):** headless needs a **custom integration** to issue a Content API key, and Ghost(Pro) gates that to the **Publisher tier ($29/mo, $348/yr)** — the cheaper **Starter ($18/mo) can't create one**, so it's unusable for our setup despite listing "Content API: Yes." The alternative is **self-hosting** (free software + ~$6/mo VPS + your own ops), where integrations are unlocked. It needs Node.js + MySQL, so it can't run on cheap cPanel shared hosting — irrelevant for us since it's headless and separate from our Vercel frontend.
 
 ## The options, compared
 
 | CMS | Non-dev editing | Next.js fit | SEO out of box | Newsletter/subs | Cost | Maintenance | Best for |
 |---|---|---|---|---|---|---|---|
-| **Ghost (headless)** ⭐ | ✅ Excellent | ✅ Clean Content API | ✅ Built-in | ✅ **Built-in** | ~$9–25/mo or self-host | Low | Blogs + newsletters as a growth channel |
+| **Ghost (headless)** ⭐ | ✅ Excellent | ✅ Clean Content API | ✅ Built-in | ✅ **Built-in** | $29/mo (Publisher) or self-host ~$6/mo | Low | Blogs + newsletters as a growth channel |
 | **MDX / local Markdown** | ❌ Devs only (Git) | ✅ Native, zero deps | ✅ You control it | ❌ None | **Free** | Very low | Small, dev-authored, low-volume blogs |
 | **WordPress (headless)** | ✅ Familiar | ⚠️ You build the wrapper | ⚠️ Needs Yoast/RankMath | ⚠️ Plugin | Hosting + plugins | **High** (plugins/security) | Teams already on WordPress |
 | **Sanity** | ✅ Good (custom studio) | ✅ Great, schemas in repo | ⚠️ You build it | ❌ None | Free tier → scales | Medium | Structured content beyond a blog |
@@ -84,3 +84,4 @@ Given the SEO content strategy (multiple "best [CRM] alternatives" articles, ong
 - [Best headless CMS for Next.js in 2026: Sanity vs Contentful vs Payload vs Storyblok — DEV](https://dev.to/nayankyada/best-headless-cms-for-nextjs-in-2026-sanity-vs-contentful-vs-payload-vs-storyblok-557k)
 - [Top 5 Headless CMS to Build a Blog in 2026 — DEV](https://dev.to/dumebii/top-5-headless-cms-to-build-a-blog-in-2026-382f)
 - [10 best CMSs for Next.js — Hygraph](https://hygraph.com/blog/nextjs-cms)
+- [Ghost(Pro) official pricing](https://ghost.org/pricing/) · [Ghost custom integrations (Publisher+)](https://ghost.org/integrations/custom-integrations/)
