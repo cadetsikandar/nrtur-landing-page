@@ -1,51 +1,65 @@
-# Blog CMS decision — why nrtur uses Ghost (headless)
+# Blog CMS decision — MDX now, Ghost when the blog scales
 
-**Status:** Decided · **Date:** July 2026 · **Applies to:** the nrtur marketing site blog (`/blog`, cluster hubs, articles)
+**Status:** Decided (staged) · **Date:** July 2026 · **Applies to:** the nrtur marketing site blog (`/blog`, cluster hubs, articles)
 
 ## TL;DR
 
-**Ghost, used headless (Content API only — our Next.js app renders the frontend) is the right choice for nrtur, and it's already integrated.** It's built for exactly what our blog is: a content-marketing + SEO growth channel that will later want a newsletter and subscribers. The only alternative worth seriously considering is **local MDX/Markdown files in the repo** — and that only wins if the blog stays low-volume, dev-authored, and newsletter-free. It won't, so Ghost stays.
+**Right now (pre-launch), use local MDX/Markdown files in the repo — free, Git-based, nothing to pay for or maintain. Move to Ghost (headless) once the blog becomes a real growth channel** — i.e. when non-technical people need to publish, or you launch a newsletter. Both feed the same Next.js frontend, so switching later is a small job.
 
-The heavier "developer" headless CMSs (Sanity, Payload, Contentful, Storyblok) are more powerful than a blog needs and add content-modeling overhead for no payoff here. Traditional/headless **WordPress is overkill and higher-maintenance** for a team of 1–5.
+Why the split: headless Ghost's real cost is **$29/mo** (the Publisher tier — the cheaper Starter can't issue an API key). Paying that pre-launch buys non-dev editing + newsletters you aren't using yet. Your engineers can write MDX today for **$0**.
+
+Ruled out entirely: **WordPress** (overkill + maintenance) and the heavy structured-content CMSs (**Sanity / Payload / Contentful / Storyblok** — wrong weight class for a blog).
 
 ---
 
-## What our blog actually needs
+## What the blog needs — now vs later
 
-The requirements come straight from how we're using the blog (SEO clusters, "alternatives"/"comparisons" content, a waitlist we want to convert into an audience):
+The requirements change with stage, and that *is* the decision:
 
-1. **Non-developers can publish** — founders/marketers write posts without touching code or opening a PR.
-2. **Clean headless API** — content pulled at build/ISR time into our existing **Next.js 14 App Router + Vercel** frontend (which we control for speed, SEO, and design).
-3. **SEO fundamentals handled** — per-post meta, canonical, structured data, fast delivery. (We already generate sitemap/robots/JSON-LD ourselves, so the CMS just needs to not fight us.)
-4. **Newsletter / subscriber path** — the blog is a growth channel; turning readers into a list is a near-term goal.
-5. **Low cost + low maintenance** — we're a small early-stage team; nobody wants to babysit a server or patch plugins.
-6. **A blog, not a content platform** — posts, tags, authors. We don't need arbitrary structured content types.
+| Need | Pre-launch (now) | Growth phase (later) |
+|---|---|---|
+| Who writes | Engineers / founders (Git-comfortable) | + non-technical marketers |
+| Volume | A few SEO seed articles | Regular publishing cadence |
+| Newsletter | None (waitlist is a Google Form) | Active subscriber list |
+| Budget | Pre-revenue, lean | Can justify $29/mo |
 
-## The verdict up front
+The constants across both stages: it must render through our **Next.js 14 App Router + Vercel** frontend (which we own for speed/SEO/design), we already generate sitemap/robots/JSON-LD ourselves, and it should stay a *blog* (posts/tags/authors) — not a structured-content platform.
 
-| | Recommendation |
-|---|---|
-| **Use** | **Ghost (headless)** — matches all six needs, already wired into the site |
-| **Reconsider only if** | The blog becomes **dev-only + low-volume + no newsletter** → then **local MDX** is simpler and free |
-| **Don't** | Switch to WordPress, or a heavyweight headless CMS (Sanity/Payload/Contentful/Storyblok) — wrong weight class for a blog |
+## The verdict
 
-## Why Ghost
+| Stage | Choice | Why |
+|---|---|---|
+| **Now (pre-launch)** ⭐ | **Local MDX** | Free, Git-native, engineers publish today, zero maintenance or external dependency |
+| **Growth phase** | **Ghost (headless), Publisher $29/mo** | Non-dev publishing + built-in newsletter / subscribers |
+| **Never** | WordPress · Sanity · Payload · Contentful · Storyblok | Overkill or wrong weight class for a blog |
 
-- **It's a publishing tool, not a toolkit.** Its content model is opinionated — Posts, Pages, Tags, Authors, Members — which is *exactly* a blog. Nothing to model, nothing to wire up. A founder can write and hit publish.
-- **Headless fits our stack cleanly.** We use only the **Content API**; our Next.js app fetches posts at build time and revalidates hourly (ISR), so we keep our fast, SEO-tuned, on-brand frontend and Ghost is just the writing/admin backend. Best of both worlds — Ghost's editor, our frontend.
-- **Fast + SEO-clean by default.** Ghost ships sitemaps, JSON-LD, canonical URLs, and per-post meta with no plugins. Since we render the frontend ourselves, we get our Core Web Vitals (the 92/96/96/100 Lighthouse we already hit) *and* Ghost's clean content.
-- **Newsletter + membership are built in.** This is the deciding factor for a SaaS growth-channel blog: Ghost turns readers into subscribers out of the box — directly useful for the waitlist → audience play. Research on SaaS blogs calls this out specifically as Ghost's sweet spot.
-- **Small attack surface.** No third-party plugin soup; far less to keep patched than WordPress.
-- **Already done.** The integration exists (`src/lib/ghost.ts`, Content API, ISR, seed fallback). Switching away would be throwing that work out.
+**Switch MDX → Ghost when any of these becomes true:** non-technical people need to publish without Git · you launch a newsletter and want subscriber management · cadence makes PR-per-post annoying.
 
-**Cost (headless gotcha):** headless needs a **custom integration** to issue a Content API key, and Ghost(Pro) gates that to the **Publisher tier ($29/mo, $348/yr)** — the cheaper **Starter ($18/mo) can't create one**, so it's unusable for our setup despite listing "Content API: Yes." The alternative is **self-hosting** (free software + ~$6/mo VPS + your own ops), where integrations are unlocked. It needs Node.js + MySQL, so it can't run on cheap cPanel shared hosting — irrelevant for us since it's headless and separate from our Vercel frontend.
+## Why MDX now
+
+- **Free** — no $29/mo while pre-revenue.
+- **Your team can already use it** — posts are `.md`/`.mdx` files in the repo, published through the same Git flow the engineers use daily.
+- **Zero maintenance, zero dependency** — no external service, no server, no API keys; content is versioned in Git.
+- **Same frontend** — renders through the exact Next.js pages/SSG we already built; readers can't tell the difference.
+- **Trade-off it accepts (all fine for now):** every post is a commit/deploy, no editor for non-devs, no newsletter tooling.
+
+## Why Ghost later (the planned destination)
+
+When the blog graduates into a real growth channel, Ghost earns the $29/mo:
+
+- **A publishing tool, not a toolkit** — Posts/Tags/Authors/Members is *exactly* a blog; a non-technical founder writes and hits publish.
+- **Headless fits cleanly** — we'd use only the Content API, and the `src/lib/ghost.ts` integration + ISR is **already built and dormant behind the seed fallback**, ready to switch on.
+- **Newsletter + memberships built in** — the real reason to pay: turns readers into a subscriber list out of the box (the waitlist → audience play). Research flags this as Ghost's SaaS-blog sweet spot.
+- **SEO-clean + small attack surface** — no plugin soup, and we keep our own 92/96/96/100 Lighthouse since we render the frontend.
+
+**Cost (headless gotcha):** headless needs a **custom integration** to issue a Content API key → gated to **Publisher ($29/mo, $348/yr)**; the cheaper **Starter ($18/mo) can't create one**. Or self-host (free software + ~$6/mo VPS + your own ops), where integrations are unlocked.
 
 ## The options, compared
 
 | CMS | Non-dev editing | Next.js fit | SEO out of box | Newsletter/subs | Cost | Maintenance | Best for |
 |---|---|---|---|---|---|---|---|
-| **Ghost (headless)** ⭐ | ✅ Excellent | ✅ Clean Content API | ✅ Built-in | ✅ **Built-in** | $29/mo (Publisher) or self-host ~$6/mo | Low | Blogs + newsletters as a growth channel |
-| **MDX / local Markdown** | ❌ Devs only (Git) | ✅ Native, zero deps | ✅ You control it | ❌ None | **Free** | Very low | Small, dev-authored, low-volume blogs |
+| **MDX / local Markdown** ⭐ *(now)* | ❌ Devs only (Git) | ✅ Native, zero deps | ✅ You control it | ❌ None | **Free** | Very low | Small, dev-authored, low-volume blogs |
+| **Ghost (headless)** ⭐ *(later)* | ✅ Excellent | ✅ Clean Content API | ✅ Built-in | ✅ **Built-in** | $29/mo (Publisher) or self-host ~$6/mo | Low | Blogs + newsletters as a growth channel |
 | **WordPress (headless)** | ✅ Familiar | ⚠️ You build the wrapper | ⚠️ Needs Yoast/RankMath | ⚠️ Plugin | Hosting + plugins | **High** (plugins/security) | Teams already on WordPress |
 | **Sanity** | ✅ Good (custom studio) | ✅ Great, schemas in repo | ⚠️ You build it | ❌ None | Free tier → scales | Medium | Structured content beyond a blog |
 | **Notion-as-CMS** | ✅ Very easy | ⚠️ Slow/rate-limited API | ❌ Weak, clunky images | ❌ None | Cheap | Low | Quick internal/hobby blogs |
@@ -56,26 +70,26 @@ The requirements come straight from how we're using the blog (SEO clusters, "alt
 
 - **WordPress still dominates the web**, but its edge is its plugin ecosystem and cheap PHP hosting — advantages that mostly *disappear* when you go headless. Headless WordPress means "building your own CMS wrapper around WordPress," and its SEO is [mediocre until you install Yoast/Rank Math](https://unfoldcms.com/blog/ghost-vs-wordpress-2026); its performance needs caching + tuning to match what Ghost does by default.
 - **The Next.js startup default is trending to Sanity/Payload** for *general* headless content — great when you have structured content and a developer to model it. For a **blog specifically with a newsletter**, the consistent recommendation is **Ghost**, because it "does this out of the box."
-- **The purist dev take:** [if every author can write Markdown and use Git, skip the CMS and use MDX.](https://dev.to/nayankyada/best-headless-cms-for-nextjs-in-2026-sanity-vs-contentful-vs-payload-vs-storyblok-557k) That's the one genuinely competitive alternative for us — see below.
+- **The purist dev take:** [if every author can write Markdown and use Git, skip the CMS and use MDX.](https://dev.to/nayankyada/best-headless-cms-for-nextjs-in-2026-sanity-vs-contentful-vs-payload-vs-storyblok-557k) That's exactly our pre-launch situation — so that's where we start.
 
-## The one honest trade-off: Ghost vs local MDX
+## The one honest trade-off: MDX vs Ghost
 
-This is the only real fork.
+This is the only real fork, and it's a question of *stage*, not of which tool is "better":
 
-- **Choose MDX if:** only engineers write posts, volume is low, and you don't want a newsletter. Upside: free, zero external dependency, content versioned in Git, nothing to maintain. Downside: every post is a code change + deploy, no editor for non-devs, no subscriber tooling.
-- **Choose Ghost (our pick) if:** non-devs will write, you're publishing regularly as an SEO engine, and a newsletter/audience is on the roadmap. All three are true for nrtur.
+- **MDX wins while:** only engineers write posts, volume is low, and there's no newsletter. Upside: free, zero dependency, content in Git. Downside: every post is a commit/deploy, no non-dev editor, no subscribers. → **This is nrtur today.**
+- **Ghost wins once:** non-devs write, you publish regularly as an SEO engine, and a newsletter/audience is live. → **This is nrtur post-launch.**
 
-Given the SEO content strategy (multiple "best [CRM] alternatives" articles, ongoing publishing) and the waitlist-to-audience goal, **Ghost is the correct call**. MDX would trade away the two things we actually want (non-dev publishing + subscribers) to save ~$10/mo.
+Paying $29/mo now would trade cash for two capabilities (non-dev publishing + subscribers) we aren't using yet. Starting on MDX and migrating later is cheap, because both render through the same Next.js layer.
 
 ## Recommendation
 
-**Keep Ghost, headless.** It's the best-fit tool for a SaaS marketing blog that doubles as a growth channel, it plays perfectly with our Next.js/Vercel + ISR setup, and it's already integrated. Don't migrate to a heavier headless CMS (needless complexity) or WordPress (needless maintenance).
+**MDX now → Ghost (Publisher) when you launch a newsletter or bring on non-technical writers.** Don't pay for capabilities you're not using; don't over-build. The Ghost integration stays in the repo, dormant, ready to switch on the day it's worth it.
 
 ## Current status & next step
 
-- ✅ Integration built: `src/lib/ghost.ts` (Content API, ISR `revalidate: 3600`, seed-post fallback), article + cluster pages via `generateStaticParams`.
-- ⏳ **Not yet activated:** set `GHOST_URL` and `GHOST_CONTENT_API_KEY` in Vercel to swap the seed/"coming soon" fallbacks for live content. Until then the site runs fine on bundled seed posts.
-- **To go live:** create a Ghost site (Ghost Pro or self-host), add a custom integration, copy the Content API key + URL into Vercel env, redeploy.
+- ✅ The site runs on **bundled seed posts** today at **$0** — it looks complete; nothing to pay for or maintain.
+- 🔜 **To publish real articles now (free):** wire the blog to read local **MDX** from the repo — a small job that swaps the Ghost fetch for a local content loader behind the same `Post` shape. (Articles currently show "coming soon" because no content source is connected.)
+- ⏸ **Ghost path (later):** the `src/lib/ghost.ts` integration is built and dormant behind the seed fallback. To activate: Ghost Publisher (or self-host) → create a custom integration → put `GHOST_URL` + `GHOST_CONTENT_API_KEY` in Vercel → redeploy.
 
 ## Sources
 
