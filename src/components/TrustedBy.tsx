@@ -30,12 +30,12 @@ export default function TrustedBy() {
             {companies.map((c, i) => (
               <div
                 key={i}
-                className="inline-flex items-center justify-center mx-3 h-16 w-[168px] flex-shrink-0 rounded-xl bg-white/[0.92] border border-white/10 opacity-80 hover:opacity-100 transition-opacity duration-300"
+                className="inline-flex items-center justify-center mx-4 h-[68px] w-[184px] flex-shrink-0 rounded-2xl bg-white px-6 ring-1 ring-white/10 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:scale-[1.03]"
               >
                 <img
                   src={c.logo}
                   alt={`${c.name} logo`}
-                  className="h-8 max-w-[128px] w-auto object-contain"
+                  className="max-h-10 max-w-[132px] w-auto object-contain"
                 />
               </div>
             ))}
