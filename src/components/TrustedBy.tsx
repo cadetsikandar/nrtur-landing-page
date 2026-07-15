@@ -29,11 +29,11 @@ export default function TrustedBy() {
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#07070f] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#07070f] to-transparent z-10 pointer-events-none" />
 
-          <div className="flex animate-marquee whitespace-nowrap">
+          <div className="flex animate-marquee whitespace-nowrap items-center">
             {companies.map((c, i) => (
               <div
                 key={i}
-                className="inline-flex items-center justify-center mx-4 h-[68px] w-[184px] flex-shrink-0 rounded-2xl bg-white px-6 ring-1 ring-white/10 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:scale-[1.03]"
+                className="inline-flex items-center justify-center mx-8 h-[64px] w-[150px] flex-shrink-0 opacity-85 hover:opacity-100 transition-opacity duration-300"
               >
                 <img
                   src={c.logo}
