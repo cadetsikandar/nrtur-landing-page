@@ -1,29 +1,8 @@
-const companies = [
-  'Meridian Agency',
-  'Bloom Creative',
-  'Vertex Labs',
-  'Summit Digital',
-  'Forge & Co',
-  'Pivot Studio',
-  'Atlas Consulting',
-  'Nova Growth',
-  'Kapoor & Assoc',
-  'Barrett Digital',
-  'Clearview Media',
-  'Lucent Partners',
-  'Meridian Agency',
-  'Bloom Creative',
-  'Vertex Labs',
-  'Summit Digital',
-  'Forge & Co',
-  'Pivot Studio',
-  'Atlas Consulting',
-  'Nova Growth',
-  'Kapoor & Assoc',
-  'Barrett Digital',
-  'Clearview Media',
-  'Lucent Partners',
-]
+// Real early-access clients. Cycled to fill the marquee, then duplicated so the
+// scroll loops seamlessly (second half mirrors the first).
+const clients = ['DevAXL', 'Prowork', 'Nawaytech', 'MinsaBloom']
+const half = [...clients, ...clients, ...clients]
+const companies = [...half, ...half]
 
 export default function TrustedBy() {
   return (
