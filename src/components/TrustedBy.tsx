@@ -1,11 +1,14 @@
 // Real early-access clients. Logos live in public/Clients (exact case — matters
 // on Linux/Vercel). Cycled to fill the marquee, then duplicated so it loops
 // seamlessly (second half mirrors the first).
+// Per-logo sizing tuned to each aspect ratio so square marks and wide wordmarks
+// read at the same visual weight (Nawaytech is square → sized up; the wordmarks
+// are wide → capped by width).
 const clients = [
-  { name: 'DevAXL', logo: '/Clients/devaxl-logo.png' },
-  { name: 'Prowork', logo: '/Clients/prowork-logo.png' },
-  { name: 'Nawaytech', logo: '/Clients/Nawaytech-logo.png' },
-  { name: 'MinsaBloom', logo: '/Clients/MinsaBloom.jpg' },
+  { name: 'DevAXL', logo: '/Clients/devaxl-logo.png', imgClass: 'max-h-8 max-w-[130px]' },
+  { name: 'Prowork', logo: '/Clients/prowork-logo.png', imgClass: 'max-h-8 max-w-[124px]' },
+  { name: 'Nawaytech', logo: '/Clients/Nawaytech-logo.png', imgClass: 'max-h-[54px] max-w-[58px]' },
+  { name: 'MinsaBloom', logo: '/Clients/MinsaBloom.png', imgClass: 'max-h-[50px] max-w-[78px]' },
 ]
 const half = [...clients, ...clients, ...clients]
 const companies = [...half, ...half]
@@ -35,7 +38,7 @@ export default function TrustedBy() {
                 <img
                   src={c.logo}
                   alt={`${c.name} logo`}
-                  className="max-h-10 max-w-[132px] w-auto object-contain"
+                  className={`${c.imgClass} w-auto object-contain`}
                 />
               </div>
             ))}
