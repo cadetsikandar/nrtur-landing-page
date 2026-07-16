@@ -7,7 +7,8 @@
 const clients = [
   { name: 'DevAXL', logo: '/Clients/devaxl-logo.png', imgClass: 'max-h-8 max-w-[130px]' },
   { name: 'Prowork', logo: '/Clients/prowork-logo.png', imgClass: 'max-h-8 max-w-[124px]' },
-  { name: 'Nawaytech', logo: '/Clients/Nawaytech-logo.png', imgClass: 'max-h-[54px] max-w-[58px]' },
+  // New wide wordmark; it's dark navy, so render it white to read on the dark strip.
+  { name: 'Nawaytech', logo: '/Clients/Nawaytech-logo.png', imgClass: 'max-h-9 max-w-[155px] brightness-0 invert' },
   { name: 'MinsaBloom', logo: '/Clients/MinsaBloom.png', imgClass: 'max-h-[50px] max-w-[78px]' },
 ]
 const half = [...clients, ...clients, ...clients]
