@@ -10,7 +10,7 @@ const rotatingPhrases = [
   'without the bloat.',
   'that closes more deals.',
   'that runs your follow-ups.',
-  'at a fraction of the price.',
+  'with everything included.',
   'your team will love.',
 ]
 
@@ -73,7 +73,7 @@ export default function Hero() {
             style={{ animationDelay: '0.2s', animationFillMode: 'both' }}
           >
             Everything you need to manage contacts, close deals, and automate follow-ups —
-            without HubSpot's complexity or price tag. Built for teams of 1–5 who move fast.
+            without HubSpot's complexity or enterprise pricing. Built for teams of 1–5 who move fast.
           </p>
 
           {/* CTAs */}

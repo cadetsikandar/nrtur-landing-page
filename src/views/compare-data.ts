@@ -12,7 +12,7 @@ export interface Feature {
 
 /** Canonical feature set — row order for the table. */
 export const FEATURES: Feature[] = [
-  { key: 'price', label: 'Starting price' },
+  { key: 'price', label: 'Comparable plan' },
   { key: 'setup', label: 'Setup time' },
   { key: 'ease', label: 'Ease of use' },
   { key: 'automations', label: 'Automations' },
@@ -63,7 +63,7 @@ export const crmProfiles: Record<CrmId, CrmProfile> = {
     id: 'hubspot',
     name: 'HubSpot',
     tabLabel: 'vs HubSpot',
-    price: 'from $90/mo',
+    price: '$90/mo · Pro',
     values: {
       price: '$90/user/mo',
       setup: '1–4 weeks',
@@ -82,7 +82,7 @@ export const crmProfiles: Record<CrmId, CrmProfile> = {
     id: 'salesforce',
     name: 'Salesforce',
     tabLabel: 'vs Salesforce',
-    price: 'from $165/mo',
+    price: '$165/mo · Ent.',
     values: {
       price: '$165/user/mo',
       setup: 'Weeks to months',
@@ -101,7 +101,7 @@ export const crmProfiles: Record<CrmId, CrmProfile> = {
     id: 'pipedrive',
     name: 'Pipedrive',
     tabLabel: 'vs Pipedrive',
-    price: 'from $49/mo',
+    price: '$49/mo · parity',
     values: {
       price: '$49/user/mo (parity)',
       setup: 'Fast',
@@ -120,7 +120,7 @@ export const crmProfiles: Record<CrmId, CrmProfile> = {
     id: 'zoho',
     name: 'Zoho CRM',
     tabLabel: 'vs Zoho CRM',
-    price: 'from $20/mo + add-ons',
+    price: '$20/mo + add-ons',
     values: {
       price: '$20 + add-ons',
       setup: 'Days of config',
@@ -147,7 +147,7 @@ export interface CompetitorNarrative {
 export const narratives: Record<CompetitorId, CompetitorNarrative> = {
   hubspot: {
     chips: [
-      { label: '3× cheaper to start', highlight: true },
+      { label: 'Automations included, not a paid add-on', highlight: true },
       { label: 'Set up in minutes, not weeks' },
       { label: 'No annual lock-in' },
     ],
@@ -156,7 +156,7 @@ export const narratives: Record<CompetitorId, CompetitorNarrative> = {
   },
   salesforce: {
     chips: [
-      { label: '5× cheaper to start', highlight: true },
+      { label: 'One flat plan — no enterprise contract', highlight: true },
       { label: 'No admin required' },
       { label: 'Productive in the first hour' },
     ],

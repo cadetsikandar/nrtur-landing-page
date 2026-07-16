@@ -254,8 +254,9 @@ export default function ComparePage() {
           </div>
 
           <p className="text-center mt-8 text-xs text-white/25">
-            Competitor pricing from public pricing pages, July 2026. Tiers compared at closest
-            feature parity.
+            Prices shown are each tool's plan that matches nrtur's included features — most offer
+            cheaper entry tiers that gate those features behind higher plans or add-ons. Public
+            pricing, July 2026.
           </p>
         </div>
       </section>

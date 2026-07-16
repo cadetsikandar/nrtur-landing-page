@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const rows = [
-  { feature: 'Starting price', nrtur: '$29/user/mo', hubspot: '$90/user/mo', nrturWins: true },
+  { feature: 'Comparable plan', nrtur: '$29/user/mo', hubspot: '$90/mo · Pro', nrturWins: true },
   { feature: 'Setup time', nrtur: '~5 minutes', hubspot: '1–4 weeks', nrturWins: true },
   { feature: 'Automations', nrtur: 'Included, unlimited on Pro', hubspot: 'Paid add-on', nrturWins: true },
   { feature: 'Email sync', nrtur: 'Included', hubspot: 'Included', nrturWins: false },
@@ -15,7 +15,7 @@ const rows = [
 ]
 
 const verdictChips = [
-  { label: '3× cheaper to start', emphasis: true },
+  { label: 'Automations included, not a paid add-on', emphasis: true },
   { label: 'Set up in minutes, not weeks', emphasis: false },
   { label: 'No annual lock-in', emphasis: false },
 ]
@@ -38,8 +38,8 @@ export default function Comparison() {
             The obvious upgrade<br />from HubSpot
           </h2>
           <p className="reveal reveal-delay-2 max-w-xl mx-auto text-lg text-white/40 leading-relaxed">
-            HubSpot was built for enterprise. nrtur is built for you.
-            Same core power, fraction of the price, none of the bloat.
+            HubSpot pushes you toward its pricier tiers as you grow. nrtur is built for you.
+            Same core power, everything included, none of the bloat.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export default function Comparison() {
             </div>
             <div className="px-4 py-[14px] text-center border-l border-white/[0.06] flex flex-col justify-center">
               <p className="font-semibold text-white/40 text-sm mb-0.5">HubSpot</p>
-              <span className="text-[11px] text-white/25">from $90/mo</span>
+              <span className="text-[11px] text-white/25">$90/mo · Pro</span>
             </div>
           </div>
 
