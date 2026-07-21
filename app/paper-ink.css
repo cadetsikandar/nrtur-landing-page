@@ -1,0 +1,69 @@
+/* Paper & Ink — colors, radii, shadows, motion, fonts. Light = default.
+   Font family vars point at the next/font variables defined in app/layout.tsx. */
+:root {
+  /* Canvas & surfaces */
+  --paper:#F4F3EF; --surface:#FFFFFF; --surface-2:#FBFAF7; --surface-3:#F1F0EB;
+  /* Ink (text) */
+  --ink:#1B1A17; --ink-2:#57544C; --ink-3:#8E8A80; --ink-4:#B7B3A8;
+  /* Hairline borders */
+  --line:rgba(27,26,23,.09); --line-2:rgba(27,26,23,.055); --line-3:rgba(27,26,23,.14);
+  /* Accent — evergreen */
+  --accent:#1E7F55; --accent-ink:#155F3E; --accent-soft:#E7F1EA; --accent-line:rgba(30,127,85,.22);
+  /* Semantic (base · soft · ink-on-soft) */
+  --pos:#1E7F55;  --pos-soft:#E7F1EA;  --pos-ink:#155F3E;
+  --warn:#B07A18; --warn-soft:#F6EEDB; --warn-ink:#8A5E12;
+  --neg:#BC4A32;  --neg-soft:#F7E7E1;  --neg-ink:#9A3A25;
+  --info:#3667A6; --info-soft:#E7EDF6; --info-ink:#2B5185;
+  --violet:#6A4FB0; --violet-soft:#EEE9F7; --violet-ink:#523A8F;
+  /* Inverted ink surfaces (primary CTA, brand mark) */
+  --btn-bg:#1B1A17; --btn-fg:#FFFFFF; --btn-bg-hover:#000000;
+  --mark-bg:#1B1A17; --mark-fg:#FFFFFF;
+  /* Interaction chrome */
+  --hover:rgba(27,26,23,.045); --scrim:rgba(27,26,23,.28);
+  --scroll:rgba(27,26,23,.14); --scroll-hover:rgba(27,26,23,.24);
+  /* Radii */
+  --r-card:14px; --r-ctl:9px; --r-sm:7px; --r-pill:999px;
+  /* Elevation (light) */
+  --sh-sm:0 1px 2px rgba(27,26,23,.05);
+  --sh-md:0 4px 14px rgba(27,26,23,.07),0 1px 3px rgba(27,26,23,.05);
+  --sh-pop:0 12px 40px rgba(27,26,23,.14),0 2px 8px rgba(27,26,23,.08);
+  /* Motion */
+  --ease:cubic-bezier(.4,.14,.2,1);
+  /* Fonts — next/font variables with graceful fallbacks */
+  --font:var(--font-inter),'Inter',system-ui,-apple-system,sans-serif;
+  --serif:var(--font-newsreader),'Newsreader',Georgia,serif;
+  --mono:var(--font-mono),'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:light;
+}
+
+:root[data-theme="dark"] {
+  --paper:#131311; --surface:#1B1A18; --surface-2:#232220; --surface-3:#2B2926;
+  --ink:#F2F0EA; --ink-2:#B0ACA2; --ink-3:#87837A; --ink-4:#736F65;
+  --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.06); --line-3:rgba(255,255,255,.17);
+  --accent:#2FA877; --accent-ink:#54CD95; --accent-soft:rgba(52,178,124,.15); --accent-line:rgba(52,178,124,.34);
+  --pos:#2FA877;  --pos-soft:rgba(52,178,124,.15);  --pos-ink:#5FD09B;
+  --warn:#D89B3E; --warn-soft:rgba(216,155,62,.16); --warn-ink:#E9B968;
+  --neg:#E36B50;  --neg-soft:rgba(227,107,80,.16);  --neg-ink:#F0947F;
+  --info:#5E92D8; --info-soft:rgba(94,146,216,.16); --info-ink:#8FB4EA;
+  --violet:#9B7BDE; --violet-soft:rgba(155,123,222,.17); --violet-ink:#B69EEA;
+  --btn-bg:#F2F0EA; --btn-fg:#17160F; --btn-bg-hover:#FFFFFF;
+  --mark-bg:#F2F0EA; --mark-fg:#17160F;
+  --hover:rgba(255,255,255,.05); --scrim:rgba(0,0,0,.55);
+  --scroll:rgba(255,255,255,.16); --scroll-hover:rgba(255,255,255,.26);
+  /* Elevation (dark) */
+  --sh-sm:0 1px 2px rgba(0,0,0,.4);
+  --sh-md:0 4px 14px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.4);
+  --sh-pop:0 16px 44px rgba(0,0,0,.6),0 2px 10px rgba(0,0,0,.5);
+  color-scheme:dark;
+}
+
+/* Avatar / categorical colors — theme-INDEPENDENT identity hues.
+   Assign by (index % 8). 5 coincide with semantic hues. */
+:root {
+  --avatar-blue:#2F5BEA; --avatar-violet:#6A4FB0; --avatar-amber:#B07A18; --avatar-pink:#C2568C;
+  --avatar-indigo:#3667A6; --avatar-green:#1E7F55; --avatar-gray:#8E8A80; --avatar-teal:#158B7E;
+  --on-solid:#FFFFFF;      /* text/icons on a solid avatar/badge fill (both themes) */
+  --highlight:#8FE0B8;     /* italic <em> emphasis on dark bands */
+  --auth-bg:#0C0C0A;       /* dark-only deep panel (deeper than --paper) */
+  --icon-muted:#6B7280;    /* neutral integration icon */
+}

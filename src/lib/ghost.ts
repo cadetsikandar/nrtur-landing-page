@@ -30,17 +30,19 @@ export const TAG_LABELS: Record<TagSlug, string> = {
 
 export const TAG_SLUGS: TagSlug[] = ['alternatives', 'comparisons', 'use-cases', 'guides']
 
+// `text` is the on-soft ink tone (used both as tint-pill text — must clear contrast —
+// and as the ArtPanel icon/glow color, where the darker ink reads fine on the light tile).
 export const TAG_ACCENTS: Record<TagSlug, { text: string; bg: string; border: string; gradientFrom: string; gradientTo: string }> = {
-  alternatives: { text: '#60a5fa', bg: 'rgba(59,130,246,0.1)', border: 'rgba(59,130,246,0.2)', gradientFrom: 'rgba(59,130,246,0.25)', gradientTo: 'rgba(99,102,241,0.15)' },
-  comparisons: { text: '#818cf8', bg: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.2)', gradientFrom: 'rgba(99,102,241,0.25)', gradientTo: 'rgba(139,92,246,0.15)' },
-  'use-cases': { text: '#34d399', bg: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.2)', gradientFrom: 'rgba(16,185,129,0.25)', gradientTo: 'rgba(20,184,166,0.15)' },
-  guides: { text: '#fbbf24', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.2)', gradientFrom: 'rgba(245,158,11,0.25)', gradientTo: 'rgba(249,115,22,0.15)' },
+  alternatives: { text: 'var(--info-ink)', bg: 'var(--info-soft)', border: 'var(--line)', gradientFrom: 'var(--info-soft)', gradientTo: 'var(--info-soft)' },
+  comparisons: { text: 'var(--accent-ink)', bg: 'var(--accent-soft)', border: 'var(--accent-line)', gradientFrom: 'var(--accent-soft)', gradientTo: 'var(--accent-soft)' },
+  'use-cases': { text: 'var(--pos-ink)', bg: 'var(--pos-soft)', border: 'var(--line)', gradientFrom: 'var(--pos-soft)', gradientTo: 'var(--pos-soft)' },
+  guides: { text: 'var(--warn-ink)', bg: 'var(--warn-soft)', border: 'var(--line)', gradientFrom: 'var(--warn-soft)', gradientTo: 'var(--warn-soft)' },
 }
 
 const authors = {
-  touqeer: { name: 'Touqeer Hassan', initials: 'TH', color: '#6366f1' },
-  sikandar: { name: 'Sikandar Ali', initials: 'SA', color: '#10b981' },
-  saqib: { name: 'Saqib Hassan', initials: 'SH', color: '#8b5cf6' },
+  touqeer: { name: 'Touqeer Hassan', initials: 'TH', color: 'var(--avatar-indigo)' },
+  sikandar: { name: 'Sikandar Ali', initials: 'SA', color: 'var(--avatar-green)' },
+  saqib: { name: 'Saqib Hassan', initials: 'SH', color: 'var(--avatar-violet)' },
 }
 
 // Seed content (10 posts), ported from the design handoff's Blog.dc.html Component script —
@@ -92,7 +94,7 @@ interface GhostPostsResponse {
   meta: { pagination: { next: number | null } }
 }
 
-const AVATAR_PALETTE = ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ec4899', '#14b8a6']
+const AVATAR_PALETTE = ['var(--avatar-blue)', 'var(--avatar-violet)', 'var(--avatar-green)', 'var(--avatar-amber)', 'var(--avatar-pink)', 'var(--avatar-teal)']
 
 function initialsFor(name: string): string {
   const parts = name.trim().split(/\s+/)

@@ -3,7 +3,7 @@ import { fetchInitialPosts } from '@/lib/ghost'
 import BlogPage from '@/views/BlogPage'
 
 export const metadata = pageMetadata({
-  title: 'Blog',
+  title: 'Blog — CRM tips, comparisons & guides',
   description:
     "Everything we've learned about running a lean sales team — HubSpot alternatives, CRM comparisons, use cases, and setup guides.",
   path: '/blog/',

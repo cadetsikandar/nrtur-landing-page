@@ -4,7 +4,7 @@ import Home from '@/views/Home'
 
 const title = 'nrtur — The CRM small teams actually want to use'
 const description =
-  "nrtur is an affordable CRM for small teams. Manage contacts, close deals, and automate follow-ups — without HubSpot's complexity or price tag. Start free for 14 days."
+  "An affordable CRM for small teams — manage contacts, close deals, and automate follow-ups without HubSpot's price tag. Start free for 14 days."
 
 export const metadata: Metadata = {
   // `absolute` prevents the root layout's `%s · nrtur` template from appending a suffix.

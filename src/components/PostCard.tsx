@@ -33,7 +33,7 @@ export function TagPill({ tagSlug, tagName }: { tagSlug: TagSlug; tagName: strin
 export function AuthorAvatar({ post, size }: { post: Post; size: number }) {
   return (
     <span
-      className="rounded-full inline-flex items-center justify-center font-bold text-white shrink-0"
+      className="rounded-full inline-flex items-center justify-center font-bold text-on-solid shrink-0"
       style={{ width: size, height: size, background: post.authorColor, fontSize: size * 0.4 }}
     >
       {post.authorInitials}
@@ -48,10 +48,10 @@ export function ArtPanel({ tagSlug, variant }: { tagSlug: TagSlug; variant: 'fea
   const featured = variant === 'featured'
   return (
     <div
-      className={`relative overflow-hidden border-white/5 ${
+      className={`relative overflow-hidden border-line ${
         featured ? 'min-h-[220px] border-b md:border-b-0 md:border-r' : 'h-[140px] border-b'
       }`}
-      style={{ background: '#0c0c1a' }}
+      style={{ background: 'var(--surface-2)' }}
     >
       {/* tag-tinted gradient wash */}
       <div className="absolute inset-0" style={{ background: `linear-gradient(140deg, ${a.gradientFrom}, ${a.gradientTo})` }} />
@@ -71,7 +71,7 @@ export function ArtPanel({ tagSlug, variant }: { tagSlug: TagSlug; variant: 'fea
         <div
           className={`${
             featured ? 'w-[72px] h-[72px] rounded-2xl' : 'w-14 h-14 rounded-xl'
-          } bg-white/10 border border-white/15 backdrop-blur-sm flex items-center justify-center shadow-[0_8px_24px_rgba(0,0,0,0.35)]`}
+          } bg-surface-2 border border-line-3 backdrop-blur-sm flex items-center justify-center shadow-md`}
         >
           <Icon size={featured ? 34 : 24} strokeWidth={1.75} style={{ color: a.text }} />
         </div>
@@ -85,24 +85,24 @@ export default function PostCard({ post, index = 0 }: { post: Post; index?: numb
   return (
     <Link
       href={getPostUrl(post)}
-      className="animate-fade-up group flex flex-col glass-card overflow-hidden transition-all duration-300 hover:border-white/10 hover:-translate-y-1 hover:shadow-card-hover"
+      className="animate-fade-up group flex flex-col glass-card overflow-hidden transition-all duration-300 hover:border-line hover:-translate-y-1 hover:shadow-md"
       style={{ animationDelay: `${(index % 3) * 0.06}s`, animationFillMode: 'both' }}
     >
       <ArtPanel tagSlug={post.tagSlug} variant="card" />
       <div className="p-5 flex flex-col flex-1">
         <TagPill tagSlug={post.tagSlug} tagName={post.tagName} />
-        <h3 className="mt-3 mb-2 text-base font-bold text-white leading-snug">{post.title}</h3>
-        <p className="mb-4 text-[13px] text-white/40 leading-relaxed flex-1">{post.excerpt}</p>
-        <div className="flex items-center gap-1.5 text-xs text-white/30">
+        <h3 className="mt-3 mb-2 text-base font-bold text-ink leading-snug">{post.title}</h3>
+        <p className="mb-4 text-[13px] text-ink-2 leading-relaxed flex-1">{post.excerpt}</p>
+        <div className="flex items-center gap-1.5 text-xs text-ink-4">
           <AuthorAvatar post={post} size={18} />
-          <span className="text-white/45">{post.authorName}</span>
+          <span className="text-ink-3">{post.authorName}</span>
           <span>·</span>
           <span>{post.dateLabel}</span>
           <span>·</span>
           <span>{post.readingTime} min</span>
           <ArrowUpRight
             size={15}
-            className="ml-auto flex-shrink-0 text-white/25 group-hover:text-brand-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
+            className="ml-auto flex-shrink-0 text-ink-4 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
           />
         </div>
       </div>

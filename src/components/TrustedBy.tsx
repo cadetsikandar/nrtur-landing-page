@@ -1,49 +1,28 @@
-// Real early-access clients. Logos live in public/Clients (exact case — matters
-// on Linux/Vercel). Cycled to fill the marquee, then duplicated so it loops
-// seamlessly (second half mirrors the first).
-// Per-logo sizing tuned to each aspect ratio so square marks and wide wordmarks
-// read at the same visual weight (Nawaytech is square → sized up; the wordmarks
-// are wide → capped by width).
-const clients = [
-  { name: 'DevAXL', logo: '/Clients/devaxl-logo.png', imgClass: 'max-h-8 max-w-[130px]' },
-  { name: 'Prowork', logo: '/Clients/prowork-logo.png', imgClass: 'max-h-8 max-w-[124px]' },
-  // New wide wordmark; it's dark navy, so render it white to read on the dark strip.
-  { name: 'Nawaytech', logo: '/Clients/Nawaytech-logo.png', imgClass: 'max-h-9 max-w-[155px] brightness-0 invert' },
-  { name: 'MinsaBloom', logo: '/Clients/MinsaBloom.png', imgClass: 'max-h-[50px] max-w-[78px]' },
-]
-const half = [...clients, ...clients, ...clients]
-const companies = [...half, ...half]
+// The supplied client-logo PNGs are built for OPPOSITE backgrounds and have baked-in
+// opaque backgrounds — Prowork (white/yellow on solid black) & Devaxl (white text,
+// transparent) need a dark bg, while Nawaytech (navy on solid white) & MinsaBloom
+// (maroon) need a light one. No single tile colour or CSS filter makes all four read
+// uniformly, so instead of mismatched image tiles we render a clean, consistent
+// wordmark bar that looks right in both themes. Swap back to <img> logos here once we
+// have transparent, single-tone versions of all four.
+const clients = ['DevAXL', 'Prowork', 'Nawaytech', 'MinsaBloom']
 
 export default function TrustedBy() {
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#07070f] via-[#0a0a14] to-[#07070f]" />
-
-      <div className="relative z-10">
-        <p className="text-center text-sm font-medium text-white/25 tracking-widest uppercase mb-10 px-6">
+    <section className="py-14 bg-surface-2 border-y border-line">
+      <div className="max-w-4xl mx-auto px-6">
+        <p className="text-center font-mono text-xs font-medium text-ink-3 tracking-[0.22em] uppercase mb-8">
           Trusted by early-access teams at
         </p>
-
-        {/* Marquee */}
-        <div className="relative overflow-hidden">
-          {/* Fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#07070f] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#07070f] to-transparent z-10 pointer-events-none" />
-
-          <div className="flex animate-marquee whitespace-nowrap items-center">
-            {companies.map((c, i) => (
-              <div
-                key={i}
-                className="inline-flex items-center justify-center mx-8 h-[64px] w-[150px] flex-shrink-0 opacity-85 hover:opacity-100 transition-opacity duration-300"
-              >
-                <img
-                  src={c.logo}
-                  alt={`${c.name} logo`}
-                  className={`${c.imgClass} w-auto object-contain`}
-                />
-              </div>
-            ))}
-          </div>
+        <div className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-10 gap-y-4">
+          {clients.map((name, i) => (
+            <div key={name} className="flex items-center gap-x-8 sm:gap-x-10">
+              <span className="text-base sm:text-lg font-semibold tracking-[0.12em] uppercase text-ink-3 hover:text-ink transition-colors duration-200">
+                {name}
+              </span>
+              {i < clients.length - 1 && <span className="hidden sm:block h-4 w-px bg-line-3" />}
+            </div>
+          ))}
         </div>
       </div>
     </section>

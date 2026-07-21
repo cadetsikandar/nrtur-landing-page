@@ -13,11 +13,13 @@ import {
   type CompetitorId,
 } from './compare-data'
 
+// Short competitor names so the "nrtur vs" line balances the rotating line
+// (and it's the exact set of rivals this page lets you compare against).
 const phrases = [
-  'the big CRMs.',
-  'the price tags.',
-  'the enterprise bloat.',
-  'the annual lock-ins.',
+  'HubSpot.',
+  'Salesforce.',
+  'Pipedrive.',
+  'Zoho CRM.',
 ]
 
 function CellValue({ value, highlight }: { value: string; highlight?: boolean }) {
@@ -26,10 +28,10 @@ function CellValue({ value, highlight }: { value: string; highlight?: boolean })
       <div className="flex justify-center">
         <div
           className={`w-6 h-6 rounded-full flex items-center justify-center ${
-            highlight ? 'bg-emerald-500/15' : 'bg-white/[0.06]'
+            highlight ? 'bg-pos-soft' : 'bg-surface-2'
           }`}
         >
-          <Check size={13} className={highlight ? 'text-emerald-400' : 'text-white/40'} />
+          <Check size={13} className={highlight ? 'text-pos' : 'text-ink-4'} />
         </div>
       </div>
     )
@@ -37,14 +39,14 @@ function CellValue({ value, highlight }: { value: string; highlight?: boolean })
   if (value === '✗' || value === 'false') {
     return (
       <div className="flex justify-center">
-        <div className="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center">
-          <X size={13} className="text-red-400/70" />
+        <div className="w-6 h-6 rounded-full bg-neg-soft flex items-center justify-center">
+          <X size={13} className="text-neg" />
         </div>
       </div>
     )
   }
   return (
-    <span className={`text-sm font-medium ${highlight ? 'text-emerald-400' : 'text-white/50'}`}>
+    <span className={`text-sm font-medium ${highlight ? 'text-pos' : 'text-ink-3'}`}>
       {value}
     </span>
   )
@@ -73,19 +75,19 @@ export default function ComparePage() {
     <>
       {/* Header */}
       <section className="relative pt-32 pb-10 overflow-hidden">
-        <div className="orb w-[500px] h-[500px] bg-brand-600/15 -top-52 left-1/2 -translate-x-1/2" />
+        <div className="orb w-[500px] h-[500px] bg-surface-2 -top-52 left-1/2 -translate-x-1/2" />
         <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <div className="section-label mb-4">
             <span>Compare</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-black tracking-tight leading-[1.05] mb-5">
-            <span className="text-white">nrtur vs</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-serif font-semibold tracking-tight leading-[1.05] mb-5">
+            <span className="text-ink">nrtur vs</span>
             <br />
-            <span key={phrase} className="text-brand-400 inline-block animate-word-in">
+            <span key={phrase} className="hero-emph italic inline-block animate-word-in">
               {phrase}
             </span>
           </h1>
-          <p className="max-w-xl mx-auto text-lg text-white/45 leading-relaxed">
+          <p className="max-w-xl mx-auto text-lg text-ink-3 leading-relaxed">
             Honest, side-by-side breakdowns — including the rows where the other tool wins.
             Pick your current CRM, and add a second to weigh them against each other.
           </p>
@@ -105,8 +107,8 @@ export default function ComparePage() {
                   onClick={() => choosePrimary(id)}
                   className={`px-[18px] py-2.5 rounded-xl text-sm font-medium transition-all ${
                     isActive
-                      ? 'bg-brand-500/15 border border-brand-500/30 text-brand-300 shadow-brand'
-                      : 'bg-white/[0.03] border border-white/[0.06] text-white/40 hover:text-white/60'
+                      ? 'bg-accent-soft border border-accent-line text-accent-ink shadow-md'
+                      : 'bg-surface border border-line text-ink-4 hover:text-ink-3'
                   }`}
                 >
                   {crmProfiles[id].tabLabel}
@@ -117,7 +119,7 @@ export default function ComparePage() {
 
           {/* Optional 2nd competitor (adds a 3rd column) */}
           <div className="flex items-center justify-center gap-1.5 flex-wrap mb-8">
-            <span className="text-[13px] text-white/30 mr-1">Add another to compare:</span>
+            <span className="text-[13px] text-ink-4 mr-1">Add another to compare:</span>
             {competitorOrder
               .filter((id) => id !== primary)
               .map((id) => {
@@ -128,8 +130,8 @@ export default function ComparePage() {
                     onClick={() => setSecondary(isOn ? null : id)}
                     className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[13px] font-medium transition-all ${
                       isOn
-                        ? 'bg-violet-500/15 border border-violet-500/30 text-violet-300'
-                        : 'bg-white/[0.03] border border-white/[0.06] text-white/40 hover:text-white/60'
+                        ? 'bg-violet-soft border border-violet text-violet-ink'
+                        : 'bg-surface border border-line text-ink-4 hover:text-ink-3'
                     }`}
                   >
                     {isOn ? <Check size={12} /> : <Plus size={12} />}
@@ -146,8 +148,8 @@ export default function ComparePage() {
                 key={chip.label}
                 className={`text-[13px] font-medium rounded-full px-3.5 py-1.5 border ${
                   chip.highlight
-                    ? 'text-emerald-400 bg-emerald-500/[0.08] border-emerald-500/20'
-                    : 'text-white/55 bg-white/[0.03] border-white/[0.08]'
+                    ? 'text-pos-ink bg-pos-soft border-pos'
+                    : 'text-ink-3 bg-surface border-line'
                 }`}
               >
                 {chip.label}
@@ -161,11 +163,11 @@ export default function ComparePage() {
               <div style={{ minWidth }}>
                 {/* Column headers */}
                 <div
-                  className="grid border-b border-white/[0.06]"
+                  className="grid border-b border-line"
                   style={{ gridTemplateColumns: gridTemplate }}
                 >
                   <div className="px-5 py-[18px] flex items-center">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-white/30">
+                    <span className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-4">
                       Feature
                     </span>
                   </div>
@@ -176,28 +178,28 @@ export default function ComparePage() {
                         key={id}
                         className={`px-3 py-[14px] text-center border-l ${
                           p.accent
-                            ? 'border-brand-500/20 bg-brand-500/[0.06]'
-                            : 'border-white/[0.06]'
+                            ? 'border-accent-line bg-accent-soft'
+                            : 'border-line'
                         }`}
                       >
                         <div className="flex items-center justify-center gap-1.5 mb-0.5">
                           {p.accent && (
-                            <span className="w-5 h-5 rounded-md bg-gradient-to-br from-brand-500 to-violet-600 flex items-center justify-center">
-                              <span className="text-white font-black text-[9px]">n</span>
+                            <span className="w-5 h-5 rounded-md bg-btn-bg flex items-center justify-center">
+                              <span className="text-btn-fg font-black text-[9px]">n</span>
                             </span>
                           )}
                           <span
                             className={
                               p.accent
-                                ? 'font-bold text-white text-sm'
-                                : 'font-semibold text-white/50 text-sm'
+                                ? 'font-bold text-ink text-sm'
+                                : 'font-semibold text-ink-3 text-sm'
                             }
                           >
                             {p.name}
                           </span>
                         </div>
                         <span
-                          className={`text-[11px] ${p.accent ? 'text-brand-400 font-medium' : 'text-white/25'}`}
+                          className={`text-[11px] ${p.accent ? 'text-accent font-medium' : 'text-ink-4'}`}
                         >
                           {p.price}
                         </span>
@@ -210,11 +212,11 @@ export default function ComparePage() {
                 {FEATURES.map((f) => (
                   <div
                     key={f.key}
-                    className="grid border-b border-white/[0.04] last:border-b-0"
+                    className="grid border-b border-line-2 last:border-b-0"
                     style={{ gridTemplateColumns: gridTemplate }}
                   >
                     <div className="px-5 py-[14px] flex items-center">
-                      <span className="text-sm text-white/60">{f.label}</span>
+                      <span className="text-sm text-ink-3">{f.label}</span>
                     </div>
                     {cols.map((id) => {
                       const p = crmProfiles[id]
@@ -223,8 +225,8 @@ export default function ComparePage() {
                           key={id}
                           className={`px-3 py-[14px] flex items-center justify-center text-center border-l ${
                             p.accent
-                              ? 'border-brand-500/10 bg-brand-500/[0.03]'
-                              : 'border-white/[0.04]'
+                              ? 'border-accent-line bg-accent-soft'
+                              : 'border-line-2'
                           }`}
                         >
                           <CellValue value={p.values[f.key]} highlight={p.wins.includes(f.key)} />
@@ -238,8 +240,8 @@ export default function ComparePage() {
           </div>
 
           {/* Verdict + CTA band */}
-          <div className="mt-8 relative overflow-hidden bg-brand-500/[0.05] border border-brand-500/[0.15] rounded-2xl px-6 sm:px-8 py-6 flex flex-col sm:flex-row items-center gap-5">
-            <p className="text-[15px] text-white/55 leading-relaxed flex-1 text-center sm:text-left">
+          <div className="mt-8 relative overflow-hidden bg-surface border border-line shadow-md rounded-2xl px-6 sm:px-8 py-6 flex flex-col sm:flex-row items-center gap-5">
+            <p className="text-[15px] text-ink-3 leading-relaxed flex-1 text-center sm:text-left">
               {narrative.verdict}
             </p>
             <a
@@ -253,7 +255,7 @@ export default function ComparePage() {
             </a>
           </div>
 
-          <p className="text-center mt-8 text-xs text-white/25">
+          <p className="text-center mt-8 text-xs text-ink-4">
             Prices shown are each tool's plan that matches nrtur's included features — most offer
             cheaper entry tiers that gate those features behind higher plans or add-ons. Public
             pricing, July 2026.

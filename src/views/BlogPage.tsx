@@ -7,7 +7,8 @@ import { useRotatingPhrase } from '../hooks/useRotatingPhrase'
 import { getPostUrl, TAG_LABELS, type Post, type TagSlug } from '../lib/ghost'
 import PostCard, { ArtPanel, AuthorAvatar, TagPill } from '../components/PostCard'
 
-const HEADLINE_PHRASES = ['for closing more deals.', 'for staying lean.', 'for switching CRMs.']
+// Short audience tags so the "The nrtur blog" line and the rotating line stay balanced.
+const HEADLINE_PHRASES = ['for lean teams.', 'for closers.', 'for switchers.', 'for founders.']
 
 type FilterTag = 'all' | TagSlug
 
@@ -59,19 +60,19 @@ export default function BlogPage({ initialPosts }: { initialPosts: Post[] }) {
     <>
       {/* Header */}
       <section className="relative pt-32 pb-10 overflow-hidden">
-        <div className="orb w-[500px] h-[500px] bg-brand-600/15 -top-52 left-1/2 -translate-x-1/2" />
+        <div className="orb w-[500px] h-[500px] bg-surface-2 -top-52 left-1/2 -translate-x-1/2" />
         <div className="relative z-10 max-w-2xl mx-auto px-6 lg:px-8 text-center">
           <div className="section-label justify-center mb-4">
             <span>Blog</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-[1.05] mb-5">
-            <span className="text-white">The nrtur blog</span>
+          <h1 className="text-4xl sm:text-5xl font-serif font-semibold tracking-tight leading-[1.05] mb-5">
+            <span className="text-ink">The nrtur blog</span>
             <br />
-            <span key={phrase} className="text-brand-400 inline-block animate-word-in">
+            <span key={phrase} className="hero-emph italic inline-block animate-word-in">
               {phrase}
             </span>
           </h1>
-          <p className="max-w-lg mx-auto text-lg text-white/45 leading-relaxed">
+          <p className="max-w-lg mx-auto text-lg text-ink-2 leading-relaxed">
             Everything we've learned about running a lean sales team — never more than two clicks
             from the answer you need.
           </p>
@@ -92,8 +93,8 @@ export default function BlogPage({ initialPosts }: { initialPosts: Post[] }) {
                   onClick={() => handleTagChange(chip.slug)}
                   className={
                     active
-                      ? 'px-4 py-2 rounded-full text-sm font-medium bg-brand-500/15 border border-brand-500/30 text-brand-300 transition-all duration-200'
-                      : 'px-4 py-2 rounded-full text-sm font-medium bg-white/[0.03] border border-white/[0.06] text-white/45 hover:text-white/70 hover:border-white/10 transition-all duration-200'
+                      ? 'px-4 py-2 rounded-full text-sm font-medium bg-accent-soft border border-accent-line text-accent-ink transition-all duration-200'
+                      : 'px-4 py-2 rounded-full text-sm font-medium bg-surface border border-line text-ink-3 hover:text-ink-2 hover:border-line transition-all duration-200'
                   }
                 >
                   {chip.label}
@@ -106,29 +107,29 @@ export default function BlogPage({ initialPosts }: { initialPosts: Post[] }) {
           {featuredPost && (
             <Link
               href={getPostUrl(featuredPost)}
-              className="animate-fade-up group grid grid-cols-1 md:grid-cols-[1.1fr_1fr] glass-card overflow-hidden mb-10 transition-all duration-300 hover:border-white/10 hover:shadow-card-hover"
+              className="animate-fade-up group grid grid-cols-1 md:grid-cols-[1.1fr_1fr] glass-card overflow-hidden mb-10 transition-all duration-300 hover:border-line hover:shadow-md"
             >
               <ArtPanel tagSlug={featuredPost.tagSlug} variant="featured" />
               <div className="p-8 sm:p-10 flex flex-col justify-center">
                 <div className="flex items-center gap-2.5 mb-3.5">
-                  <span className="text-[11px] font-bold tracking-widest uppercase text-brand-400">
+                  <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-accent">
                     Featured
                   </span>
                   <TagPill tagSlug={featuredPost.tagSlug} tagName={featuredPost.tagName} />
                 </div>
-                <h2 className="text-[28px] font-extrabold text-white leading-tight tracking-tight mb-3">
+                <h2 className="text-[28px] font-serif font-semibold text-ink leading-tight tracking-tight mb-3">
                   {featuredPost.title}
                 </h2>
-                <p className="text-[15px] text-white/45 leading-relaxed mb-5">{featuredPost.excerpt}</p>
-                <div className="flex items-center gap-2 text-[13px] text-white/30">
+                <p className="text-[15px] text-ink-2 leading-relaxed mb-5">{featuredPost.excerpt}</p>
+                <div className="flex items-center gap-2 text-[13px] text-ink-4">
                   <AuthorAvatar post={featuredPost} size={20} />
-                  <span className="text-white/50">{featuredPost.authorName}</span>
+                  <span className="text-ink-3">{featuredPost.authorName}</span>
                   <span>·</span>
                   <span>{featuredPost.dateLabel}</span>
                   <span>·</span>
                   <span>{featuredPost.readingTime} min read</span>
                 </div>
-                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400 group-hover:gap-2.5 transition-all duration-200">
+                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent group-hover:gap-2.5 transition-all duration-200">
                   Read article
                   <ArrowRight size={15} />
                 </span>
@@ -144,7 +145,7 @@ export default function BlogPage({ initialPosts }: { initialPosts: Post[] }) {
           </div>
 
           {shownPosts.length === 0 && (
-            <div className="text-center py-16 text-white/30 text-[15px]">
+            <div className="text-center py-16 text-ink-3 text-[15px]">
               No posts in this topic yet — check back soon.
             </div>
           )}
@@ -154,11 +155,11 @@ export default function BlogPage({ initialPosts }: { initialPosts: Post[] }) {
               <button
                 type="button"
                 onClick={handleLoadMore}
-                className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white/80 hover:text-white font-medium text-sm px-6 py-3 rounded-xl transition-all duration-200"
+                className="inline-flex items-center gap-2 bg-surface-2 hover:bg-surface-3 border border-line hover:border-line-3 text-ink-2 hover:text-ink font-medium text-sm px-6 py-3 rounded-xl transition-all duration-200"
               >
                 Load more posts
               </button>
-              <p className="text-xs text-white/25">
+              <p className="text-xs text-ink-4">
                 Showing {shownPosts.length} of {filteredPosts.length} posts
               </p>
             </div>
@@ -169,13 +170,13 @@ export default function BlogPage({ initialPosts }: { initialPosts: Post[] }) {
       {/* Subscribe */}
       <section className="pb-24 pt-16">
         <div className="max-w-xl mx-auto px-6 lg:px-8">
-          <div className="relative overflow-hidden bg-brand-500/[0.06] border border-brand-500/[0.15] rounded-2xl px-8 py-9 text-center">
-            <div className="orb w-[300px] h-[300px] bg-brand-500/10 -top-36 left-1/2 -translate-x-1/2" />
+          <div className="relative overflow-hidden bg-surface border border-line shadow-md rounded-2xl px-8 py-9 text-center">
+            <div className="orb w-[300px] h-[300px] bg-surface-2 -top-36 left-1/2 -translate-x-1/2" />
             <div className="relative">
-              <h2 className="text-2xl font-extrabold tracking-tight text-white mb-2">
+              <h2 className="text-2xl font-serif font-semibold tracking-tight text-ink mb-2">
                 Get new posts in your inbox
               </h2>
-              <p className="text-sm text-white/40 mb-5">
+              <p className="text-sm text-ink-2 mb-5">
                 One email when we publish. No spam, unsubscribe anytime.
               </p>
               <form onSubmit={handleSubscribe} className="flex gap-2 max-w-sm mx-auto">
@@ -184,11 +185,11 @@ export default function BlogPage({ initialPosts }: { initialPosts: Post[] }) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
-                  className="flex-1 min-w-0 bg-white/[0.04] border border-white/10 rounded-[10px] px-3.5 py-2.5 text-[13px] text-white outline-none focus:border-brand-500/40"
+                  className="flex-1 min-w-0 bg-surface border border-line rounded-[10px] px-3.5 py-2.5 text-[13px] text-ink outline-none focus:border-accent-line"
                 />
                 <button
                   type="submit"
-                  className="bg-brand-500 hover:bg-brand-400 text-white text-[13px] font-semibold px-[18px] py-2.5 rounded-[10px] transition-all duration-200 inline-flex items-center gap-1.5"
+                  className="bg-btn-bg hover:bg-btn-bg-hover text-btn-fg text-[13px] font-semibold px-[18px] py-2.5 rounded-[10px] transition-all duration-200 inline-flex items-center gap-1.5"
                 >
                   {subscribed ? (
                     <>

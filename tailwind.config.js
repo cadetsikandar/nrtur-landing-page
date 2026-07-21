@@ -4,26 +4,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50:  '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
-        },
-        surface: {
-          50:  '#f8fafc',
-          900: '#0d0d1a',
-          950: '#07070f',
-        },
+        // Paper & Ink — role tokens (full-color; never apply an opacity modifier).
+        paper: 'var(--paper)',
+        surface: { DEFAULT: 'var(--surface)', 2: 'var(--surface-2)', 3: 'var(--surface-3)' },
+        ink: { DEFAULT: 'var(--ink)', 2: 'var(--ink-2)', 3: 'var(--ink-3)', 4: 'var(--ink-4)' },
+        line: { DEFAULT: 'var(--line)', 2: 'var(--line-2)', 3: 'var(--line-3)' },
+        accent: { DEFAULT: 'var(--accent)', ink: 'var(--accent-ink)', soft: 'var(--accent-soft)', line: 'var(--accent-line)' },
+        pos: { DEFAULT: 'var(--pos)', soft: 'var(--pos-soft)', ink: 'var(--pos-ink)' },
+        warn: { DEFAULT: 'var(--warn)', soft: 'var(--warn-soft)', ink: 'var(--warn-ink)' },
+        neg: { DEFAULT: 'var(--neg)', soft: 'var(--neg-soft)', ink: 'var(--neg-ink)' },
+        info: { DEFAULT: 'var(--info)', soft: 'var(--info-soft)', ink: 'var(--info-ink)' },
+        violet: { DEFAULT: 'var(--violet)', soft: 'var(--violet-soft)', ink: 'var(--violet-ink)' },
+        'btn-bg': 'var(--btn-bg)', 'btn-fg': 'var(--btn-fg)', 'btn-bg-hover': 'var(--btn-bg-hover)',
+        'mark-bg': 'var(--mark-bg)', 'mark-fg': 'var(--mark-fg)',
+        hover: 'var(--hover)', scrim: 'var(--scrim)',
+        'on-solid': 'var(--on-solid)', highlight: 'var(--highlight)',
+        // Categorical identity hues (avatars / activity dots)
+        'avatar-blue': 'var(--avatar-blue)', 'avatar-violet': 'var(--avatar-violet)',
+        'avatar-amber': 'var(--avatar-amber)', 'avatar-pink': 'var(--avatar-pink)',
+        'avatar-indigo': 'var(--avatar-indigo)', 'avatar-green': 'var(--avatar-green)',
+        'avatar-gray': 'var(--avatar-gray)', 'avatar-teal': 'var(--avatar-teal)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-newsreader)', 'Newsreader', 'Georgia', 'serif'],
+        mono: ['var(--font-mono)', '"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -56,11 +61,12 @@ export default {
         },
       },
       boxShadow: {
-        'brand': '0 0 0 1px rgba(99, 102, 241, 0.3), 0 4px 60px rgba(99, 102, 241, 0.15)',
-        'brand-lg': '0 0 0 1px rgba(99, 102, 241, 0.4), 0 8px 80px rgba(99, 102, 241, 0.25)',
-        'card': '0 0 0 1px rgba(255, 255, 255, 0.06), 0 4px 24px rgba(0, 0, 0, 0.4)',
-        'card-hover': '0 0 0 1px rgba(99, 102, 241, 0.3), 0 8px 40px rgba(0, 0, 0, 0.5)',
+        // Paper & Ink elevation (neutral ink shadows). Legacy aliases kept neutral.
+        sm: 'var(--sh-sm)', md: 'var(--sh-md)', pop: 'var(--sh-pop)',
+        brand: 'var(--sh-md)', 'brand-lg': 'var(--sh-pop)',
+        card: 'var(--sh-sm)', 'card-hover': 'var(--sh-md)',
       },
+      borderRadius: { card: 'var(--r-card)', ctl: 'var(--r-ctl)', pill: 'var(--r-pill)' },
     },
   },
   plugins: [],

@@ -25,8 +25,8 @@ export default function Comparison() {
 
   return (
     <section id="comparison" className="py-28 relative" ref={ref}>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#07070f] to-[#09091a]" />
-      <div className="orb w-96 h-96 bg-brand-600/10 top-1/4 -right-48 absolute pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-paper to-surface-2" />
+      <div className="orb w-96 h-96 bg-surface-2 top-1/4 -right-48 absolute pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
         {/* Header */}
@@ -34,10 +34,10 @@ export default function Comparison() {
           <div className="reveal section-label mb-4">
             <span>Why nrtur</span>
           </div>
-          <h2 className="reveal reveal-delay-1 text-4xl sm:text-5xl font-black tracking-tight text-white mb-5">
+          <h2 className="reveal reveal-delay-1 text-4xl sm:text-5xl font-serif font-semibold tracking-tight text-ink mb-5">
             The obvious upgrade<br />from HubSpot
           </h2>
-          <p className="reveal reveal-delay-2 max-w-xl mx-auto text-lg text-white/40 leading-relaxed">
+          <p className="reveal reveal-delay-2 max-w-xl mx-auto text-lg text-ink-2 leading-relaxed">
             HubSpot pushes you toward its pricier tiers as you grow. nrtur is built for you.
             Same core power, everything included, none of the bloat.
           </p>
@@ -50,8 +50,8 @@ export default function Comparison() {
               key={chip.label}
               className={`text-[13px] font-medium rounded-full px-3.5 py-1.5 border ${
                 chip.emphasis
-                  ? 'text-emerald-400 bg-emerald-500/[0.08] border-emerald-500/20'
-                  : 'text-white/55 bg-white/[0.03] border-white/[0.08]'
+                  ? 'text-ink bg-surface border-line-3'
+                  : 'text-ink-2 bg-surface border-line'
               }`}
             >
               {chip.label}
@@ -62,20 +62,20 @@ export default function Comparison() {
         {/* Table */}
         <div className="reveal reveal-delay-3 glass-card overflow-hidden">
           {/* Column headers */}
-          <div className="grid grid-cols-[1fr_180px_180px] border-b border-white/[0.06]">
+          <div className="grid grid-cols-[1fr_180px_180px] border-b border-line">
             <div className="px-6 py-[18px] flex items-center">
-              <span className="text-xs font-semibold tracking-wider uppercase text-white/30">Feature</span>
+              <span className="font-mono text-xs font-semibold tracking-wider uppercase text-ink-3">Feature</span>
             </div>
-            <div className="px-4 py-[14px] text-center border-l border-brand-500/20 bg-brand-500/[0.06]">
+            <div className="px-4 py-[14px] text-center border-l border-line bg-surface-2">
               <div className="flex items-center justify-center gap-2 mb-0.5">
                 <img src="/nrtur-logo.png" alt="nrtur" className="w-5 h-5 object-contain" />
-                <span className="font-bold text-white text-sm">nrtur</span>
+                <span className="font-bold text-ink text-sm">nrtur</span>
               </div>
-              <span className="text-[11px] text-brand-400 font-medium">from $29/mo</span>
+              <span className="text-[11px] text-ink-2 font-medium">from $29/mo</span>
             </div>
-            <div className="px-4 py-[14px] text-center border-l border-white/[0.06] flex flex-col justify-center">
-              <p className="font-semibold text-white/40 text-sm mb-0.5">HubSpot</p>
-              <span className="text-[11px] text-white/25">$90/mo · Pro</span>
+            <div className="px-4 py-[14px] text-center border-l border-line flex flex-col justify-center">
+              <p className="font-semibold text-ink-2 text-sm mb-0.5">HubSpot</p>
+              <span className="text-[11px] text-ink-3">$90/mo · Pro</span>
             </div>
           </div>
 
@@ -83,34 +83,34 @@ export default function Comparison() {
           {rows.map((row) => (
             <div
               key={row.feature}
-              className="grid grid-cols-[1fr_180px_180px] border-b border-white/[0.04] last:border-b-0"
+              className="grid grid-cols-[1fr_180px_180px] border-b border-line-2 last:border-b-0"
             >
               <div className="px-6 py-3.5 flex items-center">
-                <span className="text-sm text-white/60">{row.feature}</span>
+                <span className="text-sm text-ink-2">{row.feature}</span>
               </div>
-              <div className="px-4 py-3.5 flex items-center justify-center border-l border-brand-500/10 bg-brand-500/[0.03]">
+              <div className="px-4 py-3.5 flex items-center justify-center border-l border-line bg-surface-2">
                 <span
-                  className={`text-[13px] font-medium text-center ${
-                    row.nrturWins ? 'text-emerald-400' : 'text-white/65'
+                  className={`text-[13px] text-center ${
+                    row.nrturWins ? 'text-ink font-semibold' : 'text-ink-2'
                   }`}
                 >
                   {row.nrtur}
                 </span>
               </div>
-              <div className="px-4 py-3.5 flex items-center justify-center border-l border-white/[0.04]">
-                <span className="text-[13px] font-medium text-white/50 text-center">{row.hubspot}</span>
+              <div className="px-4 py-3.5 flex items-center justify-center border-l border-line-2">
+                <span className="text-[13px] font-medium text-ink-2 text-center">{row.hubspot}</span>
               </div>
             </div>
           ))}
 
           {/* Footer CTA row */}
-          <div className="grid grid-cols-[1fr_180px_180px] bg-brand-500/[0.04] border-t border-brand-500/15">
+          <div className="grid grid-cols-[1fr_180px_180px] bg-surface-2 border-t border-line">
             <div className="px-6 py-[18px] flex items-center">
-              <span className="text-[13px] text-white/40">
+              <span className="text-[13px] text-ink-2">
                 HubSpot is a great suite — if you're 50+ people. You're not paying for that yet.
               </span>
             </div>
-            <div className="px-4 py-3.5 flex justify-center items-center border-l border-brand-500/15">
+            <div className="px-4 py-3.5 flex justify-center items-center border-l border-line">
               <a
                 href="https://forms.gle/sb2mHm97oRNFRmUY9"
                 target="_blank"
@@ -120,15 +120,15 @@ export default function Comparison() {
                 Join waitlist
               </a>
             </div>
-            <div className="px-4 py-3.5 flex justify-center items-center border-l border-white/[0.06]">
-              <span className="text-[13px] text-white/25">Stay with HubSpot</span>
+            <div className="px-4 py-3.5 flex justify-center items-center border-l border-line">
+              <span className="text-[13px] text-ink-3">Stay with HubSpot</span>
             </div>
           </div>
         </div>
 
         {/* Link to full comparison hub */}
         <p className="reveal text-center mt-7">
-          <Link href="/compare/" className="text-sm text-brand-400 font-medium hover:text-brand-300 transition-colors">
+          <Link href="/compare/" className="text-sm text-ink-2 font-medium hover:text-ink transition-colors">
             See how nrtur compares to Salesforce, Pipedrive &amp; Zoho →
           </Link>
         </p>

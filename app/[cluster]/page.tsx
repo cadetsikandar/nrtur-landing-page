@@ -18,6 +18,16 @@ const CLUSTER_DESCRIPTIONS: Record<TagSlug, string> = {
     'Step-by-step guides for building pipelines, automating follow-ups, and migrating your CRM without losing a thing.',
 }
 
+// Per-cluster <title> — keyword-rich and ≥30 chars. The root layout template
+// appends " · nrtur", so these must NOT repeat the brand (otherwise the title
+// reads "Alternatives · nrtur blog · nrtur").
+const CLUSTER_TITLES: Record<TagSlug, string> = {
+  alternatives: 'CRM alternatives for small teams',
+  comparisons: 'CRM comparisons for small teams',
+  'use-cases': 'CRM use cases for small teams',
+  guides: 'CRM setup & migration guides',
+}
+
 // Per-cluster FAQ — unique content per hub page (avoids thin/duplicate pages)
 // and renders visible Q&A that backs the FAQPage JSON-LD.
 const CLUSTER_FAQS: Record<TagSlug, { q: string; a: string }[]> = {
@@ -99,7 +109,7 @@ export async function generateMetadata({
   const { cluster } = params
   if (!isTagSlug(cluster)) notFound()
   return pageMetadata({
-    title: `${TAG_LABELS[cluster]} · nrtur blog`,
+    title: CLUSTER_TITLES[cluster],
     description: CLUSTER_DESCRIPTIONS[cluster],
     path: `/${cluster}/`,
   })
@@ -152,15 +162,15 @@ export default async function ClusterPage({ params }: { params: { cluster: strin
 
       {/* Header */}
       <section className="relative pt-32 pb-10 overflow-hidden">
-        <div className="orb w-[500px] h-[500px] bg-brand-600/15 -top-52 left-1/2 -translate-x-1/2" />
+        <div className="orb w-[500px] h-[500px] bg-surface-2 -top-52 left-1/2 -translate-x-1/2" />
         <div className="relative z-10 max-w-2xl mx-auto px-6 lg:px-8 text-center">
           <div className="section-label justify-center mb-4">
             <span>Blog</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-[1.05] mb-5">
-            <span className="text-white">{label}</span>
+          <h1 className="text-4xl sm:text-5xl font-serif font-semibold tracking-tight leading-[1.05] mb-5">
+            <span className="text-ink">{label}</span>
           </h1>
-          <p className="max-w-lg mx-auto text-lg text-white/45 leading-relaxed">{description}</p>
+          <p className="max-w-lg mx-auto text-lg text-ink-3 leading-relaxed">{description}</p>
         </div>
       </section>
 
@@ -170,7 +180,7 @@ export default async function ClusterPage({ params }: { params: { cluster: strin
           <div className="mb-10 flex justify-center">
             <Link
               href="/blog/"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-white/45 hover:text-white/80 transition-colors duration-200"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-3 hover:text-ink-2 transition-colors duration-200"
             >
               <ArrowLeft size={15} />
               All posts
@@ -184,7 +194,7 @@ export default async function ClusterPage({ params }: { params: { cluster: strin
               ))}
             </div>
           ) : (
-            <div className="text-center py-16 text-white/30 text-[15px]">
+            <div className="text-center py-16 text-ink-4 text-[15px]">
               No posts in this topic yet — check back soon.
             </div>
           )}
@@ -194,14 +204,14 @@ export default async function ClusterPage({ params }: { params: { cluster: strin
       {/* FAQ */}
       <section className="relative pb-16">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white text-center mb-8">
+          <h2 className="text-2xl sm:text-3xl font-serif font-semibold tracking-tight text-ink text-center mb-8">
             Common questions
           </h2>
-          <div className="glass-card px-7 divide-y divide-white/[0.06]">
+          <div className="glass-card px-7 divide-y divide-line">
             {faqs.map((f) => (
               <div key={f.q} className="py-5">
-                <h3 className="text-base font-semibold text-white/85 mb-2">{f.q}</h3>
-                <p className="text-[15px] text-white/45 leading-relaxed">{f.a}</p>
+                <h3 className="text-base font-semibold text-ink mb-2">{f.q}</h3>
+                <p className="text-[15px] text-ink-3 leading-relaxed">{f.a}</p>
               </div>
             ))}
           </div>
@@ -211,13 +221,13 @@ export default async function ClusterPage({ params }: { params: { cluster: strin
       {/* CTA band → compare page + waitlist */}
       <section className="relative pb-16">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
-          <div className="relative overflow-hidden bg-brand-500/[0.06] border border-brand-500/[0.15] rounded-[20px] px-8 py-9 text-center">
-            <div className="orb w-[300px] h-[300px] bg-brand-500/[0.12] blur-[80px] -top-[150px] left-1/2 -translate-x-1/2" />
+          <div className="relative overflow-hidden bg-surface border border-line shadow-md rounded-[20px] px-8 py-9 text-center">
+            <div className="orb w-[300px] h-[300px] bg-surface-2 blur-[80px] -top-[150px] left-1/2 -translate-x-1/2" />
             <div className="relative">
-              <h2 className="text-2xl font-extrabold tracking-tight text-white mb-2">
+              <h2 className="text-2xl font-serif font-semibold tracking-tight text-ink mb-2">
                 See exactly where nrtur wins — and where it doesn’t
               </h2>
-              <p className="text-sm text-white/45 mb-6 max-w-md mx-auto">
+              <p className="text-sm text-ink-3 mb-6 max-w-md mx-auto">
                 Honest, side-by-side breakdowns against HubSpot, Salesforce, Pipedrive and Zoho —
                 including the rows where they come out ahead.
               </p>
@@ -230,7 +240,7 @@ export default async function ClusterPage({ params }: { params: { cluster: strin
                   href="https://forms.gle/sb2mHm97oRNFRmUY9"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-semibold text-white/60 hover:text-white transition-colors px-4 py-[11px]"
+                  className="text-sm font-semibold text-ink-3 hover:text-ink transition-colors px-4 py-[11px]"
                 >
                   Join the waitlist
                 </a>
@@ -243,7 +253,7 @@ export default async function ClusterPage({ params }: { params: { cluster: strin
       {/* Related clusters — internal linking */}
       <section className="relative pb-24">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <p className="text-xs font-semibold uppercase tracking-wider text-white/30 mb-4">
+          <p className="text-xs font-mono font-semibold uppercase tracking-wider text-ink-4 mb-4">
             More from the blog
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2.5">
@@ -251,7 +261,7 @@ export default async function ClusterPage({ params }: { params: { cluster: strin
               <Link
                 key={c}
                 href={`/${c}/`}
-                className="px-4 py-2 rounded-full text-sm font-medium bg-white/[0.03] border border-white/[0.06] text-white/50 hover:text-white/80 hover:border-white/10 transition-all"
+                className="px-4 py-2 rounded-full text-sm font-medium bg-surface border border-line text-ink-3 hover:text-ink-2 hover:border-line transition-all"
               >
                 {TAG_LABELS[c]}
               </Link>

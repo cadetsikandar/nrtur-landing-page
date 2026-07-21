@@ -3,7 +3,7 @@ import { faqJsonLd } from '@/lib/schema'
 import FAQPage from '@/views/FAQPage'
 
 export const metadata = pageMetadata({
-  title: 'FAQ',
+  title: 'FAQ — pricing, trials, security & migration',
   description:
     'Answers to common questions about nrtur — pricing, trials, migration, security, integrations, and more.',
   path: '/faq/',
