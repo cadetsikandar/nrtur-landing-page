@@ -17,7 +17,8 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-// Headings / editorial
+// Headings / editorial. Loaded as a variable font (no pinned weight) so it keeps the
+// optical-size axis — large display headings automatically get the high-contrast cut.
 const newsreader = Newsreader({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],

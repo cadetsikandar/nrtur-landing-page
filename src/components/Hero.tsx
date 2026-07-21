@@ -53,12 +53,12 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
-            className="font-serif text-5xl sm:text-6xl lg:text-[76px] xl:text-[86px] font-medium tracking-[-0.02em] leading-[1.05] mb-6 animate-fade-up"
+            className="text-[34px] sm:text-[42px] lg:text-[50px] xl:text-[54px] font-bold tracking-[-0.02em] leading-[1.12] mb-6 animate-fade-up"
             style={{ animationDelay: '0.1s', animationFillMode: 'both' }}
           >
             <span className="text-ink">The CRM small teams</span>
             <br />
-            <span key={phrase} className="hero-emph italic inline-block animate-word-in">
+            <span key={phrase} className="hero-emph font-serif font-medium italic inline-block animate-word-in">
               {phrase}
             </span>
           </h1>
