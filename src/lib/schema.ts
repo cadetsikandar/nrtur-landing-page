@@ -95,7 +95,7 @@ export const compareJsonLd = {
       '@type': 'CollectionPage',
       '@id': 'https://www.nrtur.io/compare/#page',
       url: 'https://www.nrtur.io/compare/',
-      name: 'nrtur vs HubSpot, Salesforce, Pipedrive & Zoho CRM',
+      name: 'Compare CRMs: HubSpot vs Salesforce vs Pipedrive vs Zoho',
       about: { '@id': 'https://www.nrtur.io/#organization' },
     },
     {

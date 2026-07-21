@@ -187,3 +187,46 @@ export const narratives: Record<CompetitorId, CompetitorNarrative> = {
 }
 
 export const competitorOrder: CompetitorId[] = ['hubspot', 'salesforce', 'pipedrive', 'zoho']
+
+/** Curated competitor-vs-competitor matchups. The compare page LEADS with these — the
+ *  well-known brand terms people actually search — and adds nrtur as a natural third
+ *  column ("…and where nrtur fits"), rather than centering every page on "nrtur vs X". */
+export interface Matchup {
+  a: CompetitorId
+  b: CompetitorId
+  title: string
+  /** Neutral, even-handed framing of the two big brands. */
+  blurb: string
+  /** How nrtur fits as the small-team third option. */
+  nrturAngle: string
+}
+
+export const matchups: Matchup[] = [
+  {
+    a: 'hubspot',
+    b: 'salesforce',
+    title: 'HubSpot vs Salesforce',
+    blurb:
+      'The two enterprise heavyweights. HubSpot is the friendlier all-in-one marketing-and-sales suite; Salesforce is the deepest, most customizable platform — and the steepest to run. Both are built for scale, and priced for it.',
+    nrturAngle:
+      'For a team of 1–5, both are far more CRM than you need. nrtur covers the core — contacts, pipeline, email sync, automations — without the setup, admin, or price tag.',
+  },
+  {
+    a: 'pipedrive',
+    b: 'hubspot',
+    title: 'Pipedrive vs HubSpot',
+    blurb:
+      'The lean sales tool versus the all-in-one suite. Pipedrive is fast and sales-first; HubSpot bundles marketing, service, and CRM — powerful, but it nudges you up its pricing tiers as you grow.',
+    nrturAngle:
+      'nrtur sits where a small team actually works: Pipedrive-style focus, with email sync and automations included on every plan instead of gated behind higher tiers or add-ons.',
+  },
+  {
+    a: 'zoho',
+    b: 'hubspot',
+    title: 'Zoho CRM vs HubSpot',
+    blurb:
+      'Breadth versus polish. Zoho is inexpensive and enormous — dozens of apps in one suite; HubSpot is more polished but climbs in price quickly. Both ask you to grow into a lot of product.',
+    nrturAngle:
+      'nrtur is the opposite bet: one focused tool a small team can set up in minutes — not a suite to configure for weeks.',
+  },
+]

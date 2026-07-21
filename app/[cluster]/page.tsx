@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { pageMetadata } from '@/lib/metadata'
-import { fetchPostsByTag, TAG_LABELS, TAG_SLUGS, type TagSlug } from '@/lib/ghost'
+import { TAG_LABELS, TAG_SLUGS, type TagSlug } from '@/lib/ghost'
+import { fetchPostsByTag } from '@/lib/blog-content'
 import PostCard from '@/components/PostCard'
 
 // Per-cluster meta descriptions (also used as the page intro + JSON-LD description).

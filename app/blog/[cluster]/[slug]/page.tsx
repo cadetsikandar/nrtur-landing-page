@@ -2,13 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
-import {
-  fetchPostBySlug,
-  getAllPosts,
-  getPostUrl,
-  TAG_LABELS,
-  type Post,
-} from '@/lib/ghost'
+import { getPostUrl, TAG_LABELS, type Post } from '@/lib/ghost'
+import { fetchPostBySlug, getAllPosts } from '@/lib/blog-content'
 import { SITE_URL } from '@/lib/metadata'
 import { TagPill, AuthorAvatar } from '@/components/PostCard'
 

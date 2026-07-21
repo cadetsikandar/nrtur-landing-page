@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
-import { getAllPosts, getPostUrl, TAG_SLUGS } from '@/lib/ghost'
+import { getPostUrl, TAG_SLUGS } from '@/lib/ghost'
+import { getAllPosts } from '@/lib/blog-content'
 
 const BASE_URL = 'https://www.nrtur.io'
 

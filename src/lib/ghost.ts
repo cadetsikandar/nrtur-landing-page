@@ -39,7 +39,7 @@ export const TAG_ACCENTS: Record<TagSlug, { text: string; bg: string; border: st
   guides: { text: 'var(--warn-ink)', bg: 'var(--warn-soft)', border: 'var(--line)', gradientFrom: 'var(--warn-soft)', gradientTo: 'var(--warn-soft)' },
 }
 
-const authors = {
+export const authors = {
   touqeer: { name: 'Touqeer Hassan', initials: 'TH', color: 'var(--avatar-indigo)' },
   sikandar: { name: 'Sikandar Ali', initials: 'SA', color: 'var(--avatar-green)' },
   saqib: { name: 'Saqib Hassan', initials: 'SH', color: 'var(--avatar-violet)' },
@@ -96,12 +96,12 @@ interface GhostPostsResponse {
 
 const AVATAR_PALETTE = ['var(--avatar-blue)', 'var(--avatar-violet)', 'var(--avatar-green)', 'var(--avatar-amber)', 'var(--avatar-pink)', 'var(--avatar-teal)']
 
-function initialsFor(name: string): string {
+export function initialsFor(name: string): string {
   const parts = name.trim().split(/\s+/)
   return parts.slice(0, 2).map((p) => p[0]?.toUpperCase() ?? '').join('')
 }
 
-function colorFor(name: string): string {
+export function colorFor(name: string): string {
   let hash = 0
   for (let i = 0; i < name.length; i++) hash = (hash * 31 + name.charCodeAt(i)) >>> 0
   return AVATAR_PALETTE[hash % AVATAR_PALETTE.length]

@@ -35,11 +35,12 @@ export default function Comparison() {
             <span>Why nrtur</span>
           </div>
           <h2 className="reveal reveal-delay-1 text-4xl sm:text-5xl font-serif font-semibold tracking-tight text-ink mb-5">
-            The obvious upgrade<br />from HubSpot
+            Everything included.<br />None of the bloat.
           </h2>
           <p className="reveal reveal-delay-2 max-w-xl mx-auto text-lg text-ink-2 leading-relaxed">
-            HubSpot pushes you toward its pricier tiers as you grow. nrtur is built for you.
-            Same core power, everything included, none of the bloat.
+            The big CRMs push you toward pricier tiers as you grow. nrtur keeps the core —
+            contacts, pipeline, email sync, automations — included from day one. Here&rsquo;s how
+            it looks next to HubSpot.
           </p>
         </div>
 

@@ -1,5 +1,5 @@
 import { pageMetadata } from '@/lib/metadata'
-import { fetchInitialPosts } from '@/lib/ghost'
+import { fetchInitialPosts } from '@/lib/blog-content'
 import BlogPage from '@/views/BlogPage'
 
 export const metadata = pageMetadata({
