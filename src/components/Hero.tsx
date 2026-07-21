@@ -43,7 +43,7 @@ export default function Hero() {
         <div className="max-w-7xl mx-auto w-full px-6 lg:px-8 pt-24 pb-12 text-center">
           {/* Badge */}
           <div
-            className="inline-flex items-center gap-2 bg-surface border border-line rounded-full px-4 py-1.5 mb-8 animate-fade-up"
+            className="inline-flex items-center gap-2 bg-surface border border-line rounded-full px-4 py-1.5 mb-8"
             style={{ animationFillMode: 'both' }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-dot" />
@@ -53,19 +53,19 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
-            className="text-[34px] sm:text-[42px] lg:text-[50px] xl:text-[54px] font-bold tracking-[-0.02em] leading-[1.12] mb-6 animate-fade-up"
+            className="text-[34px] sm:text-[42px] lg:text-[50px] xl:text-[54px] font-bold tracking-[-0.02em] leading-[1.12] mb-6"
             style={{ animationDelay: '0.1s', animationFillMode: 'both' }}
           >
             <span className="text-ink">The CRM small teams</span>
             <br />
-            <span key={phrase} className="hero-emph font-serif font-medium italic inline-block animate-word-in">
+            <span key={phrase} className="hero-emph font-serif font-medium italic inline-block">
               {phrase}
             </span>
           </h1>
 
           {/* Subheadline */}
           <p
-            className="max-w-[640px] mx-auto text-lg sm:text-xl text-ink-2 leading-relaxed mb-10 animate-fade-up"
+            className="max-w-[640px] mx-auto text-lg sm:text-xl text-ink-2 leading-relaxed mb-10"
             style={{ animationDelay: '0.2s', animationFillMode: 'both' }}
           >
             Everything you need to manage contacts, close deals, and automate follow-ups —
@@ -74,7 +74,7 @@ export default function Hero() {
 
           {/* CTAs */}
           <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 animate-fade-up"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
             style={{ animationDelay: '0.3s', animationFillMode: 'both' }}
           >
             <a
@@ -102,7 +102,7 @@ export default function Hero() {
 
           {/* Trust chips */}
           <div
-            className="flex flex-wrap items-center justify-center gap-2.5 mb-7 animate-fade-up"
+            className="flex flex-wrap items-center justify-center gap-2.5 mb-7"
             style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
           >
             {trustChips.map(({ icon: Icon, label, bg, border, color }) => (
@@ -120,7 +120,7 @@ export default function Hero() {
 
           {/* Positioning line — honest at prototype stage (no fabricated proof) */}
           <div
-            className="flex items-center justify-center gap-2.5 animate-fade-up"
+            className="flex items-center justify-center gap-2.5"
             style={{ animationDelay: '0.45s', animationFillMode: 'both' }}
           >
             <Sparkles size={15} className="text-accent flex-shrink-0" />
@@ -134,7 +134,7 @@ export default function Hero() {
         {/* Interactive product demo */}
         <div
           id="hero-demo"
-          className="max-w-[1152px] mx-auto w-full px-6 lg:px-8 scroll-mt-24 animate-fade-up"
+          className="max-w-[1152px] mx-auto w-full px-6 lg:px-8 scroll-mt-24"
           style={{ animationDelay: '0.5s', animationFillMode: 'both' }}
         >
           <HeroDemoWindow />

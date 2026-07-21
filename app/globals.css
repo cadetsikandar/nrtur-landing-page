@@ -122,7 +122,6 @@
     linear-gradient(var(--line-2) 1px, transparent 1px),
     linear-gradient(90deg, var(--line-2) 1px, transparent 1px);
   background-size: 60px 60px;
-  animation: grid-pan 8s linear infinite;
 }
 
 @keyframes word-in {
