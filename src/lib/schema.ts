@@ -11,9 +11,9 @@ export const faqs = [
   },
   {
     q: 'Can I import my existing contacts from HubSpot or another CRM?',
-    a: 'Yes. We support CSV imports and direct integrations with HubSpot, Salesforce, Pipedrive, and most major CRMs. Our onboarding team will help you migrate cleanly — it typically takes less than 30 minutes for most team sizes.',
+    a: 'Yes. You can import your contacts, companies, and deals from a CSV export — which every major CRM (HubSpot, Salesforce, Pipedrive, and others) can produce. For most small teams the import takes well under an hour, and we are happy to help you map your fields.',
     shortA:
-      'Yes. We support CSV imports and direct integrations with HubSpot, Salesforce, Pipedrive, and most major CRMs. Migration typically takes less than 30 minutes.',
+      'Yes — import your contacts, companies, and deals from a CSV export, which every major CRM can produce. For most small teams it takes under an hour.',
   },
   {
     q: 'What email providers does nrtur sync with?',
@@ -23,9 +23,9 @@ export const faqs = [
   },
   {
     q: 'Is nrtur secure? Where is my data stored?',
-    a: "nrtur uses AES-256 encryption at rest and TLS 1.3 in transit. We're SOC 2 Type II certified, and all data is stored in AWS us-east-1 and eu-west-1 (you choose at signup). We do not sell or share your data with third parties. Business plan customers also get SAML/SSO and audit logs.",
+    a: "Your data is encrypted in transit and at rest, and hosted on established cloud infrastructure. We don't sell or share your data with third parties. nrtur is an early-stage product, so formal certifications like SOC 2 are on our roadmap rather than in place today; SSO/SAML and audit logs are part of the Business plan.",
     shortA:
-      'nrtur uses AES-256 encryption at rest and TLS 1.3 in transit, is SOC 2 Type II certified, and stores data in AWS us-east-1 or eu-west-1 (your choice).',
+      'Data is encrypted in transit and at rest and hosted on established cloud infrastructure, and we never sell your data. SOC 2 is on our roadmap; SSO/SAML and audit logs come with the Business plan.',
   },
   {
     q: 'Can I cancel at any time?',
@@ -41,9 +41,9 @@ export const faqs = [
   },
   {
     q: 'Does nrtur have a mobile app?',
-    a: 'Yes. iOS and Android apps are included with all plans. You can view and update contacts, move deals through your pipeline, and see activity — all from your phone. Real-time push notifications keep your team in sync on the go.',
+    a: 'nrtur runs in any modern browser and is built to work well on your phone, so you can check contacts, move deals, and review activity on the go. Dedicated native iOS and Android apps are on our roadmap for after launch.',
     shortA:
-      'Yes. iOS and Android apps are included with all plans, with real-time push notifications to keep your team in sync on the go.',
+      'nrtur works in any modern browser, including on mobile. Dedicated native iOS and Android apps are on our roadmap for after launch.',
   },
   {
     q: 'How long does onboarding take?',
@@ -53,9 +53,9 @@ export const faqs = [
   },
   {
     q: 'What integrations does nrtur support?',
-    a: 'We integrate with 100+ tools including Slack, Zapier, Make (Integromat), Calendly, Typeform, Stripe, QuickBooks, Google Calendar, Zoom, and more. Business plan customers get access to full API + webhook support for custom integrations.',
+    a: 'Today the core integrations are two-way email sync (Gmail and Outlook) and CSV import. More integrations — plus API and webhook access for custom workflows — are rolling out during early access. Tell us what you need and we will prioritize it.',
     shortA:
-      '100+ tools including Slack, Zapier, Make, Calendly, Typeform, Stripe, QuickBooks, Google Calendar, and Zoom. Business plans get full API and webhook access.',
+      'Core integrations today are email sync (Gmail/Outlook) and CSV import, with more — plus API and webhook access — rolling out during early access.',
   },
   {
     q: 'Is nrtur right for my industry?',

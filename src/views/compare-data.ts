@@ -171,7 +171,7 @@ export const narratives: Record<CompetitorId, CompetitorNarrative> = {
       { label: 'Closest match — see the ties' },
     ],
     verdict:
-      'Pipedrive is genuinely good. nrtur gives you its best features one tier cheaper, with human onboarding.',
+      "Pipedrive's sticker price starts lower, but the features a real pipeline needs sit on its upper tiers — nrtur bundles them in, with human onboarding instead of docs.",
     stayLabel: 'Stay with Pipedrive',
   },
   zoho: {
