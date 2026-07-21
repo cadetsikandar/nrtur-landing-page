@@ -1,5 +1,5 @@
 ---
-title: "Do you actually need Salesforce? A right-sizing checklist"
+title: "Do you need Salesforce? A right-sizing checklist"
 excerpt: "Ten questions that tell you whether enterprise CRM is solving your problems or creating them."
 tag: alternatives
 author: touqeer
