@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { LayoutDashboard, Users, GitBranch, Mail, Zap, Settings, Check, ChevronDown } from 'lucide-react'
 import PipelineView from './PipelineView'
 import DashboardView from './DashboardView'
@@ -26,12 +26,29 @@ const activity = [
 
 export default function HeroDemoWindow() {
   const [heroView, setHeroView] = useState<HeroView>('pipeline')
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+
+  useEffect(() => {
+    if (!isAutoPlaying) return
+    const timer = setInterval(() => {
+      setHeroView((prev) => {
+        const idx = navItems.findIndex((n) => n.id === prev)
+        return navItems[(idx + 1) % navItems.length].id
+      })
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [isAutoPlaying])
+
+  const handleTabClick = (id: HeroView) => {
+    setHeroView(id)
+    setIsAutoPlaying(false)
+  }
 
   return (
     <div>
       {/* Switcher row */}
       <div className="flex items-center justify-center gap-2 flex-wrap mb-4">
-        <span className="inline-flex items-center gap-1.5 text-xs text-ink-3 mr-1">
+        <span className="inline-flex items-center gap-1.5 text-xs text-ink-2 mr-1">
           <span className="w-1.5 h-1.5 rounded-full bg-pos animate-pulse-dot" />
           Live demo — click around
         </span>
@@ -40,11 +57,11 @@ export default function HeroDemoWindow() {
           return (
             <button
               key={id}
-              onClick={() => setHeroView(id)}
+              onClick={() => handleTabClick(id)}
               className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all ${
                 active
                   ? 'bg-accent-soft border border-accent-line text-accent-ink'
-                  : 'bg-surface border border-line text-ink-3 hover:text-ink hover:bg-surface-2'
+                  : 'bg-surface border border-line-2 text-ink shadow-sm hover:bg-surface-2 hover:border-line-3'
               }`}
             >
               <Icon size={12} />
@@ -112,7 +129,7 @@ export default function HeroDemoWindow() {
                     <button
                       key={id}
                       title={label}
-                      onClick={() => setHeroView(id)}
+                      onClick={() => handleTabClick(id)}
                       className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all ${
                         active
                           ? 'bg-accent-soft text-accent shadow-[0_0_0_1px_var(--accent-line)]'

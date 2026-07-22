@@ -5,10 +5,12 @@ import Features from '../components/Features'
 import Showcase from '../components/Showcase'
 import Pricing from '../components/Pricing'
 import FinalCTA from '../components/FinalCTA'
+import ScrollReveal from '../components/ScrollReveal'
 
 export default function Home() {
   return (
     <>
+      <ScrollReveal />
       <Hero />
       <TrustedBy />
       <Comparison />

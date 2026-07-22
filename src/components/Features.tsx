@@ -1,6 +1,3 @@
-'use client'
-
-import { useScrollReveal } from '../hooks/useScrollReveal'
 import {
   Users, GitBranch, Mail, Zap, Shield, BarChart3,
   Globe, Clock, Layers,
@@ -82,10 +79,8 @@ const extras = [
 ]
 
 export default function Features() {
-  const ref = useScrollReveal()
-
   return (
-    <section id="features" className="py-28 relative" ref={ref}>
+    <section id="features" className="py-28 relative">
       <div className="absolute inset-0 bg-surface-2" />
       <div className="orb w-[500px] h-[500px] bg-surface-2 top-1/2 -left-60 absolute pointer-events-none" />
 

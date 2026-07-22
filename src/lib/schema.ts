@@ -11,9 +11,9 @@ export const faqs = [
   },
   {
     q: 'Can I import my existing contacts from HubSpot or another CRM?',
-    a: 'Yes. You can import your contacts, companies, and deals from a CSV export — which every major CRM (HubSpot, Salesforce, Pipedrive, and others) can produce. For most small teams the import takes well under an hour, and we are happy to help you map your fields.',
+    a: 'Yes. You can import your contacts, companies, and deals from a CSV export — which every major CRM (HubSpot, Salesforce, Pipedrive, and others) can produce. For most small teams, the import takes well under an hour, and we are happy to help you map your fields.',
     shortA:
-      'Yes — import your contacts, companies, and deals from a CSV export, which every major CRM can produce. For most small teams it takes under an hour.',
+      'Yes — import your contacts, companies, and deals from a CSV export, which every major CRM can produce. For most small teams, it takes under an hour.',
   },
   {
     q: 'What email providers does nrtur sync with?',

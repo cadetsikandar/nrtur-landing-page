@@ -330,7 +330,7 @@ export default function Showcase() {
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                 active === id
                   ? 'bg-accent-soft border border-accent-line text-accent-ink shadow-sm'
-                  : 'bg-surface border border-line text-ink-3 hover:text-ink hover:bg-surface-2'
+                  : 'bg-surface border border-line-2 text-ink shadow-sm hover:bg-surface-2 hover:border-line-3'
               }`}
             >
               <Icon size={15} />

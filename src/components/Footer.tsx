@@ -118,7 +118,7 @@ export default function Footer() {
       <div className="border-t border-line">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-ink-4">
-            © 2025 nrtur, Inc. All rights reserved.
+            © 2026 nrtur, Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Security'].map((item) => (

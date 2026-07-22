@@ -1,7 +1,4 @@
-'use client'
-
 import { ArrowRight, Clock, CreditCard, Unlock, ArrowRightLeft } from 'lucide-react'
-import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const trustChips = [
   { icon: Clock, label: '14-day free trial', bg: 'bg-accent-soft', border: 'border-accent-line', iconColor: 'text-accent-ink' },
@@ -11,10 +8,8 @@ const trustChips = [
 ]
 
 export default function FinalCTA() {
-  const ref = useScrollReveal()
-
   return (
-    <section className="py-28 relative overflow-hidden" ref={ref}>
+    <section className="py-28 relative overflow-hidden">
       <div className="absolute inset-0 bg-surface-2" />
 
       {/* Glow orbs */}

@@ -6,7 +6,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useRotatingPhrase } from '../hooks/useRotatingPhrase'
 import { faqs } from '../lib/schema'
 
-const phrases = ['need to know.', 'wanted to ask.', 'before switching.']
+const phrases = ['need to know.', 'wanted to ask.', 'need before switching.']
 
 
 function FAQItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {

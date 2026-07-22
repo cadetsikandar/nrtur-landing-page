@@ -5,12 +5,10 @@ import { Check, X, ArrowRight } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import {
   crmProfiles,
-  narratives,
-  competitorOrder,
   matchups,
   FEATURES,
   type CrmId,
-  type CompetitorId,
+
 } from './compare-data'
 
 function CellValue({ value, highlight }: { value: string; highlight?: boolean }) {
@@ -122,11 +120,9 @@ function ComparisonTable({ cols }: { cols: CrmId[] }) {
 
 export default function ComparePage() {
   const [matchupIdx, setMatchupIdx] = useState(0)
-  const [competitor, setCompetitor] = useState<CompetitorId>('hubspot')
   const ref = useScrollReveal()
 
   const m = matchups[matchupIdx]
-  const narrative = narratives[competitor]
 
   return (
     <>
@@ -163,7 +159,7 @@ export default function ComparePage() {
                   className={`px-[18px] py-2.5 rounded-xl text-sm font-medium transition-all ${
                     isActive
                       ? 'bg-accent-soft border border-accent-line text-accent-ink shadow-md'
-                      : 'bg-surface border border-line text-ink-4 hover:text-ink-3'
+                      : 'bg-surface border border-line-2 text-ink shadow-sm hover:bg-surface-2 hover:border-line-3'
                   }`}
                 >
                   {mm.title}
@@ -203,78 +199,6 @@ export default function ComparePage() {
         </div>
       </section>
 
-      {/* Demoted: direct nrtur head-to-head (kept, but no longer the lead) */}
-      <section className="relative pb-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl sm:text-3xl font-serif font-semibold tracking-tight text-ink mb-2">
-              Prefer a head-to-head with nrtur?
-            </h2>
-            <p className="text-[15px] text-ink-3">
-              Pick the tool you&rsquo;re leaving and see it against nrtur directly.
-            </p>
-          </div>
-
-          {/* Competitor picker */}
-          <div className="flex justify-center gap-2 flex-wrap mb-6">
-            {competitorOrder.map((id) => {
-              const isActive = id === competitor
-              return (
-                <button
-                  key={id}
-                  onClick={() => setCompetitor(id)}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                    isActive
-                      ? 'bg-accent-soft border border-accent-line text-accent-ink shadow-md'
-                      : 'bg-surface border border-line text-ink-4 hover:text-ink-3'
-                  }`}
-                >
-                  {crmProfiles[id].name}
-                </button>
-              )
-            })}
-          </div>
-
-          {/* Verdict chips */}
-          <div className="flex justify-center gap-2.5 flex-wrap mb-6">
-            {narrative.chips.map((chip) => (
-              <span
-                key={chip.label}
-                className={`text-[13px] font-medium rounded-full px-3.5 py-1.5 border ${
-                  chip.highlight ? 'text-pos-ink bg-pos-soft border-pos' : 'text-ink-3 bg-surface border-line'
-                }`}
-              >
-                {chip.label}
-              </span>
-            ))}
-          </div>
-
-          <div className="reveal">
-            <ComparisonTable cols={['nrtur', competitor]} />
-          </div>
-
-          <div className="mt-8 relative overflow-hidden bg-surface border border-line shadow-md rounded-2xl px-6 sm:px-8 py-6 flex flex-col sm:flex-row items-center gap-5">
-            <p className="text-[15px] text-ink-3 leading-relaxed flex-1 text-center sm:text-left">
-              {narrative.verdict}
-            </p>
-            <a
-              href="https://forms.gle/sb2mHm97oRNFRmUY9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary text-sm py-[11px] px-6 whitespace-nowrap flex-shrink-0"
-            >
-              Join waitlist
-              <ArrowRight size={15} />
-            </a>
-          </div>
-
-          <p className="text-center mt-8 text-xs text-ink-4">
-            Prices shown are each tool&rsquo;s plan that matches nrtur&rsquo;s included features —
-            most offer cheaper entry tiers that gate those features behind higher plans or add-ons.
-            Public pricing, July 2026.
-          </p>
-        </div>
-      </section>
     </>
   )
 }

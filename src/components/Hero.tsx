@@ -6,12 +6,11 @@ import HeroDemoWindow from './hero/HeroDemoWindow'
 
 const rotatingPhrases = [
   'actually want to use.',
-  'set up in minutes.',
-  'without the bloat.',
-  'that closes more deals.',
-  'that runs your follow-ups.',
-  'with everything included.',
-  'your team will love.',
+  'can set up in minutes.',
+  'use to close more deals.',
+  'rely on for follow-ups.',
+  'can actually afford.',
+  'get with everything included.',
 ]
 
 const trustChips = [

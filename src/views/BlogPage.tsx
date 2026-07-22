@@ -94,7 +94,7 @@ export default function BlogPage({ initialPosts }: { initialPosts: Post[] }) {
                   className={
                     active
                       ? 'px-4 py-2 rounded-full text-sm font-medium bg-accent-soft border border-accent-line text-accent-ink transition-all duration-200'
-                      : 'px-4 py-2 rounded-full text-sm font-medium bg-surface border border-line text-ink-3 hover:text-ink-2 hover:border-line transition-all duration-200'
+                      : 'px-4 py-2 rounded-full text-sm font-medium bg-surface border border-line-2 text-ink shadow-sm hover:bg-surface-2 hover:border-line-3 transition-all duration-200'
                   }
                 >
                   {chip.label}

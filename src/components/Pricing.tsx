@@ -37,17 +37,17 @@ function Cell({ value, tinted }: { value: Cell; tinted?: boolean }) {
     return <Check size={14} className="text-pos" />
   }
   if (value === false) {
-    return <span className="text-[13px] text-ink-4">—</span>
+    return <span className="text-[13px] text-ink-3">—</span>
   }
   return (
-    <span className={`text-[13px] text-center ${tinted ? 'font-medium text-ink' : 'text-ink-2'}`}>
+    <span className={`text-[13px] text-center ${tinted ? 'font-medium text-ink' : 'font-medium text-ink'}`}>
       {value}
     </span>
   )
 }
 
 export default function Pricing() {
-  const [yearly, setYearly] = useState(false)
+  const [yearly, setYearly] = useState(true)
   const ref = useScrollReveal()
 
   return (
@@ -111,11 +111,11 @@ export default function Pricing() {
                   }`}
                 >
                   <p className="font-bold text-sm mb-0.5 text-ink">{plan.name}</p>
-                  <span className={`text-[11px] ${plan.tinted ? 'text-ink-2' : 'text-ink-3'}`}>
+                  <span className="text-[13px] font-semibold text-ink">
                     ${yearly ? plan.yearlyPrice : plan.monthlyPrice}/user/mo
                   </span>
                   {yearly && (
-                    <p className="mt-[3px] text-[10px] text-ink-3">
+                    <p className="mt-[3px] text-[11px] text-ink-2">
                       Billed ${plan.yearlyPrice * 12}/yr per user
                     </p>
                   )}
@@ -127,7 +127,7 @@ export default function Pricing() {
             {featureRows.map((row) => (
               <div key={row.feature} className="grid grid-cols-[1fr_150px_150px_150px] border-b border-line-2">
                 <div className="px-6 py-[13px] flex items-center">
-                  <span className="text-sm text-ink-2">{row.feature}</span>
+                  <span className="text-sm font-medium text-ink-2">{row.feature}</span>
                 </div>
                 {plans.map((plan, i) => (
                   <div
@@ -159,7 +159,7 @@ export default function Pricing() {
                     className={`text-xs font-semibold rounded-[9px] py-[7px] px-3.5 whitespace-nowrap transition-all ${
                       plan.tinted
                         ? 'bg-btn-bg hover:bg-btn-bg-hover text-btn-fg shadow-sm hover:-translate-y-0.5'
-                        : 'bg-surface hover:bg-surface-2 border border-line text-ink-2 hover:text-ink font-medium'
+                        : 'bg-surface hover:bg-surface-2 border border-line-2 text-ink shadow-sm hover:border-line-3'
                     }`}
                   >
                     Join waitlist

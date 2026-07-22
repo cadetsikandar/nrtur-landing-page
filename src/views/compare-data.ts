@@ -137,56 +137,7 @@ export const crmProfiles: Record<CrmId, CrmProfile> = {
   },
 }
 
-/** nrtur-vs-competitor narrative shown for the primary competitor. */
-export interface CompetitorNarrative {
-  chips: { label: string; highlight?: boolean }[]
-  verdict: string
-  stayLabel: string
-}
 
-export const narratives: Record<CompetitorId, CompetitorNarrative> = {
-  hubspot: {
-    chips: [
-      { label: 'Automations included, not a paid add-on', highlight: true },
-      { label: 'Set up in minutes, not weeks' },
-      { label: 'No annual lock-in' },
-    ],
-    verdict: "HubSpot is a great suite — if you're 50+ people. You're not paying for that yet.",
-    stayLabel: 'Stay with HubSpot',
-  },
-  salesforce: {
-    chips: [
-      { label: 'One flat plan — no enterprise contract', highlight: true },
-      { label: 'No admin required' },
-      { label: 'Productive in the first hour' },
-    ],
-    verdict:
-      "If you need Salesforce's depth, you'll know. Until then, it's paying enterprise prices to fight enterprise complexity.",
-    stayLabel: 'Stay with Salesforce',
-  },
-  pipedrive: {
-    chips: [
-      { label: 'Email sync on every plan', highlight: true },
-      { label: 'Automations without caps' },
-      { label: 'Closest match — see the ties' },
-    ],
-    verdict:
-      "Pipedrive's sticker price starts lower, but the features a real pipeline needs sit on its upper tiers — nrtur bundles them in, with human onboarding instead of docs.",
-    stayLabel: 'Stay with Pipedrive',
-  },
-  zoho: {
-    chips: [
-      { label: 'One focused tool, not 40 apps', highlight: true },
-      { label: 'Minutes to set up, not days' },
-      { label: 'Human support, not a ticket queue' },
-    ],
-    verdict:
-      "Zoho's sticker price is lower — until you add the pieces nrtur ships with. Then you're paying more to manage more.",
-    stayLabel: 'Stay with Zoho',
-  },
-}
-
-export const competitorOrder: CompetitorId[] = ['hubspot', 'salesforce', 'pipedrive', 'zoho']
 
 /** Curated competitor-vs-competitor matchups. The compare page LEADS with these — the
  *  well-known brand terms people actually search — and adds nrtur as a natural third
