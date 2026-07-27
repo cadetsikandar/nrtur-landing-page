@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Logo from './Logo'
 
 const rows = [
-  { feature: 'Comparable plan', hubspot: '$90/mo · Pro', salesforce: '$165/mo · Ent.', nrtur: '$29/user/mo', nrturWins: true },
+  { feature: 'Comparable plan', hubspot: '$90/mo · Pro', salesforce: '$165/mo · Ent.', nrtur: 'from $9/mo', nrturWins: true },
   { feature: 'Setup time', hubspot: '1–4 weeks', salesforce: 'Weeks to months', nrtur: '~5 minutes', nrturWins: true },
   { feature: 'Automations', hubspot: 'Paid add-on', salesforce: 'Flow — powerful, complex', nrtur: 'Included, unlimited on Pro', nrturWins: true },
   { feature: 'Email sync', hubspot: 'Included', salesforce: 'Included', nrtur: 'Included', nrturWins: false },
@@ -77,7 +77,7 @@ export default function Comparison() {
                     <Logo className="w-5 h-5" />
                     <span className="font-bold text-ink text-sm">nrtur</span>
                   </div>
-                  <span className="text-[11px] text-accent font-medium">from $29/mo</span>
+                  <span className="text-[11px] text-accent font-medium">from $9/mo</span>
                 </div>
               </div>
 

@@ -20,7 +20,7 @@ const trustChips = [
 ]
 
 const stats = [
-  { value: '$29', label: 'Per user·mo' },
+  { value: '$9', label: 'Starting price' },
   { value: '5 min', label: 'Average setup' },
   { value: '$0', label: 'Setup fees' },
   { value: '1–20+', label: 'Team size it fits' },

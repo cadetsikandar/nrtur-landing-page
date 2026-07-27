@@ -43,10 +43,10 @@ export const crmProfiles: Record<CrmId, CrmProfile> = {
     id: 'nrtur',
     name: 'nrtur',
     tabLabel: 'nrtur',
-    price: 'from $29/mo',
+    price: 'from $9/mo',
     accent: true,
     values: {
-      price: '$29 — all-in',
+      price: '$9 — all-in',
       setup: '~5 minutes',
       ease: 'Excellent',
       automations: 'Unlimited on Pro',
