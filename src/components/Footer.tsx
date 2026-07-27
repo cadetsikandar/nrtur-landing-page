@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Twitter, Linkedin, Github, Mail } from 'lucide-react'
+import Logo from './Logo'
 
 const links = {
   Product: [
@@ -47,7 +48,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-5">
-              <img src="/nrtur-logo.png" alt="nrtur logo" className="w-8 h-8 object-contain" />
+              <Logo className="w-8 h-8" />
               <span className="text-ink font-bold text-lg tracking-tight">nrtur</span>
             </Link>
             <p className="text-sm text-ink-2 leading-relaxed mb-6 max-w-52">

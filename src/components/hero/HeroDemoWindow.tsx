@@ -5,6 +5,7 @@ import DashboardView from './DashboardView'
 import ContactsView from './ContactsView'
 import EmailView from './EmailView'
 import AutomationView from './AutomationView'
+import Logo from '../Logo'
 
 export type HeroView = 'dashboard' | 'contacts' | 'pipeline' | 'email' | 'automation'
 
@@ -122,7 +123,7 @@ export default function HeroDemoWindow() {
             <div className="flex bg-surface" style={{ height: 500 }}>
               {/* Sidebar */}
               <div className="w-14 bg-surface-2 border-r border-line flex flex-col items-center py-5 gap-2 flex-shrink-0">
-                <img src="/nrtur-logo.png" alt="nrtur" className="w-[30px] h-[30px] object-contain mb-4" />
+                <Logo className="w-[30px] h-[30px] mb-4" />
                 {navItems.map(({ id, icon: Icon, label }) => {
                   const active = heroView === id
                   return (

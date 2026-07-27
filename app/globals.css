@@ -146,3 +146,12 @@
 /* Hero headline emphasis — same ink as the rest of the heading; the italic serif
    carries the emphasis (no color shift), matching the reference. */
 .hero-emph { color: var(--ink); }
+
+/* Logo: recolor the transparent butterfly PNG to the brand accent by using its alpha
+   as a mask — exact evergreen, and theme-aware (brighter green in dark). Stopgap until
+   a real green SVG lands; then just swap the mask url below. */
+.logo-mark {
+  background-color: var(--accent);
+  -webkit-mask: url('/nrtur-logo.png') center / contain no-repeat;
+  mask: url('/nrtur-logo.png') center / contain no-repeat;
+}

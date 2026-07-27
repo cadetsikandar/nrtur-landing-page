@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useRotatingPhrase } from '../hooks/useRotatingPhrase'
+import Logo from '../components/Logo'
 
 const phrases = ['we always wanted.', 'that stays out of your way.', 'teams actually enjoy.']
 
@@ -256,11 +257,7 @@ function SignalField() {
           className="relative w-14 h-14 rounded-2xl bg-surface border border-line backdrop-blur-md grid place-items-center"
           style={{ boxShadow: '0 8px 40px var(--scrim), 0 0 0 1px var(--accent-line)' }}
         >
-          <img
-            src="/nrtur-logo.png"
-            alt="nrtur"
-            className="w-8 h-8 object-contain animate-float"
-          />
+          <Logo className="w-8 h-8 animate-float" />
         </div>
       </div>
 

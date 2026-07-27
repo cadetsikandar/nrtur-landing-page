@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
+import Logo from './Logo'
 
 const links = [
   { label: 'Features', href: '/#features' },
@@ -29,11 +30,7 @@ export default function Navbar() {
       <nav className="max-w-[1280px] mx-auto px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <img
-            src="/nrtur-logo.png"
-            alt="nrtur logo"
-            className="w-[34px] h-[34px] object-contain"
-          />
+          <Logo className="w-[34px] h-[34px]" />
           <span className="text-ink font-bold text-lg tracking-tight">nrtur</span>
         </Link>
 

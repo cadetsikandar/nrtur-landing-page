@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Logo from './Logo'
 
 const rows = [
   { feature: 'Comparable plan', hubspot: '$90/mo · Pro', salesforce: '$165/mo · Ent.', nrtur: '$29/user/mo', nrturWins: true },
@@ -73,7 +74,7 @@ export default function Comparison() {
                 </div>
                 <div className="px-4 py-[14px] text-center border-l border-accent-line bg-accent-soft">
                   <div className="flex items-center justify-center gap-2 mb-0.5">
-                    <img src="/nrtur-logo.png" alt="nrtur" className="w-5 h-5 object-contain" />
+                    <Logo className="w-5 h-5" />
                     <span className="font-bold text-ink text-sm">nrtur</span>
                   </div>
                   <span className="text-[11px] text-accent font-medium">from $29/mo</span>
