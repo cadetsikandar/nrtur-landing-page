@@ -23,7 +23,7 @@ const stats = [
   { value: '$29', label: 'Per user·mo' },
   { value: '5 min', label: 'Average setup' },
   { value: '$0', label: 'Setup fees' },
-  { value: '1–5', label: 'Team size it fits' },
+  { value: '1–20+', label: 'Team size it fits' },
 ]
 
 export default function Hero() {
@@ -68,7 +68,7 @@ export default function Hero() {
             style={{ animationDelay: '0.2s', animationFillMode: 'both' }}
           >
             Everything you need to manage contacts, close deals, and automate follow-ups —
-            without HubSpot's complexity or enterprise pricing. Built for teams of 1–5 who move fast.
+            without HubSpot's complexity or enterprise pricing. Built for teams of 1–20+ who move fast.
           </p>
 
           {/* CTAs */}
@@ -124,7 +124,7 @@ export default function Hero() {
           >
             <Sparkles size={15} className="text-accent flex-shrink-0" />
             <p className="text-sm text-ink-3">
-              Built for teams of 1–5 —{' '}
+              Built for teams of 1–20+ —{' '}
               <span className="text-ink-2 font-semibold">no bloat, no lock-in, no sales calls.</span>
             </p>
           </div>

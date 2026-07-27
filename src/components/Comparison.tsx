@@ -9,7 +9,7 @@ const rows = [
   { feature: 'Onboarding', hubspot: 'Documentation', salesforce: 'Paid / partner', nrtur: 'Human, 1:1', nrturWins: true },
   { feature: 'Contracts', hubspot: 'Annual plans', salesforce: 'Annual required', nrtur: 'Month-to-month', nrturWins: true },
   { feature: 'Enterprise upsells', hubspot: 'Frequent', salesforce: 'Frequent', nrtur: 'None', nrturWins: true },
-  { feature: 'Best for', hubspot: 'Mid-market & up', salesforce: 'Large sales orgs', nrtur: 'Teams of 1–5', nrturWins: false },
+  { feature: 'Best for', hubspot: 'Mid-market & up', salesforce: 'Large sales orgs', nrtur: 'Teams of 1–20+', nrturWins: false },
 ]
 
 const verdictChips = [

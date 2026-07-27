@@ -55,7 +55,7 @@ export const crmProfiles: Record<CrmId, CrmProfile> = {
       customization: 'Focused on essentials',
       support: 'Human, 1:1',
       contracts: 'Month-to-month',
-      bestFor: 'Teams of 1–5',
+      bestFor: 'Teams of 1–20+',
     },
     wins: ['price', 'setup', 'automations', 'emailSync', 'reporting', 'support', 'contracts'],
   },
@@ -160,7 +160,7 @@ export const matchups: Matchup[] = [
     blurb:
       'The two enterprise heavyweights. HubSpot is the friendlier all-in-one marketing-and-sales suite; Salesforce is the deepest, most customizable platform — and the steepest to run. Both are built for scale, and priced for it.',
     nrturAngle:
-      'For a team of 1–5, both are far more CRM than you need. nrtur covers the core — contacts, pipeline, email sync, automations — without the setup, admin, or price tag.',
+      'For a team of 1–20+, both are far more CRM than you need. nrtur covers the core — contacts, pipeline, email sync, automations — without the setup, admin, or price tag.',
   },
   {
     a: 'pipedrive',

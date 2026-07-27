@@ -35,9 +35,9 @@ export const faqs = [
   },
   {
     q: "What's the difference between Pro and Business?",
-    a: "Pro is designed for teams of up to 5 who need full pipeline + automation power. Business adds unlimited users, SSO/SAML, audit logs, custom webhook integrations, a dedicated onboarding specialist, and SLA-backed support. If you're unsure, start with Pro — upgrading takes seconds.",
+    a: "Pro is designed for teams of up to 10 who need full pipeline + automation power. Business adds unlimited users, SSO/SAML, audit logs, custom webhook integrations, a dedicated onboarding specialist, and SLA-backed support. If you're unsure, start with Pro — upgrading takes seconds.",
     shortA:
-      'Pro fits teams of up to 5 with full pipeline and automation power. Business adds unlimited users, SSO/SAML, audit logs, custom webhooks, and SLA support.',
+      'Pro fits teams of up to 10 with full pipeline and automation power. Business adds unlimited users, SSO/SAML, audit logs, custom webhooks, and SLA support.',
   },
   {
     q: 'Does nrtur have a mobile app?',

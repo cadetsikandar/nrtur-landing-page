@@ -140,7 +140,7 @@ export default function ComparePage() {
           </h1>
           <p className="max-w-xl mx-auto text-lg text-ink-3 leading-relaxed">
             Honest, side-by-side breakdowns of the CRMs you&rsquo;re weighing — HubSpot,
-            Salesforce, Pipedrive, and Zoho — plus where nrtur fits for a team of 1&ndash;5.
+            Salesforce, Pipedrive, and Zoho — plus where nrtur fits for a team of 1&ndash;20+.
           </p>
         </div>
       </section>
