@@ -26,6 +26,19 @@ import {
 
 const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog')
 
+// Domains we name freely but never pass ranking equity to (editorial rule: no follow-links to competitors).
+const COMPETITOR_HOSTS = [
+  'hubspot.com',
+  'pipedrive.com',
+  'salesforce.com',
+  'zoho.com',
+  'monday.com',
+  'close.com',
+  'freshworks.com',
+  'lessannoyingcrm.com',
+  'gohighlevel.com',
+]
+
 interface FrontMatter {
   title: string
   excerpt: string
@@ -34,10 +47,31 @@ interface FrontMatter {
   date?: string
   readingTime?: number
   featured?: boolean
+  thumbnail?: string
 }
 
 function isTagSlug(value: string): value is TagSlug {
   return (TAG_SLUGS as string[]).includes(value)
+}
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+}
+
+/** Decode the HTML entities `marked` emits (e.g. &#39; &amp;) so extracted text reads cleanly. */
+export function decodeEntities(s: string): string {
+  return s
+    .replace(/&#(\d+);/g, (_m, n: string) => String.fromCharCode(Number(n)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_m, h: string) => String.fromCharCode(parseInt(h, 16)))
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
 }
 
 function buildPost(
@@ -57,6 +91,22 @@ function buildPost(
   ]
   const authorName = known?.name ?? fm.author ?? 'nrtur team'
   const body = content.trim()
+  const headings: { level: number; text: string; slug: string }[] = []
+  let bodyHtml = body ? (marked.parse(body) as string) : undefined
+  if (bodyHtml) {
+    bodyHtml = bodyHtml.replace(/<h2>([\s\S]*?)<\/h2>/g, (_m, inner: string) => {
+      const text = decodeEntities(inner.replace(/<[^>]+>/g, '').trim())
+      const slug = slugify(text)
+      headings.push({ level: 2, text, slug })
+      return `<h2 id="${slug}">${inner}</h2>`
+    })
+    // External links open in a new tab; competitor domains get rel="nofollow" (no ranking equity to rivals).
+    bodyHtml = bodyHtml.replace(/<a href="(https?:\/\/[^"]+)"/g, (_m, href: string) => {
+      const host = href.replace(/^https?:\/\//i, '').split('/')[0].toLowerCase()
+      const isCompetitor = COMPETITOR_HOSTS.some((d) => host === d || host.endsWith('.' + d))
+      return `<a href="${href}" target="_blank" rel="${isCompetitor ? 'nofollow noopener' : 'noopener'}"`
+    })
+  }
 
   const post: Post = {
     id: slug,
@@ -73,7 +123,9 @@ function buildPost(
       : '',
     readingTime: fm.readingTime ?? Math.max(1, Math.round(body.split(/\s+/).length / 200)),
     featured: fm.featured,
-    bodyHtml: body ? (marked.parse(body) as string) : undefined,
+    thumbnail: fm.thumbnail,
+    headings,
+    bodyHtml,
   }
   return { post, ts: fm.date ? new Date(fm.date).getTime() : 0 }
 }

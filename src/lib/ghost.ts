@@ -17,6 +17,10 @@ export interface Post {
   dateLabel: string
   readingTime: number
   featured?: boolean
+  /** Optional per-post thumbnail id, maps to art in PostCard. */
+  thumbnail?: string
+  /** H2 section headings for the article table of contents. */
+  headings?: { level: number; text: string; slug: string }[]
   /** Full HTML body — only present when fetched live from Ghost (seed posts have none). */
   bodyHtml?: string
 }

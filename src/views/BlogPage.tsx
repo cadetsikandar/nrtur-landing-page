@@ -109,7 +109,7 @@ export default function BlogPage({ initialPosts }: { initialPosts: Post[] }) {
               href={getPostUrl(featuredPost)}
               className="animate-fade-up group grid grid-cols-1 md:grid-cols-[1.1fr_1fr] glass-card overflow-hidden mb-10 transition-all duration-300 hover:border-line hover:shadow-md"
             >
-              <ArtPanel tagSlug={featuredPost.tagSlug} variant="featured" />
+              <ArtPanel tagSlug={featuredPost.tagSlug} variant="featured" thumb={featuredPost.thumbnail} />
               <div className="p-8 sm:p-10 flex flex-col justify-center">
                 <div className="flex items-center gap-2.5 mb-3.5">
                   <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-accent">
