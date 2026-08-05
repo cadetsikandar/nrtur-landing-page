@@ -86,9 +86,10 @@ function buildPost(
   const slug = fileName.replace(/\.mdx?$/, '')
   const tagSlug: TagSlug = fm.tag && isTagSlug(fm.tag) ? fm.tag : isTagSlug(folder) ? folder : 'guides'
 
-  const known = (authors as Record<string, { name: string; initials: string; color: string }>)[
-    fm.author ?? ''
-  ]
+  const known = (authors as Record<
+    string,
+    { name: string; initials: string; color: string; slug?: string; photo?: string }
+  >)[fm.author ?? '']
   const authorName = known?.name ?? fm.author ?? 'nrtur team'
   const body = content.trim()
   const headings: { level: number; text: string; slug: string }[] = []
@@ -122,6 +123,8 @@ function buildPost(
     tagSlug,
     authorName,
     authorInitials: known?.initials ?? initialsFor(authorName),
+    authorSlug: known?.slug,
+    authorPhoto: known?.photo,
     authorColor: known?.color ?? colorFor(authorName),
     dateLabel: fm.date
       ? new Date(fm.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })

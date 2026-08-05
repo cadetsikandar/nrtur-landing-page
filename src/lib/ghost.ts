@@ -14,6 +14,10 @@ export interface Post {
   authorName: string
   authorInitials: string
   authorColor: string
+  /** About-page team anchor slug (e.g. 'sikandar-ali') — links the byline to /about#slug. */
+  authorSlug?: string
+  /** Author headshot path in /public (e.g. '/team/Sikandar-Ali.png'). */
+  authorPhoto?: string
   dateLabel: string
   readingTime: number
   featured?: boolean
@@ -44,9 +48,9 @@ export const TAG_ACCENTS: Record<TagSlug, { text: string; bg: string; border: st
 }
 
 export const authors = {
-  touqeer: { name: 'Touqeer Hassan', initials: 'TH', color: 'var(--avatar-indigo)' },
-  sikandar: { name: 'Sikandar Ali', initials: 'SA', color: 'var(--avatar-green)' },
-  saqib: { name: 'Saqib Hassan', initials: 'SH', color: 'var(--avatar-violet)' },
+  touqeer: { name: 'Touqeer Hassan', initials: 'TH', color: 'var(--avatar-indigo)', slug: 'touqeer-hassan', photo: '/team/touqeer-hassan.jpeg' },
+  sikandar: { name: 'Sikandar Ali', initials: 'SA', color: 'var(--avatar-green)', slug: 'sikandar-ali', photo: '/team/Sikandar-Ali.png' },
+  saqib: { name: 'Saqib Hassan', initials: 'SH', color: 'var(--avatar-violet)', slug: 'saqib-hassan', photo: '/team/Saqib-hassan.png' },
 }
 
 // Seed content (10 posts), ported from the design handoff's Blog.dc.html Component script —

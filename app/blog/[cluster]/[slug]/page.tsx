@@ -143,8 +143,22 @@ export default async function ArticlePage({
                   {post.title}
                 </h1>
                 <div className="mt-6 flex flex-wrap items-center gap-2 text-sm text-ink-4">
-                  <AuthorAvatar post={post} size={28} />
-                  <span className="text-ink-3">{post.authorName}</span>
+                  {post.authorSlug ? (
+                    <Link
+                      href={`/about#${post.authorSlug}`}
+                      className="group/author inline-flex items-center gap-2"
+                    >
+                      <AuthorAvatar post={post} size={28} />
+                      <span className="text-ink-3 underline-offset-2 transition-colors group-hover/author:text-accent group-hover/author:underline">
+                        {post.authorName}
+                      </span>
+                    </Link>
+                  ) : (
+                    <>
+                      <AuthorAvatar post={post} size={28} />
+                      <span className="text-ink-3">{post.authorName}</span>
+                    </>
+                  )}
                   <span>·</span>
                   <span>{post.dateLabel}</span>
                   <span>·</span>

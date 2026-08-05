@@ -644,7 +644,8 @@ export default function AboutPage() {
               {team.map((member, i) => (
                 <div
                   key={member.slug}
-                  className={`reveal reveal-delay-${i + 1} group glass-card p-7 flex flex-col items-start text-left hover:border-line-3 hover:-translate-y-1 hover:shadow-md transition-all duration-300`}
+                  id={member.slug}
+                  className={`reveal reveal-delay-${i + 1} scroll-mt-28 group glass-card p-7 flex flex-col items-start text-left hover:border-line-3 hover:-translate-y-1 hover:shadow-md transition-all duration-300`}
                 >
                   <FounderPhoto
                     src={member.photo ?? `/team/${member.slug}.jpg`}

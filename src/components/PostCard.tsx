@@ -143,10 +143,14 @@ export function TagPill({ tagSlug, tagName }: { tagSlug: TagSlug; tagName: strin
 export function AuthorAvatar({ post, size }: { post: Post; size: number }) {
   return (
     <span
-      className="rounded-full inline-flex items-center justify-center font-bold text-on-solid shrink-0"
+      className="relative rounded-full inline-flex items-center justify-center font-bold text-on-solid shrink-0 overflow-hidden"
       style={{ width: size, height: size, background: post.authorColor, fontSize: size * 0.4 }}
     >
       {post.authorInitials}
+      {post.authorPhoto && (
+        // Real headshot layered over the initials fallback (shows through if the image is missing).
+        <img src={post.authorPhoto} alt="" className="absolute inset-0 h-full w-full object-cover" />
+      )}
     </span>
   )
 }
