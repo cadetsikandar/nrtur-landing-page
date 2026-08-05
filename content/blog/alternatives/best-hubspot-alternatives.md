@@ -67,8 +67,18 @@ The closest thing to "HubSpot's ease without the platform." Per Pipedrive's pric
 ### 2. Freshsales — a genuine free tier, plus built-in AI
 Freshworks' CRM has a real free plan (up to 3 users) and, per Freshsales' pricing, paid tiers of **Growth $9, Pro $39, Enterprise $59** per user/month (annual), with built-in email and phone from Growth up. **Best for:** tiny teams that want a free start and native calling. **Watch:** multi-step **sales sequences are gated to Pro ($39)** — a jump from Growth ($9).
 
+<figure style="margin:2rem 0">
+<img src="/blog/freshsales-pipeline.png" alt="Freshsales' Deals board in a trial account, showing a sales pipeline with stages from New to Won, weighted values per stage, sample deals, and a setup-guide checklist across the top." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">Freshsales in our own trial account — a guided setup checklist up top and a ready-to-use deal board (New → Won) with weighted values on each stage.</figcaption>
+</figure>
+
 ### 3. Zoho CRM — the most features per dollar
 Zoho offers a free plan for up to three users, native email from its Standard tier, and multi-step **Cadences gated to the Professional tier**; Enterprise is **$40/user/month** (annual, per Zoho's cost-of-ownership page). Its lower paid tiers are among the cheapest in the category — confirm the current USD rate on Zoho's pricing page, which defaults to your region's currency. **Best for:** teams that want deep features cheaply and will use the wider Zoho ecosystem. **Watch:** the genuinely useful automation starts at Professional, and the breadth brings a learning curve.
+
+<figure style="margin:2rem 0">
+<img src="/blog/zoho-crm-pipeline.png" alt="Zoho CRM's deal StageView in a trial account, showing a kanban pipeline across the stages Qualification, Needs Analysis, Value Proposition, Identify Decision Makers, and Proposal, with sample deals and a wide list of modules in the left navigation." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">Zoho CRM's deal StageView in our trial — the widest module set of the group (leads, deals, meetings, campaigns, documents, projects down the left rail), which is both the appeal and the learning curve.</figcaption>
+</figure>
 
 ### 4. monday CRM — flexible if you want CRM + work management
 Built on monday.com's visual "Work OS," so it doubles as project/work management. Per monday's pricing, CRM plans are **Basic $12, Standard $17, Pro $28** per seat/month (annual), 3-seat minimum, no free plan. **Best for:** teams that want a highly customizable CRM that also runs their work boards. **Watch:** Basic can't sync email or automate anything, and Standard caps automations at 250 actions/month — real sequences effectively need **Pro ($28)**.
