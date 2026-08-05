@@ -174,10 +174,16 @@ export function ArtPanel({ tagSlug, variant, thumb }: { tagSlug: TagSlug; varian
       {featured && !art && (
         <Icon size={190} strokeWidth={1} className="absolute -bottom-10 -right-8" style={{ color: a.text, opacity: 0.07 }} />
       )}
-      {/* focal: per-post art when available, else a crisp icon in a glass tile */}
+      {/* focal: per-post art on a clean floating "stage" surface (--paper: the one tone the art's
+          --surface cards stay lighter than in both themes), else a crisp icon in a glass tile. */}
       <div className="absolute inset-0 flex items-center justify-center p-4">
         {art ? (
-          art(featured, a)
+          <div
+            className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border border-line shadow-md [&>svg]:max-h-[86%]"
+            style={{ background: 'var(--paper)' }}
+          >
+            {art(featured, a)}
+          </div>
         ) : (
           <div
             className={`${
