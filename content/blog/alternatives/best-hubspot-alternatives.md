@@ -36,12 +36,26 @@ If you want sales automation without the Professional-tier jump, here are six al
 </svg>
 </figure>
 
+## How we evaluated
+
+We checked every price and feature-gating detail against each vendor's official pricing page and documentation in August 2026, and spent hands-on time inside HubSpot's own product — the screenshots here are from our test account — to confirm where features like automation and lead scoring actually unlock. Throughout, we weighed what decides it for a small sales team: the tier where automation unlocks, whether outreach is native, and how fast you can get set up. Where a figure couldn't be verified against a primary source in USD (Zoho's lower tiers), we describe it qualitatively rather than state an exact number.
+
+<figure style="margin:2rem 0">
+<img src="/blog/hubspot-deals-pipeline.png" alt="HubSpot's Deals board showing a sales pipeline with four sample deals across stages — Appointment Scheduled, Qualified to Buy, Presentation Scheduled, and Decision Maker Bought-In — each with amounts and weighted values." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">HubSpot's deal board in our own test account — the pipeline view most sales teams live in.</figcaption>
+</figure>
+
 ## What to look for in a HubSpot alternative
 
 - **Where automation unlocks**, not just the entry price — that tier is your real cost.
 - **Native email and sequences**, so outreach lives in the CRM instead of a bolted-on stack.
 - **Pricing that scales predictably** — per-seat, no surprise onboarding fees or contact-count creep.
 - **Setup you can finish in hours**, since escaping HubSpot's complexity is half the point.
+
+<figure style="margin:2rem 0">
+<img src="/blog/hubspot-lead-scoring.png" alt="HubSpot's Lead Scoring setup screen, where the 'Start with AI' button shows a padlock icon and 'Start from scratch' is greyed out, indicating the feature is gated behind a higher-paid tier." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">Feature-gating in the wild: in our test account, HubSpot's Lead Scoring AI setup sat behind a padlock — the kind of tier wall worth pricing before you commit.</figcaption>
+</figure>
 
 ## The six alternatives
 
