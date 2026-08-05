@@ -45,6 +45,8 @@ We checked every price and feature-gating detail against each vendor's official 
 <figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">HubSpot's deal board in our own test account — the pipeline view most sales teams live in.</figcaption>
 </figure>
 
+A couple of things stood out in that account. HubSpot's default deal board (above) is a clean seven-stage pipeline with weighted forecasting built in — the essentials of running a sales process are there from the start. The ceilings show up fast, though: when we opened Lead Scoring, the AI-assisted setup was locked behind an upgrade (the padlock below), and per HubSpot's pricing the sequences and workflows a growing team actually needs sit on Sales Hub Professional — $90/seat/month plus a mandatory $1,500 onboarding fee. Easy to start, costly to automate — which is exactly the gap this guide exists to close.
+
 ## What to look for in a HubSpot alternative
 
 - **Where automation unlocks**, not just the entry price — that tier is your real cost.
