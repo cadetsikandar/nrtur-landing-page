@@ -72,7 +72,16 @@ export default async function ArticlePage({
         '@type': 'Article',
         headline: post.title,
         description: post.excerpt,
-        author: { '@type': 'Person', name: post.authorName },
+        // Link the byline author to the Person entity defined on /about (image + LinkedIn sameAs
+        // + worksFor) via a matching @id, so Google connects "author of this post" to that person.
+        author: post.authorSlug
+          ? {
+              '@type': 'Person',
+              '@id': `${SITE_URL}/about#${post.authorSlug}`,
+              name: post.authorName,
+              url: `${SITE_URL}/about/#${post.authorSlug}`,
+            }
+          : { '@type': 'Person', name: post.authorName },
         datePublished: post.dateLabel,
         publisher: {
           '@type': 'Organization',
