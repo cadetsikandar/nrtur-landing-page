@@ -102,4 +102,4 @@ Pipedrive and Less Annoying CRM are the two most often cited for simplicity — 
 
 ---
 
-*Pricing and product details are from each vendor's own pricing page, checked August 2026 — [HubSpot](https://www.hubspot.com/pricing/sales), [Pipedrive](https://www.pipedrive.com/en/pricing), [Zoho CRM](https://www.zoho.com/crm/zohocrm-pricing.html), [monday CRM](https://monday.com/crm/pricing), [Close](https://close.com/pricing), [Freshsales](https://www.freshworks.com/crm/pricing/), and [Less Annoying CRM](https://www.lessannoyingcrm.com/pricing). Where a figure couldn't be verified against a primary source in the local currency (Zoho's lower USD tiers), it's described qualitatively rather than stated as an exact number.*
+*Pricing and product details are from each vendor's own pricing page, checked August 2026 — HubSpot, Pipedrive, Zoho CRM, monday CRM, Close, Freshsales, and Less Annoying CRM. Where a figure couldn't be verified against a primary source in the local currency (Zoho's lower USD tiers), it's described qualitatively rather than stated as an exact number.*

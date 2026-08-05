@@ -116,4 +116,4 @@ HubSpot is generally the easier onboarding for a team without a dedicated admin;
 
 ---
 
-*Pricing and product details for [HubSpot](https://www.hubspot.com/pricing/sales) and [Salesforce](https://www.salesforce.com/sales/pricing/) are from each vendor's own pricing pages and documentation, checked August 2026. Salesforce figures reflect current per-user rates (Starter $25, Pro Suite $100, Enterprise $175, Unlimited $350); older $165 / $330 figures are outdated. Where a detail couldn't be verified against a primary source, it's stated in general terms.*
+*Pricing and product details for HubSpot and Salesforce are from each vendor's own pricing pages and documentation, checked August 2026. Salesforce figures reflect current per-user rates (Starter $25, Pro Suite $100, Enterprise $175, Unlimited $350); older $165 / $330 figures are outdated. Where a detail couldn't be verified against a primary source, it's stated in general terms.*

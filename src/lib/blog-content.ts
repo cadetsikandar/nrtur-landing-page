@@ -26,7 +26,7 @@ import {
 
 const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog')
 
-// Domains we name freely but never pass ranking equity to (editorial rule: no follow-links to competitors).
+// Competitor domains we name freely but never link out to (editorial/SEO rule: rendered as plain text).
 const COMPETITOR_HOSTS = [
   'hubspot.com',
   'pipedrive.com',
@@ -100,12 +100,17 @@ function buildPost(
       headings.push({ level: 2, text, slug })
       return `<h2 id="${slug}">${inner}</h2>`
     })
-    // External links open in a new tab; competitor domains get rel="nofollow" (no ranking equity to rivals).
-    bodyHtml = bodyHtml.replace(/<a href="(https?:\/\/[^"]+)"/g, (_m, href: string) => {
-      const host = href.replace(/^https?:\/\//i, '').split('/')[0].toLowerCase()
-      const isCompetitor = COMPETITOR_HOSTS.some((d) => host === d || host.endsWith('.' + d))
-      return `<a href="${href}" target="_blank" rel="${isCompetitor ? 'nofollow noopener' : 'noopener'}"`
-    })
+    // External links: competitor domains are unlinked entirely — we name rivals freely but never link
+    // out to them (editorial/SEO rule), so their name is kept as plain text. Every other external link
+    // opens in a new tab, followed. Internal (relative) links are matched by neither branch, left as-is.
+    bodyHtml = bodyHtml.replace(
+      /<a href="(https?:\/\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/g,
+      (_m, href: string, text: string) => {
+        const host = href.replace(/^https?:\/\//i, '').split('/')[0].toLowerCase()
+        const isCompetitor = COMPETITOR_HOSTS.some((d) => host === d || host.endsWith('.' + d))
+        return isCompetitor ? text : `<a href="${href}" target="_blank" rel="noopener">${text}</a>`
+      },
+    )
   }
 
   const post: Post = {

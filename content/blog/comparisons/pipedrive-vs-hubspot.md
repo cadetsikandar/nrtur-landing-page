@@ -123,4 +123,4 @@ No — Pipedrive offers a 14-day free trial with no credit card, but no free-for
 
 ---
 
-*Pricing and product details for [Pipedrive](https://www.pipedrive.com/en/pricing) and [HubSpot](https://www.hubspot.com/pricing/sales) come from each vendor's own pricing pages and documentation, checked August 2026. Pipedrive's plan lineup changed in 2025 (five tiers to four: Lite, Growth, Premium, Ultimate); figures here reflect the current pages. Where a specific feature-gating detail couldn't be verified against a primary source, it's stated in general terms rather than as an exact claim.*
+*Pricing and product details for Pipedrive and HubSpot come from each vendor's own pricing pages and documentation, checked August 2026. Pipedrive's plan lineup changed in 2025 (five tiers to four: Lite, Growth, Premium, Ultimate); figures here reflect the current pages. Where a specific feature-gating detail couldn't be verified against a primary source, it's stated in general terms rather than as an exact claim.*

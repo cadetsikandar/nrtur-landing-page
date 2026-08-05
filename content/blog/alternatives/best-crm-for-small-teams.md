@@ -113,4 +113,4 @@ Count the tools you'd need alongside the CRM — email, sequencing, automation, 
 
 ---
 
-*Pricing and product details for [HubSpot](https://www.hubspot.com/pricing/sales), [GoHighLevel](https://www.gohighlevel.com/pricing), and [Less Annoying CRM](https://www.lessannoyingcrm.com/pricing) are drawn from each vendor's own public pricing pages and documentation, checked August 2026. Figures that couldn't be verified against a primary source were omitted rather than estimated.*
+*Pricing and product details for HubSpot, GoHighLevel, and Less Annoying CRM are drawn from each vendor's own public pricing pages and documentation, checked August 2026. Figures that couldn't be verified against a primary source were omitted rather than estimated.*
