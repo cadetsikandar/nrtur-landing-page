@@ -49,6 +49,13 @@ export default async function ArticlePage({
 
   const canonical = `${SITE_URL}${getPostUrl(post)}`
 
+  // Full "August 5, 2026"-style dates for the byline. Published always shows; "Updated …" only
+  // appears when the post carries a revision date later than its publish date.
+  const formatFull = (iso?: string) =>
+    iso ? new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''
+  const publishedLabel = formatFull(post.dateISO) || post.dateLabel
+  const updatedLabel = post.updatedISO ? formatFull(post.updatedISO) : null
+
   // FAQ rich-result structured data — parse question/answer pairs from the FAQ section.
   const faqItems: { q: string; a: string }[] = []
   if (post.bodyHtml) {
@@ -82,7 +89,8 @@ export default async function ArticlePage({
               url: `${SITE_URL}/about/#${post.authorSlug}`,
             }
           : { '@type': 'Person', name: post.authorName },
-        datePublished: post.dateLabel,
+        datePublished: post.dateISO ?? post.dateLabel,
+        dateModified: post.updatedISO ?? post.dateISO ?? post.dateLabel,
         publisher: {
           '@type': 'Organization',
           name: 'nrtur',
@@ -169,7 +177,12 @@ export default async function ArticlePage({
                     </>
                   )}
                   <span>·</span>
-                  <span>{post.dateLabel}</span>
+                  <span>
+                    {publishedLabel}
+                    {updatedLabel ? (
+                      <span className="text-ink-3"> · Updated {updatedLabel}</span>
+                    ) : null}
+                  </span>
                   <span>·</span>
                   <span>{post.readingTime} min read</span>
                 </div>

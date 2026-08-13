@@ -3,7 +3,8 @@ title: "HubSpot vs Salesforce (2026): I Built the Same Pipeline in Both"
 excerpt: "A hands-on HubSpot vs Salesforce comparison — I signed up for both, built the same 12-deal pipeline, and timed the friction. Real 2026 pricing, setup, and where each actually fits."
 tag: comparisons
 author: sikandar
-date: "2026-08-12"
+date: "2026-08-05"
+updated: "2026-08-12"
 readingTime: 12
 featured: false
 thumbnail: versus

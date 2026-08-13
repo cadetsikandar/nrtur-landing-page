@@ -45,6 +45,8 @@ interface FrontMatter {
   tag?: string
   author?: string
   date?: string
+  /** ISO date the post was last revised, e.g. "2026-08-12". Shown as "Updated …" when it differs from `date`. */
+  updated?: string
   readingTime?: number
   featured?: boolean
   thumbnail?: string
@@ -129,6 +131,9 @@ function buildPost(
     dateLabel: fm.date
       ? new Date(fm.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
       : '',
+    dateISO: fm.date,
+    // Only treat it as "updated" when the revision date is actually after the publish date.
+    updatedISO: fm.updated && fm.updated !== fm.date ? fm.updated : undefined,
     readingTime: fm.readingTime ?? Math.max(1, Math.round(body.split(/\s+/).length / 200)),
     featured: fm.featured,
     thumbnail: fm.thumbnail,

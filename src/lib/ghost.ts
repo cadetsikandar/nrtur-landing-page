@@ -19,6 +19,10 @@ export interface Post {
   /** Author headshot path in /public (e.g. '/team/Sikandar-Ali.png'). */
   authorPhoto?: string
   dateLabel: string
+  /** ISO publish date (YYYY-MM-DD) — powers the full-date display and schema datePublished. */
+  dateISO?: string
+  /** ISO last-updated date, set only when a post was revised after publishing. */
+  updatedISO?: string
   readingTime: number
   featured?: boolean
   /** Optional per-post thumbnail id, maps to art in PostCard. */
@@ -123,6 +127,7 @@ function mapGhostPost(raw: GhostRawPost): Post {
     authorInitials: initialsFor(authorName),
     authorColor: colorFor(authorName),
     dateLabel,
+    dateISO: raw.published_at,
     readingTime: raw.reading_time,
     bodyHtml: raw.html ?? undefined,
   }
