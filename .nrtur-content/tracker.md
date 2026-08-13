@@ -10,7 +10,7 @@ Read before Research Mode (avoid duplicate topics); update after both modes.
 | pipedrive-vs-hubspot | Pipedrive vs HubSpot (2026): An Honest Comparison | pipedrive vs hubspot | hubspot vs pipedrive, pipedrive hubspot comparison, pipedrive or hubspot | Buying | published | 2026-08-05 |
 | best-hubspot-alternatives | Best HubSpot Alternatives for Small Teams (2026) | hubspot alternatives | hubspot alternative, cheaper than hubspot, hubspot competitors | Consideration/Buying | published | 2026-08-05 |
 | best-pipedrive-alternatives | Best Pipedrive Alternatives for Small Teams (2026) | pipedrive alternatives | pipedrive alternative, apps like pipedrive, pipedrive competitors | Consideration/Buying | published | 2026-08-05 |
-| hubspot-vs-salesforce | HubSpot vs Salesforce (2026): Which Fits Your Team? | hubspot vs salesforce | salesforce vs hubspot, hubspot salesforce comparison | Buying | published | 2026-08-05 |
+| hubspot-vs-salesforce | HubSpot vs Salesforce (2026): I Built the Same Pipeline in Both | hubspot vs salesforce | salesforce vs hubspot, hubspot salesforce comparison | Buying | published (rewritten, hands-on) | 2026-08-12 |
 | best-salesforce-alternatives | Best Salesforce Alternatives for Small Teams (2026) | salesforce alternatives | salesforce alternative, cheaper than salesforce, salesforce competitors | Consideration/Buying | published | 2026-08-05 |
 | crm-for-startups | CRM for Startups: What Founder-Led Sales Actually Needs | crm for startups | startup crm, founder sales, best crm for startups | Consideration | published | 2026-08-05 |
 | crm-for-agencies | CRM for Agencies & Consultants: Managing Clients and Pipelines | crm for agencies | crm for consultants, agency crm | Consideration | published | 2026-08-05 |

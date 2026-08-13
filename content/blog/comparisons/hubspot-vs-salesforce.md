@@ -1,119 +1,170 @@
 ---
-title: "HubSpot vs Salesforce (2026): Which Fits Your Team?"
-excerpt: "A neutral, sourced HubSpot vs Salesforce comparison — real 2026 pricing, ease of use, customization, and which platform actually fits a small or growing team."
+title: "HubSpot vs Salesforce (2026): I Built the Same Pipeline in Both"
+excerpt: "A hands-on HubSpot vs Salesforce comparison — I signed up for both, built the same 12-deal pipeline, and timed the friction. Real 2026 pricing, setup, and where each actually fits."
 tag: comparisons
 author: sikandar
-date: "2026-08-05"
-readingTime: 10
+date: "2026-08-12"
+readingTime: 12
 featured: false
 thumbnail: versus
 ---
 
-HubSpot and Salesforce are the two giants of CRM, and they pull in different directions: one built its name on approachable inbound tools, the other on deep, customizable enterprise power. This is a neutral, sourced comparison — pricing checked against each vendor's own pages in August 2026 — to help you tell which one actually fits your team, not which has the bigger logo.
+Most HubSpot vs Salesforce articles read like they were written from each vendor's marketing page. This one isn't. I signed up for both — HubSpot's free tier and a Salesforce Starter trial — built the **same 12-deal pipeline** in each with the same made-up companies, and wrote down what actually happened: how long setup took, how many fields each one forced me to fill, where the automation hides, and what the pricing screens really say. Everything below is from those two accounts, checked in August 2026.
+
+> **Full disclosure:** we make [nrtur](/), a CRM that competes with both of these. I tried to test fairly anyway, and I'll say plainly where each giant beats us: **Salesforce's customization and forecasting go far deeper than nrtur's**, and **HubSpot's genuine free tier and built-in marketing tools are things we don't offer.** If either of those is what you need, this comparison should help you pick between them — not push you toward us.
 
 ## The 30-second verdict
 
-- **Choose HubSpot** if you want an approachable all-in-one with a genuinely useful free tier, fast setup, and sales + marketing under one roof — and you're a small-to-midsize team.
-- **Choose Salesforce** if you need deep customization, advanced forecasting, and a platform that scales to a complex sales org — and you have the budget and admin capacity to run it.
+- **HubSpot** if you're a small-to-midsize team that wants sales and marketing under one roof, a real free tier, and an approachable setup you can run without an admin.
+- **Salesforce** if you have a genuinely complex sales process, need deep customization and forecasting, and have the budget and admin capacity to run an enterprise platform.
 
-<figure style="margin:0 0 2rem">
-<svg viewBox="0 0 1200 260" width="100%" style="height:auto;display:block" role="img" aria-label="HubSpot is an approachable all-in-one with a free tier and $90-per-seat Professional; Salesforce is a deep enterprise platform from $25 to $175-plus per user, billed annually.">
-<defs>
-<pattern id="dvs" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="var(--ink)" opacity="0.04"/></pattern>
-<style>.ev{font:600 14px system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:2px}.ct{font:700 22px system-ui,-apple-system,Segoe UI,sans-serif}.cs{font:400 13px system-ui,-apple-system,Segoe UI,sans-serif}.cg{font:600 13px system-ui,-apple-system,Segoe UI,sans-serif}.vs{font:700 15px system-ui,-apple-system,Segoe UI,sans-serif;font-style:italic}</style>
-</defs>
-<rect x="1" y="1" width="1198" height="258" rx="24" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.5"/>
-<rect x="1" y="1" width="1198" height="258" rx="24" fill="url(#dvs)"/>
-<text class="ev" x="600" y="48" text-anchor="middle" fill="var(--accent-ink)">HUBSPOT vs SALESFORCE, HONESTLY</text>
-<rect x="90" y="88" width="440" height="128" rx="16" fill="var(--surface)" stroke="var(--line-2)" stroke-width="1.5"/>
-<text class="ct" x="310" y="132" text-anchor="middle" fill="var(--ink)">HubSpot</text>
-<text class="cs" x="310" y="158" text-anchor="middle" fill="var(--ink-3)">Approachable · all-in-one</text>
-<text class="cg" x="310" y="188" text-anchor="middle" fill="var(--ink-2)">free tier → $90 / seat Pro</text>
-<rect x="670" y="88" width="440" height="128" rx="16" fill="var(--surface)" stroke="var(--line-2)" stroke-width="1.5"/>
-<text class="ct" x="890" y="132" text-anchor="middle" fill="var(--ink)">Salesforce</text>
-<text class="cs" x="890" y="158" text-anchor="middle" fill="var(--ink-3)">Enterprise depth</text>
-<text class="cg" x="890" y="188" text-anchor="middle" fill="var(--ink-2)">$25 → $175+ / user · annual</text>
-<circle cx="600" cy="152" r="30" fill="var(--accent-soft)" stroke="var(--accent-line)" stroke-width="1.5"/>
-<text class="vs" x="600" y="158" text-anchor="middle" fill="var(--accent-ink)">vs</text>
-</svg>
+That's the summary. The rest of this piece is the evidence — because the interesting stuff is in the details neither vendor puts on the pricing page.
+
+## How I tested
+
+I created a fresh account in each product, skipped the demo data, and built an identical pipeline: 12 deals across the same invented companies (Harborline Logistics, Tidewater Dental Group, Cedar & Vale Interiors, and so on), same amounts, **$95,200 total** in both. Then I timed and counted the everyday things — creating a deal, finding the automation builder, reading the pricing — so the comparison rests on numbers, not impressions.
+
+## Day 1: what setup actually feels like
+
+Neither of these drops you straight into a working pipeline. Both walk you through a guided setup with an AI layer bolted on first — and that's worth knowing before you assume "HubSpot is the easy one."
+
+**HubSpot** starts with a short form: what's your role, your company website, a few company details, then *Create my account*. Fine so far. Then it hands you to **Breeze, its AI "Onboarding assistant"** — a six-step chat that asks about your business and goals and offers to configure things for you. In my test it **dragged**; when I tried to leave it, HubSpot threw up a *"Skip AI-assisted setup?"* warning telling me I'd have to configure everything myself. Only after skipping did it load the pipeline and drop me into the workspace.
+
+**Salesforce** is heavier at the door. You pick Google or a business email, then a *"Where are you located?"* screen asks you to agree to **four separate legal agreements** (Developer Main Service Agreement, Program Agreement, Main Service Agreement, and Slack's terms). Job title, company, size, phone. An **email verification code**. A *"Setting up now…"* wait. Then onboarding questions — *"What brings you to Salesforce?"*, *"Do any of these feel like familiar challenges?"* — and finally it lands you on a **Home dashboard, not a pipeline**, with a three-step "Explore your apps" walkthrough and an Agentforce AI upsell panel down the side. You navigate to Opportunities yourself.
+
+<figure style="margin:2rem 0">
+<img src="/blog/sf-opportunities-empty.png" alt="Salesforce's empty Opportunities page in a fresh Starter trial, showing an 'Opportunities are knocking' empty state with an 'Add an Opportunity' button and the full Salesforce left-hand navigation." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">Salesforce Day 1 in my own trial: after signup you land on a Home dashboard, and Opportunities start empty — you build the pipeline from scratch.</figcaption>
 </figure>
 
-## Pricing: the real cost
+The honest read: **both are long and guided, and both push an AI setup layer before you can work.** That's the modern norm, not a Salesforce-only failing. HubSpot's is a touch smoother, but if you expected to log in and start selling in either one, you won't.
 
-Both start more affordably than their reputations suggest, and both climb fast.
+## Creating your first deal: 1 field vs 5
 
-**HubSpot** has a real free tier and a low-cost Starter. Per HubSpot's pricing, the jump to Professional — where standard automation lives — is **Sales Hub Professional at $90/seat/month** (annual) plus a **$1,500 onboarding fee** (Marketing Hub Professional is $800/month with $3,000 onboarding, and its bill scales with contact count).
+This is where the two philosophies show up in a single screen.
 
-**Salesforce Sales Cloud** starts at **Starter Suite $25/user/month**, then steps up sharply: **Pro Suite $100, Enterprise $175, Unlimited $350** per user/month, per Salesforce's pricing. Two catches small teams miss: **everything above Starter is annual-only**, and **Premier support costs an extra 30% of your license fees** (it's bundled only with Unlimited). AI (Agentforce) is an add-on available from Enterprise up.
+In **HubSpot**, creating a deal asks for essentially **one field**: the deal name. Pipeline and stage are pre-filled with sensible defaults, so you can save immediately.
 
-The honest read: at entry level they're close (HubSpot free/Starter vs Salesforce Starter $25). The gap opens at the tier where each becomes genuinely capable — HubSpot Professional ($90/seat + onboarding) versus Salesforce Enterprise ($175/user, annual, plus support). HubSpot is generally the lower total cost for a small team; Salesforce buys more depth for the money at the top end.
+<figure style="margin:2rem 0">
+<img src="/blog/hs-create-deal-form.png" alt="HubSpot's Create Deal panel showing Deal name as the only field you must type, with Pipeline and Deal stage already pre-filled with default values." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">HubSpot's Create Deal form in my own account: the deal name is the only thing you have to type — pipeline and stage come pre-filled.</figcaption>
+</figure>
 
-## The two, side by side
+In **Salesforce**, the New Opportunity form makes you fill **five required fields, all empty**: Opportunity Name, Account Name, Close Date, Stage, *and* Forecast Category. Leave one blank and it stops you with a red *"Complete this field."*
 
-| Criterion | HubSpot | Salesforce |
-|---|---|---|
-| **Free plan** | Yes (genuine) | Free Suite (minimal) |
-| **Entry price** | Free tier; low-cost Starter | Starter Suite $25/user/mo |
-| **Capable tier** | Sales Hub Pro $90/seat + $1,500 onboarding | Enterprise $175/user (annual) |
-| **Ease of setup** | Self-serve, fast | Often needs an admin/partner |
-| **Customization** | Flexible | Deepest in class |
-| **Contracts** | Annual for best rate; onboarding fee | Annual-only above Starter |
-| **Support cost** | Tiered | Premier = +30% of license |
-| **Best for** | Small-to-midsize, sales + marketing | Complex, scaling sales orgs |
+<figure style="margin:2rem 0">
+<img src="/blog/sf-new-opportunity-validation.png" alt="Salesforce's New Opportunity form showing a validation error 'Complete this field' at the top and the five required fields marked with red asterisks: Opportunity Name, Account Name, Close Date, Stage, and Forecast Category." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">Salesforce forces five fields before it will save one opportunity — Name, Account, Close Date, Stage, and Forecast Category — and blocks you with a validation error until they're filled.</figcaption>
+</figure>
 
-## Ease of use & setup
+Here's the part that surprised me, though: **it didn't actually take much longer.** From clicking "new" to a saved deal was about **35 seconds in HubSpot and 38 in Salesforce** — basically the same. So the fair conclusion isn't "Salesforce is slow to create a deal." It's that Salesforce makes you commit more structure up front. Whether that's discipline or friction depends on your team; a solo founder will find it fussy, a sales ops lead will call it good hygiene.
 
-This is HubSpot's clearest advantage. It's built to be self-serve — most teams run it without a consultant, and the free tools let you start today. Salesforce is more powerful and more complex; meaningful deployments often involve an admin or an implementation partner, and the learning curve is real. If "we don't have anyone to run the CRM" describes you, that points to HubSpot.
+## The pipeline board — and a difference nobody mentions
 
-## Customization & scalability
+Both give you a drag-and-drop board. HubSpot's default pipeline has **seven stages** including both **Closed Won and Closed Lost**. Salesforce's default Opportunity board shows **five path columns** — Qualify, Meet & Present, Propose, Negotiate, Closed Won — and here's the catch: **there's no Closed Lost column.**
 
-And this is Salesforce's clearest advantage. Its configurability is the deepest in the category — custom objects, complex automation via Flow, and an enormous AppExchange ecosystem — which is why large, process-heavy sales orgs standardize on it. HubSpot is flexible and has grown a lot, but Salesforce still wins when your process is genuinely complex. The flip side is that all that power is exactly what makes Salesforce heavier to set up and run.
+<figure style="margin:2rem 0">
+<img src="/blog/hs-deal-pipeline.png" alt="HubSpot's deal board showing seven pipeline stages including both Closed Won and Closed Lost columns, with the test pipeline's 12 deals spread across them in US dollars." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">HubSpot's board keeps both Closed Won and Closed Lost as columns, so all 12 test deals — including the one we lost — stay on screen.</figcaption>
+</figure>
 
-## Sales & marketing features
+That means when you lose a deal in Salesforce, it simply **disappears from the board.** In my identical 12-deal test, HubSpot showed all 12 cards; Salesforce's board showed 11, because the lost deal (a tax-partner onboarding that fell through) dropped off entirely. The data's still there in the list view — but the board, the thing most reps actually stare at all day, quietly hides your losses.
 
-Both cover the core deeply. HubSpot's edge is integrated marketing — its Marketing Hub and the sales/marketing handoff are tightly built and approachable. Salesforce's edge is sales depth and forecasting at scale, plus the ecosystem to extend into nearly anything. Where marketing and sales are the same few people, HubSpot's integration usually wins; for a large sales org with dedicated ops, Salesforce.
+<figure style="margin:2rem 0">
+<img src="/blog/sf-opportunity-kanban.png" alt="Salesforce's Opportunity Kanban board in USD showing five columns — Qualify, Meet & Present, Propose, Negotiate, Closed Won — with the test pipeline's deals; there is no Closed Lost column on the board." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">Salesforce's default board tops out at Closed Won — there's no Closed Lost column, so a lost deal leaves the board. HubSpot shows both.</figcaption>
+</figure>
 
-## AI
+It's a small thing that says a lot about each product's defaults. HubSpot optimizes for "show me everything, including what I lost." Salesforce optimizes for a forward-moving sales path and expects you to build the lost-deal reporting yourself. Neither is wrong, but if you want loss visibility out of the box, that's a point for HubSpot.
 
-Both have invested heavily. Salesforce's Agentforce/Einstein is powerful but an **add-on available from Enterprise up** (extra cost). HubSpot bundles AI features more broadly across its tiers. Weigh whether AI is actually included at the tier you'd buy — on Salesforce, at the lower tiers, it usually isn't.
+## Automation: easy to find isn't the same as easy to build
 
-## Support & contracts
+I went in expecting the cliché — HubSpot simple, Salesforce hard. The reality is more specific, and it corrects something a lot of comparisons (including our own older draft) get wrong.
 
-The fine print matters here. Salesforce requires **annual contracts above Starter**, and **Premier support is +30% of license** — real numbers to budget for. HubSpot's Professional onboarding fee is mandatory and paid upfront. Neither is gotcha-free; both reward reading the terms before you sign.
+**Finding** the automation tool is genuinely easier in HubSpot: it's right in the navigation (Automation → Workflows), about **three clicks** to a new build. In Salesforce, the automation builder is buried — **Marketing → Process Automation → Flows → New Flow**, roughly **eight steps**, and Flows are easy to lose among the dozens of other items on the way.
 
-## Which should you choose?
+But **building** the automation is confusing in *both*. They use the same flow-builder model — steps, branches, delays on a canvas — and neither is "click-and-go." The first time you open either one, you're facing a learning curve.
 
-- **Small-to-midsize, want approachable + marketing included:** HubSpot.
-- **Complex sales process, need deep customization and forecasting:** Salesforce.
-- **No dedicated CRM admin:** HubSpot.
-- **Large org with ops capacity and budget:** Salesforce.
+<figure style="margin:2rem 0">
+<img src="/blog/sf-flow-automation.png" alt="Salesforce Flow Builder showing a multi-step automation canvas with a Start element, a Get Records step, a decision branch, and assignment actions connected on an auto-layout diagram." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">Salesforce's Flow Builder — the automation canvas. Powerful, but a genuine learning curve. HubSpot's Workflows are easier to reach, not obviously easier to master.</figcaption>
+</figure>
+
+So the honest line is: **HubSpot's automation is far easier to find and get to; the builder itself is a learning curve in both.** Don't let anyone sell you HubSpot automation as effortless — it isn't, once you're past the templates.
+
+One more automation nuance worth getting right, because it's commonly stated too broadly: HubSpot doesn't gate *all* automation behind one paywall. Basic workflows are available on lower tiers. What's gated are specific things — **multi-step nurture templates require Marketing Hub Professional**, and **Sequences (the 1:1 sales follow-up) require Sales Hub Professional at $90/seat/month.** HubSpot's own upgrade screen spells that out.
+
+<figure style="margin:2rem 0">
+<img src="/blog/hs-workflow-template-locked.png" alt="A HubSpot workflow template with the 'Use template' button greyed out and a tooltip reading 'This Workflow Template requires Marketing Hub Professional or a higher tier.'" style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">Feature-gating in the wild: several HubSpot workflow templates sit behind a greyed-out button and a "Marketing Hub Professional" tooltip. Worth pricing the tier that unlocks what you need before you commit.</figcaption>
+</figure>
+
+## Pricing: read the fine print, not the headline
+
+Both start more affordably than their reputations suggest, and both climb.
+
+**HubSpot** has a real free tier and a low-cost Starter. The jump that matters for sales teams is **Sales Hub Professional at $90/seat/month** — the tier where Sequences unlock, per HubSpot's own upgrade card.
+
+<figure style="margin:2rem 0">
+<img src="/blog/hs-upgrade-sequences-pro.png" alt="HubSpot's Sales Hub Professional upgrade card listing '$90/month/seat' and, among the included features, 'Automate outreach and follow-ups with Sequences.'" style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">HubSpot's own upgrade card puts Sequences — the multi-step sales follow-up — on Sales Hub Professional at $90/seat/month. Price the tier that unlocks what you need, not the entry tier.</figcaption>
+</figure>
+
+**Salesforce Starter** is **$25/user/month**, and **Pro Suite is $100/user/month**. But here's the catch the headline hides: Starter can be billed monthly or annually, while **Pro Suite is billed annually with an annual contract required** — and the in-app upgrade screen puts a number on it: **$1,200 per user per year.** So the moment you outgrow the entry tier, you're signing a year-long commitment, not paying month to month.
+
+<figure style="margin:2rem 0">
+<img src="/blog/sf-pricing-plans-annual.png" alt="Salesforce's in-app 'Get Salesforce' upgrade screen showing Salesforce Starter at $25/month and Salesforce Pro Suite at $100/month, billed annually at $1,200 per user, with 'Annual contract required' stated." style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">Salesforce's own upgrade screen: Pro Suite is $100/month, billed annually at $1,200/user, "Annual contract required." The annual lock-in isn't buried in a contract — it's on the plan card.</figcaption>
+</figure>
+
+And then there's the line I haven't seen a single comparison mention. On Salesforce's own Small Business pricing page, under **both** the $25 Starter and the $100 Pro tiers, sits four small words: **"Starting price. Transaction fees apply."** So the advertised price isn't the price — it's a floor, and Salesforce is quietly telling you so on the same card as the number. For a small team trying to forecast its software bill, "starting price plus transaction fees" is a very different promise from a flat per-seat rate. It's the kind of detail that only shows up when you actually read the page instead of the ad.
+
+<figure style="margin:2rem 0">
+<img src="/blog/sf-pricing-web-usd.png" alt="Salesforce's Small Business pricing page showing Free Suite $0, Starter Suite $25, and Pro Suite $100 USD per user per month, with the fine print under Starter and Pro reading 'Starting price. Transaction fees apply.'" style="width:100%;display:block;margin:0;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 30px -12px var(--scrim)" />
+<figcaption style="margin-top:0.7rem;font-size:0.85rem;line-height:1.5;color:var(--ink-4);text-align:center">Salesforce's own Small Business pricing page: under both the $25 and $100 tiers, the small print reads "Starting price. Transaction fees apply." The headline number isn't the whole bill.</figcaption>
+</figure>
+
+*(Pricing here is cited to archived copies of each vendor's own pricing pages — see the note at the end — so the figures stay verifiable even as the live pages change.)*
+
+## Ease of use, customization, and who each is really for
+
+Strip away the marketing and the split is consistent with everything above:
+
+- **HubSpot** is built to be self-serve. Most teams run it without a consultant, the free tools let you start today, and the sales/marketing handoff is genuinely well built. Its ceiling is real but you'll rarely hit it as a small team.
+- **Salesforce** is the deepest, most configurable CRM in the category — custom objects, Flow automation, forecasting, and the enormous AppExchange ecosystem. That power is exactly why it's heavier to set up and usually needs an admin or a partner. If your process is genuinely complex, nothing here fully replaces it.
+
+If "we don't have anyone to run the CRM" describes you, that points hard at HubSpot. If you have dedicated sales ops and a process that a simpler tool can't model, that points at Salesforce.
 
 ## What to look for in any CRM
 
-Both of these are platforms — powerful, but heavy for a small sales team. If you're comparing them and quietly wondering whether either is more than you need, the criteria are the same:
+Both of these are platforms — powerful, but heavier than a small sales team often needs. If you're comparing them and quietly wondering whether either is more than the job requires, the evaluation criteria are the same whatever you choose:
 
-1. Where automation is gated — the tier that unlocks it is your real price.
-2. Total cost — onboarding fees, annual lock-in, paid support, AI add-ons.
-3. Native outreach vs bolt-ons.
-4. A [data model that separates who someone is from where they are](/blog/guides/leads-vs-contacts-vs-deals/).
-5. Time to a working setup — hours, not weeks.
+1. **Where automation is gated.** The tier that unlocks the sequences and workflows you actually need is your real price, not the entry price.
+2. **Total cost, including the fine print.** Onboarding fees, annual lock-in, "transaction fees apply," paid support, AI add-ons. Add them up before you sign.
+3. **How much structure you're forced to enter** just to save a record — and whether that's discipline your team wants or friction it'll resent.
+4. **Whether your losses stay visible**, or drop off the board the moment a deal dies.
+5. **Time to a working setup** — hours, not a partner engagement.
+6. A [data model that separates who someone is from where they are in your pipeline](/blog/guides/leads-vs-contacts-vs-deals/).
 
-That last point is why **nrtur** exists: a focused sales CRM for teams of 1–20+ with automation and sequences included and flat per-seat pricing (Solo $9, Starter $29, Pro $59, Business $99), for teams that found both giants heavier than the job required. See the [small-team CRM roundup](/blog/alternatives/best-crm-for-small-teams/) — or, if these two are your shortlist, [Pipedrive vs HubSpot](/blog/comparisons/pipedrive-vs-hubspot/).
+That last cluster — automation included rather than gated, flat and predictable pricing, a setup measured in minutes — is the gap [nrtur](/) was built to fill for teams of 1–20+ who found both giants heavier than the work required (flat per-seat pricing: Solo $9, Starter $29, Pro $59, Business $99, with automation and sequences included and no annual lock-in). It won't do what Salesforce does for a 500-rep org, and it doesn't try to. For the wider field, see the [best CRM for small teams roundup](/blog/alternatives/best-crm-for-small-teams/); if Salesforce specifically feels like too much, the [best Salesforce alternatives](/blog/alternatives/best-salesforce-alternatives/) guide covers six options in depth.
 
 ## FAQ
 
 **Is HubSpot cheaper than Salesforce?**
-Usually, for a small team, yes. Both start low (HubSpot free/Starter, Salesforce Starter $25/user), but HubSpot's total cost tends to be lower once you factor Salesforce's annual-only contracts above Starter and its Premier support at +30% of license, per each vendor's pricing. At the enterprise end, the calculus shifts toward the depth you need.
+Usually, for a small team. Both start low (HubSpot free/Starter, Salesforce Starter $25/user), but HubSpot's total cost tends to be lower once you factor in Salesforce's annual contract above Starter ($1,200/user/year for Pro Suite) and the "transaction fees apply" fine print on its own pricing page. At the enterprise end, where you're buying Salesforce's depth, the calculus shifts.
 
-**Is Salesforce better than HubSpot?**
-Not universally. Salesforce is more customizable and scales to more complex orgs; HubSpot is easier to adopt and better integrated for sales + marketing in a smaller team. "Better" depends on your complexity and admin capacity.
+**Is Salesforce harder to set up than HubSpot?**
+To *find your way around*, yes — automation alone took eight steps to reach in Salesforce versus three in HubSpot, and Salesforce makes you fill five fields to save a deal versus HubSpot's one. But raw speed to create a deal was nearly identical (about 38 vs 35 seconds), and both push you through a long, AI-assisted onboarding before you reach a pipeline. Salesforce is more complex, not universally slower.
 
 **Is Salesforce too complex for a small business?**
-It can be. Salesforce's power comes with a setup and administration burden many small teams don't have the capacity for — the most common reason small businesses pick something simpler. Its Starter Suite targets smaller teams, but the platform's depth still leans enterprise.
+It can be. The power comes with a setup and administration burden many small teams don't have capacity for — the most common reason they pick something simpler. Its Starter tier targets smaller teams, but the platform's depth still leans enterprise, and defaults like the missing Closed Lost column assume you'll do reporting work yourself.
 
-**Which is easier to migrate to?**
-HubSpot is generally the easier onboarding for a team without a dedicated admin; Salesforce migrations more often involve a partner. Both support standard data imports — the effort is in configuration and training, not moving records.
+**Which is better for sales and marketing together?**
+HubSpot, clearly, for a small-to-midsize team — its Marketing Hub and the sales/marketing handoff are tightly integrated and approachable. Salesforce can do it, but usually through additional clouds and configuration.
+
+**Does Salesforce really require an annual contract?**
+Above the Starter tier, yes. Salesforce's own upgrade screen states Pro Suite is billed annually at $1,200/user with an annual contract required. Starter can be billed monthly; the lock-in starts when you step up.
 
 ---
 
-*Pricing and product details for HubSpot and Salesforce are from each vendor's own pricing pages and documentation, checked August 2026. Salesforce figures reflect current per-user rates (Starter $25, Pro Suite $100, Enterprise $175, Unlimited $350); older $165 / $330 figures are outdated. Where a detail couldn't be verified against a primary source, it's stated in general terms.*
+*Setup, pricing, and product details for HubSpot and Salesforce are from hands-on testing in a HubSpot Sales Hub Professional trial account and a Salesforce Starter trial, plus each vendor's own pricing screens, captured August 2026. Salesforce's figures ($0 / $25 / $100, "transaction fees apply," and the Pro Suite annual-contract terms) are cited to an [archived copy of Salesforce's Small Business pricing page](https://web.archive.org/web/20260813081036/https://www.salesforce.com/small-business/pricing/) (archived August 2026), so they stay verifiable as the live page changes. HubSpot's $90/seat Sales Hub Professional figure is taken from HubSpot's own in-app upgrade screen shown during our trial; its public marketing page currently runs promotional, Revenue Hub–branded pricing, so we cite what the product itself displayed. Where a figure couldn't be confirmed against a primary source, it's stated in general terms.*
