@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import HashScroll from '@/components/HashScroll'
 import Analytics from '@/components/Analytics'
+import CookieConsent from '@/components/CookieConsent'
 import { SITE_URL } from '@/lib/metadata'
 
 // UI / body
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <main>{children}</main>
         <Footer />
         <Analytics />
+        <CookieConsent />
       </body>
     </html>
   )

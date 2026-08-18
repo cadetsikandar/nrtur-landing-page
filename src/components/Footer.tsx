@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Twitter, Linkedin, Github, Mail } from 'lucide-react'
 import Logo from './Logo'
+import CookieSettingsButton from './CookieSettingsButton'
 
 const links = {
   Product: [
@@ -31,6 +32,16 @@ const links = {
     { label: 'Partners', href: '#' },
   ],
 }
+
+// Bottom-bar legal links. Every entry here must resolve to a real page — "Cookies"
+// deep-links into the cookies section of the privacy policy rather than getting a
+// stub page of its own.
+const legal = [
+  { label: 'Privacy Policy', href: '/privacy/' },
+  { label: 'Terms of Service', href: '/terms/' },
+  { label: 'Cookies', href: '/privacy/#cookies' },
+  { label: 'Security', href: '/security/' },
+]
 
 const social = [
   { icon: Twitter, label: 'Twitter', href: '#' },
@@ -122,11 +133,16 @@ export default function Footer() {
             © 2026 nrtur, Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
-            {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Security'].map((item) => (
-              <a key={item} href="#" className="text-xs text-ink-4 hover:text-ink-2 transition-colors">
-                {item}
-              </a>
+            {legal.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-xs text-ink-4 hover:text-ink-2 transition-colors"
+              >
+                {item.label}
+              </Link>
             ))}
+            <CookieSettingsButton className="text-xs text-ink-4 hover:text-ink-2 transition-colors" />
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-1.5 h-1.5 rounded-full bg-pos" />
