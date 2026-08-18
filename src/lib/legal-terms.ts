@@ -59,7 +59,7 @@ export const termsDoc: LegalDoc = {
           t: 'note',
           tone: 'accent',
           title: 'Early access',
-          text: 'nrtur is in early access. Some sections below describe things that apply once paid plans and the full application are live for you — billing, exports, SLAs. Until then, the sections on acceptable use, your data, and liability apply to your use of the website and the waitlist.',
+          text: 'nrtur is in early access, and the application is live for early-access customers. If you have an account, all of these terms apply to you today. If you have only visited the website or joined the waitlist, the sections on acceptable use, your data, and liability apply to that use. Sections describing a commitment we have not made yet — such as a contractual uptime guarantee — say so explicitly where they appear.',
         },
       ],
     },
@@ -331,7 +331,7 @@ export const termsDoc: LegalDoc = {
         },
         {
           t: 'p',
-          text: 'We do not warrant that the Service will be uninterrupted, error-free, or that it will meet your specific requirements. Any AI-generated output is a suggestion, not advice — review it before you rely on it.',
+          text: 'We do not warrant that the Service will be uninterrupted, error-free, or that it will meet your specific requirements.',
         },
         {
           t: 'p',

@@ -66,7 +66,7 @@ export const privacyDoc: LegalDoc = {
           t: 'note',
           tone: 'accent',
           title: 'Early access',
-          text: `nrtur is still in early access. Where a section below describes something that only applies once you have an account — billing, mailbox sync, exports — it takes effect when that part of the product becomes available to you. Everything about the website applies today.`,
+          text: `nrtur is still in early access, but the application is live for early-access customers — including mailbox sync, messaging, and billing. If you have an account, every section below applies to you today, and the vendors handling that data are named in the [sub-processor table](#sharing). If you have only visited the website or joined the waitlist, the sections on website data, cookies, and your rights are the ones that concern you.`,
         },
       ],
     },
@@ -189,7 +189,7 @@ export const privacyDoc: LegalDoc = {
           items: [
             'We do not sell it, rent it, or share it with advertisers.',
             'We do not use your CRM data to market to your contacts.',
-            'We do not use your CRM data to train general-purpose AI models. Where an AI feature is involved, it runs on your data to produce output for you — see below.',
+            'We do not use your CRM data to train AI models. nrtur does not currently include any AI features — if we add one, we will name the provider in the table below and update this policy before it processes anything.',
             'We do not browse it. Staff access is limited to the small number of people who need it, is logged, and happens only to run the service, fix a fault, or when the law requires it.',
           ],
         },
@@ -198,25 +198,6 @@ export const privacyDoc: LegalDoc = {
           tone: 'pos',
           title: 'Your responsibility',
           text: 'Because you are the controller of this data, you are responsible for having a lawful basis to hold it, for telling your contacts how you use it, and for honouring their requests. If you need a Data Processing Agreement to satisfy your own GDPR obligations, email us and we will put one in place.',
-        },
-      ],
-    },
-
-    {
-      id: 'ai',
-      title: 'AI features',
-      blocks: [
-        {
-          t: 'p',
-          text: 'Some nrtur plans include AI-assisted features — drafting a follow-up, summarising a thread, suggesting a next step. Where you use one, the relevant content is sent to a third-party AI provider to generate the response, and the output comes back to you.',
-        },
-        {
-          t: 'ul',
-          items: [
-            'AI features run **only when you invoke them**. We do not run background AI processing over your CRM data.',
-            'We contract with providers on terms that prohibit them from using your content to train their models.',
-            'AI output can be wrong. Check it before you send it — see the [Terms of Service](/terms/).',
-          ],
         },
       ],
     },
@@ -290,27 +271,59 @@ export const privacyDoc: LegalDoc = {
           t: 'p',
           text: 'We use a small number of vendors to actually run the service. Each one only gets what it needs, is bound by a contract that limits what it can do with it, and is listed here so you can check for yourself.',
         },
+        { t: 'h3', text: 'The nrtur application' },
         {
           t: 'table',
-          head: ['Provider', 'What it does for us', 'Where', 'Their policy'],
+          head: ['Provider', 'What it does for us', 'What it can see', 'Where'],
           rows: [
             [
-              'Vercel',
-              'Hosts and serves this website',
-              'United States / global CDN',
-              '[Privacy policy](https://vercel.com/legal/privacy-policy)',
-            ],
-            [
-              'Google Analytics',
-              'Website analytics',
-              'United States / EU',
-              '[Privacy policy](https://policies.google.com/privacy)',
-            ],
-            [
-              'Google Forms',
-              'Hosts our waitlist and early-access forms',
+              '[Aurinko](https://www.aurinko.io/privacy-policy)',
+              'Connects and syncs your Gmail or Outlook mailbox and calendar',
+              'The mail and calendar data you authorise, including message content, participants, and timestamps',
               'United States',
-              '[Privacy policy](https://policies.google.com/privacy)',
+            ],
+            [
+              '[Twilio](https://www.twilio.com/en-us/legal/privacy)',
+              'Delivers SMS and voice calls',
+              'Sender and recipient phone numbers, message content, call metadata',
+              'United States / global carriers',
+            ],
+            [
+              '[Resend](https://resend.com/legal/privacy-policy)',
+              'Delivers email sent from nrtur',
+              'Recipient addresses, subject lines, and message content',
+              'United States',
+            ],
+            [
+              '[Stripe](https://stripe.com/privacy)',
+              'Processes payments and stores card details',
+              'Billing contact, address, and card data — card numbers never reach our servers',
+              'United States / global',
+            ],
+          ],
+        },
+        { t: 'h3', text: 'This website' },
+        {
+          t: 'table',
+          head: ['Provider', 'What it does for us', 'What it can see', 'Where'],
+          rows: [
+            [
+              '[Vercel](https://vercel.com/legal/privacy-policy)',
+              'Hosts and serves this website',
+              'Request logs, including IP address and user agent',
+              'United States / global CDN',
+            ],
+            [
+              '[Google Analytics](https://policies.google.com/privacy)',
+              'Website analytics — only if you accept the cookie banner',
+              'Pages viewed, coarse location, traffic source',
+              'United States / EU',
+            ],
+            [
+              '[Google Forms](https://policies.google.com/privacy)',
+              'Hosts our waitlist and early-access forms',
+              'Whatever you type into those forms',
+              'United States',
             ],
           ],
         },
@@ -318,7 +331,7 @@ export const privacyDoc: LegalDoc = {
           t: 'note',
           tone: 'accent',
           title: 'Kept current',
-          text: 'This list covers the public website as it stands today. As we bring the CRM out of early access we will add the application vendors — hosting, payments, email and SMS delivery — to this same table before they start processing your data, and flag it under [Changes to this policy](#changes).',
+          text: 'We update this table **before** a new sub-processor starts handling your data, and note the change under [Changes to this policy](#changes). Want advance notice by email whenever it changes? Ask us and we will add you to the list.',
         },
         { t: 'h3', text: 'The other three situations' },
         {
@@ -503,11 +516,24 @@ export const privacyDoc: LegalDoc = {
           t: 'p',
           text: 'nrtur connects to other tools when you tell it to — your mailbox, your calendar, and others over time. Connecting one means granting nrtur permission to read or write data in that account.',
         },
+        { t: 'h3', text: 'Google and Microsoft mailbox sync' },
         {
           t: 'note',
           tone: 'accent',
-          title: 'Google and Microsoft mailbox sync',
-          text: "If you connect Gmail or Outlook, nrtur's use of the information received is limited to displaying and organising your mail against the right contact inside nrtur, and to features you explicitly turn on. We do not transfer it to others except as needed to provide those features, we do not use it for advertising, and no human reads it except with your permission or as required by law. You can revoke access at any time from your Google or Microsoft account settings.",
+          title: 'Google API Services Limited Use',
+          text: "nrtur's use and transfer of information received from Google APIs to any other app will adhere to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.",
+        },
+        {
+          t: 'p',
+          text: 'In practice that means the mail and calendar data we receive is used only to display and organise your messages against the right contact inside nrtur, and to run features you explicitly turn on. We do not use it for advertising, we do not sell it, we do not use it to train AI models, and no human reads it except with your explicit permission, to resolve a fault you reported to us, for security purposes, or where the law requires it.',
+        },
+        {
+          t: 'p',
+          text: 'We connect to Gmail and Outlook through **[Aurinko](https://www.aurinko.io/privacy-policy)**, a mail and calendar API provider that processes this data on our behalf as a sub-processor under contract. It is listed in the [sub-processor table](#sharing) above.',
+        },
+        {
+          t: 'p',
+          text: 'You can revoke access at any time from your [Google account permissions](https://myaccount.google.com/permissions) or your Microsoft account settings — that immediately stops any further sync.',
         },
         {
           t: 'p',
@@ -549,6 +575,13 @@ export const privacyDoc: LegalDoc = {
         {
           t: 'p',
           text: 'If you are in the UK or EEA and would like to raise something with our data protection contact specifically, use the same address and put "GDPR" in the subject line so it gets routed correctly.',
+        },
+        { t: 'h3', text: 'EU and UK representative' },
+        {
+          t: 'note',
+          tone: 'warn',
+          title: 'A gap we are not going to hide',
+          text: `Article 27 of the GDPR requires controllers outside the EU and UK who offer services to people there to appoint a local representative. **${LEGAL.company} has not yet appointed one.** We are a US company at an early stage and our EU/UK processing is currently limited, but we are not going to dress that up as an exemption we have not formally assessed. We will appoint representatives as EU and UK usage grows, and name them here when we do. In the meantime every request reaches us directly at [${LEGAL.email}](mailto:${LEGAL.email}), and your right to complain to your own supervisory authority is unaffected.`,
         },
       ],
     },

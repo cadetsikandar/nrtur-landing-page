@@ -27,7 +27,7 @@ const orgJsonLd = {
       '@type': 'Organization',
       '@id': 'https://www.nrtur.io/#organization',
       name: 'nrtur',
-      legalName: 'nrtur, Inc.',
+      legalName: 'nrtur LLC',
       url: 'https://www.nrtur.io/',
       logo: 'https://www.nrtur.io/nrtur-logo.png',
       slogan: 'The CRM small teams actually want to use.',

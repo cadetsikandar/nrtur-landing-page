@@ -7,8 +7,13 @@ import type { LucideIcon } from 'lucide-react'
  *  real compliance gap, not a cosmetic one. Swap it to privacy@ / legal@ once those
  *  aliases exist. Same for `address`: fill in the registered street address when available. */
 export const LEGAL = {
-  company: 'nrtur, Inc.',
+  // Wyoming LLC, not a corporation — "Inc." on a legal page names a controller that
+  // does not exist. TODO: replace with the exact name on the Wyoming filing if the
+  // registered string differs in capitalisation or punctuation.
+  company: 'nrtur LLC',
   shortName: 'nrtur',
+  // TODO: GDPR Art. 13 and several US state laws expect a real registered postal
+  // address, not a state. This is the last blocking placeholder on these pages.
   address: 'Wyoming, USA',
   governingLaw: 'the State of Wyoming, United States',
   email: 'ops@nrtur.io',

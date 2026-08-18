@@ -232,7 +232,7 @@ export const securityDoc: LegalDoc = {
             ],
             [
               'PCI DSS',
-              'Card details are handled by our payment processor and never touch our servers. We store only the last four digits and expiry for your invoices',
+              'Card details are handled by [Stripe](https://stripe.com/privacy), a PCI DSS Level 1 certified processor, and never touch our servers. We store only the last four digits and expiry for your invoices',
             ],
           ],
         },
