@@ -14,6 +14,7 @@ Read before Research Mode (avoid duplicate topics); update after both modes.
 | best-salesforce-alternatives | Best Salesforce Alternatives for Small Teams (2026) | salesforce alternatives | salesforce alternative, cheaper than salesforce, salesforce competitors | Consideration/Buying | published | 2026-08-05 |
 | crm-for-startups | CRM for Startups: What Founder-Led Sales Actually Needs | crm for startups | startup crm, founder sales, best crm for startups | Consideration | published | 2026-08-05 |
 | crm-for-agencies | CRM for Agencies & Consultants: Managing Clients and Pipelines | crm for agencies | crm for consultants, agency crm | Consideration | published | 2026-08-05 |
+| export-hubspot-deals-with-contacts | How to Export Deals From HubSpot With Their Associated Contacts | export hubspot deals with contacts | export deals from hubspot, hubspot deal export contact email, export hubspot deals to csv, hubspot export deals and contacts | Buying | published | 2026-08-25 |
 
 **Status values:** `approved` (brief signed off, not yet written) → `published` (article file exists on disk).
 
@@ -21,3 +22,4 @@ Read before Research Mode (avoid duplicate topics); update after both modes.
 - `leads-vs-contacts-vs-deals` → the four-object model (Lead/Contact/Company/Deal), why a real Company object matters
 - `speed-to-lead-playbook` → lead response time, automating first-touch without sounding robotic
 - `best-crm-for-small-teams` → what to look for in a small-team CRM; HubSpot/GHL/LACRM cost realities
+- `export-hubspot-deals-with-contacts` → HubSpot's deal/contact object split; exports carry association IDs not properties; join on Record ID (migration intent)
