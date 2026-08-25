@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'GPTBot', allow: '/', disallow: ['/app', '/design'] },
       { userAgent: 'PerplexityBot', allow: '/', disallow: ['/app', '/design'] },
     ],
-    sitemap: 'https://www.nrtur.io/sitemap.xml',
-    host: 'https://www.nrtur.io',
+    sitemap: 'https://nrtur.io/sitemap.xml',
+    host: 'https://nrtur.io',
   }
 }

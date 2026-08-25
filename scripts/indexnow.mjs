@@ -6,11 +6,11 @@
 //   node scripts/indexnow.mjs /faq/ /blog/        → submits only those paths
 //
 // The key file is public by design and lives at:
-//   https://www.nrtur.io/7c4780add3ec63bb257df5016eb26cac.txt
+//   https://nrtur.io/7c4780add3ec63bb257df5016eb26cac.txt
 // Bing fetches it to verify ownership before accepting submissions.
 
 const KEY = '7c4780add3ec63bb257df5016eb26cac'
-const HOST = 'www.nrtur.io'
+const HOST = 'nrtur.io'
 
 const DEFAULT_PATHS = [
   '/', '/about/', '/faq/', '/blog/', '/compare/',

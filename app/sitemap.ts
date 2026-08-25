@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getPostUrl, TAG_SLUGS } from '@/lib/ghost'
 import { getAllPosts } from '@/lib/blog-content'
 
-const BASE_URL = 'https://www.nrtur.io'
+const BASE_URL = 'https://nrtur.io'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()

@@ -17,7 +17,7 @@ export const LEGAL = {
   address: 'Wyoming, USA',
   governingLaw: 'the State of Wyoming, United States',
   email: 'ops@nrtur.io',
-  site: 'www.nrtur.io',
+  site: 'nrtur.io',
   effective: 'August 18, 2026',
   updated: 'August 18, 2026',
 } as const
