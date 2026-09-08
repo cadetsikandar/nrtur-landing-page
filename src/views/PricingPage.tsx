@@ -12,10 +12,12 @@ import {
   MAX_YEARLY_SAVING_PCT,
   MIN_TOPUP,
   money,
+  PUBLISH_USAGE_RATES,
+  TAX_NOTE,
   TRIAL_DAYS,
   TRIAL_RECORD_CAP,
   TRIAL_USERS,
-  USAGE_TAX_NOTE,
+  USAGE_PENDING_NOTE,
   walletRates,
 } from '../lib/pricing'
 
@@ -110,22 +112,27 @@ export default function PricingPage() {
             ))}
           </div>
 
-          {/* The per-message and per-minute rates live here rather than in a section of
-              their own — a customer should never have to leave the pricing page to find
-              out what a text costs. */}
+          {/* The per-message and per-minute rates belong here — a customer should never
+              have to leave the pricing page to find out what a text costs. They are held
+              back until Finance settles the telecom-tax question; see PUBLISH_USAGE_RATES
+              in src/lib/pricing.ts. */}
           <div className="mt-5 space-y-1.5 text-[13px] text-ink-3 leading-relaxed">
             <p>
               Texting is priced per workspace, not per line. Turning it on covers every line you
               hold.
             </p>
-            <p>
-              Calls and texts come out of a prepaid balance you top up from {money(MIN_TOPUP)} —
-              never an invoice after the fact.{' '}
-              <span className="text-ink-2">
-                {walletRates.map((r) => `${r.name} ${r.rate}`).join(' · ')}.
-              </span>
-            </p>
-            <p>{USAGE_TAX_NOTE}</p>
+            {PUBLISH_USAGE_RATES ? (
+              <p>
+                Calls and texts come out of a prepaid balance you top up from {money(MIN_TOPUP)} —
+                never an invoice after the fact.{' '}
+                <span className="text-ink-2">
+                  {walletRates.map((r) => `${r.name} ${r.rate}`).join(' · ')}.
+                </span>
+              </p>
+            ) : (
+              <p>{USAGE_PENDING_NOTE}</p>
+            )}
+            <p>{TAX_NOTE}</p>
             <p>{COVERAGE_NOTE}</p>
           </div>
         </div>

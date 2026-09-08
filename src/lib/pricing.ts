@@ -269,6 +269,21 @@ export const connections: Connection[] = [
 // The wallet — §05. Prepaid balance, one rate for everyone.
 // ---------------------------------------------------------------------------
 
+/**
+ * WITHHELD ON PURPOSE. The rates below are final and correct, but they are not
+ * rendered anywhere yet.
+ *
+ * §11 of the pricing specification makes publishing them conditional on Finance
+ * confirming whether resold calling and texting attract telecom tax or federal
+ * universal-service contributions. That answer is still outstanding, and a published
+ * price is expensive to change: the Terms in this same release promise 60 days'
+ * notice and a 12-month price hold on any rise.
+ *
+ * To publish: flip this to `true` and render `walletRates` — the page copy in
+ * PricingPage already branches on it.
+ */
+export const PUBLISH_USAGE_RATES: boolean = false
+
 export const walletRates = [
   {
     name: 'Text message',
@@ -290,10 +305,13 @@ export const walletRates = [
 
 export const MIN_TOPUP = 20
 
-/** Shown next to the wallet rates. The telecom-tax position is not finalised, so the page
- *  must not imply these rates are the whole of what a US customer pays. */
-export const USAGE_TAX_NOTE =
-  'Rates exclude tax and any applicable telecom surcharges. Prices are in US dollars.'
+export const TAX_NOTE = 'Prices are in US dollars and exclude tax.'
+
+/** Stands in for the rate table while `PUBLISH_USAGE_RATES` is false. Says what the
+ *  customer needs to know — prepaid, no invoice after the fact — without committing
+ *  to a per-message figure we may still have to move. */
+export const USAGE_PENDING_NOTE =
+  'Calls and texts come out of a prepaid balance you top up yourself, so there is never a usage invoice after the fact. Per-message and per-minute rates are published before you can buy.'
 
 export const COVERAGE_NOTE =
   'Calling and texting work to United States and Canadian numbers. Other destinations are refused at send time until they are enabled for your workspace against a published rate.'
