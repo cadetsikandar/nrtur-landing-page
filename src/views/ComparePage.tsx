@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Check, X, ArrowRight } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { WAITLIST_URL } from '../lib/links'
 import {
   crmProfiles,
   matchups,
@@ -187,7 +188,7 @@ export default function ComparePage() {
               <p className="text-[15px] text-ink-2 leading-relaxed">{m.nrturAngle}</p>
             </div>
             <a
-              href="https://forms.gle/sb2mHm97oRNFRmUY9"
+              href={WAITLIST_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-sm py-[11px] px-6 whitespace-nowrap flex-shrink-0"

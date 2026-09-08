@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { pageMetadata } from '@/lib/metadata'
+import { WAITLIST_URL } from '@/lib/links'
 import { TAG_LABELS, TAG_SLUGS, type TagSlug } from '@/lib/ghost'
 import { fetchPostsByTag } from '@/lib/blog-content'
 import PostCard from '@/components/PostCard'
@@ -35,7 +36,7 @@ const CLUSTER_FAQS: Record<TagSlug, { q: string; a: string }[]> = {
   alternatives: [
     {
       q: 'What is the best CRM alternative for a small team?',
-      a: "The one your team will actually keep using. For teams of 1–5 that usually means fast setup, flat pricing, and no features you pay for but never touch. nrtur starts at $29/user/mo with automations, email sync, and reporting included.",
+      a: "The one your team will actually keep using. For teams of 1–5 that usually means fast setup, flat pricing, and no features you pay for but never touch. nrtur starts at $12 a month with a synced mailbox included, and reporting on every plan.",
     },
     {
       q: 'Why do "cheap" CRMs often cost more later?',
@@ -49,7 +50,7 @@ const CLUSTER_FAQS: Record<TagSlug, { q: string; a: string }[]> = {
   comparisons: [
     {
       q: 'How should I compare CRMs fairly?',
-      a: 'Line up the same features at the tier that actually includes them — not the headline price. A $20 plan that needs three add-ons to match a $29 all-in plan is not cheaper.',
+      a: 'Line up the same features at the tier that actually includes them — not the headline price. A $20 plan that needs three add-ons to match a $35 all-in plan is not cheaper.',
     },
     {
       q: 'Is the cheapest CRM the best deal?',
@@ -238,7 +239,7 @@ export default async function ClusterPage({ params }: { params: { cluster: strin
                   <ArrowRight size={15} />
                 </Link>
                 <a
-                  href="https://forms.gle/sb2mHm97oRNFRmUY9"
+                  href={WAITLIST_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm font-semibold text-ink-3 hover:text-ink transition-colors px-4 py-[11px]"

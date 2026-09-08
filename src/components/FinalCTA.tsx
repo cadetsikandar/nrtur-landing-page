@@ -1,10 +1,11 @@
 import { ArrowRight, Clock, CreditCard, Unlock, ArrowRightLeft } from 'lucide-react'
+import { WAITLIST_URL } from '../lib/links'
 
 const trustChips = [
-  { icon: Clock, label: '14-day free trial', bg: 'bg-accent-soft', border: 'border-accent-line', iconColor: 'text-accent-ink' },
-  { icon: CreditCard, label: 'No credit card required', bg: 'bg-pos-soft', border: 'border-line', iconColor: 'text-pos-ink' },
+  { icon: Clock, label: '21-day free trial', bg: 'bg-accent-soft', border: 'border-accent-line', iconColor: 'text-accent-ink' },
+  { icon: CreditCard, label: 'No card to start', bg: 'bg-pos-soft', border: 'border-line', iconColor: 'text-pos-ink' },
   { icon: Unlock, label: 'Cancel anytime', bg: 'bg-warn-soft', border: 'border-line', iconColor: 'text-warn-ink' },
-  { icon: ArrowRightLeft, label: 'Free data migration help', bg: 'bg-violet-soft', border: 'border-line', iconColor: 'text-violet-ink' },
+  { icon: ArrowRightLeft, label: 'CSV import on every plan', bg: 'bg-violet-soft', border: 'border-line', iconColor: 'text-violet-ink' },
 ]
 
 export default function FinalCTA() {
@@ -41,7 +42,7 @@ export default function FinalCTA() {
         {/* CTA */}
         <div className="reveal reveal-delay-3 flex justify-center gap-3 mb-8">
           <a
-            href="https://forms.gle/sb2mHm97oRNFRmUY9"
+            href={WAITLIST_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary text-sm px-7 py-3.5 whitespace-nowrap justify-center"

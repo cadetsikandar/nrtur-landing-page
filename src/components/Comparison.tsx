@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import Logo from './Logo'
+import { WAITLIST_URL } from '../lib/links'
 
 const rows = [
-  { feature: 'Comparable plan', hubspot: '$90/mo · Pro', salesforce: '$165/mo · Ent.', nrtur: 'from $9/mo', nrturWins: true },
+  { feature: 'Comparable plan', hubspot: '$90/mo · Pro', salesforce: '$165/mo · Ent.', nrtur: 'from $12/mo', nrturWins: true },
   { feature: 'Setup time', hubspot: '1–4 weeks', salesforce: 'Weeks to months', nrtur: '~5 minutes', nrturWins: true },
-  { feature: 'Automations', hubspot: 'Paid add-on', salesforce: 'Flow — powerful, complex', nrtur: 'Included, unlimited on Pro', nrturWins: true },
+  { feature: 'Automations', hubspot: 'Paid add-on', salesforce: 'Flow — powerful, complex', nrtur: 'Included — 50 on Pro', nrturWins: true },
   { feature: 'Email sync', hubspot: 'Included', salesforce: 'Included', nrtur: 'Included', nrturWins: false },
-  { feature: 'Onboarding', hubspot: 'Documentation', salesforce: 'Paid / partner', nrtur: 'Human, 1:1', nrturWins: true },
+  { feature: 'Onboarding', hubspot: 'Documentation', salesforce: 'Paid / partner', nrtur: 'No onboarding fee', nrturWins: true },
   { feature: 'Contracts', hubspot: 'Annual plans', salesforce: 'Annual required', nrtur: 'Month-to-month', nrturWins: true },
   { feature: 'Enterprise upsells', hubspot: 'Frequent', salesforce: 'Frequent', nrtur: 'None', nrturWins: true },
   { feature: 'Best for', hubspot: 'Mid-market & up', salesforce: 'Large sales orgs', nrtur: 'Teams of 1–20+', nrturWins: false },
@@ -77,7 +78,7 @@ export default function Comparison() {
                     <Logo className="w-5 h-5" />
                     <span className="font-bold text-ink text-sm">nrtur</span>
                   </div>
-                  <span className="text-[11px] text-accent font-medium">from $9/mo</span>
+                  <span className="text-[11px] text-accent font-medium">from $12/mo</span>
                 </div>
               </div>
 
@@ -123,7 +124,7 @@ export default function Comparison() {
                 </div>
                 <div className="px-4 py-3.5 flex justify-center items-center border-l border-line bg-surface">
                   <a
-                    href="https://forms.gle/sb2mHm97oRNFRmUY9"
+                    href={WAITLIST_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-primary text-[13px] py-2 px-[18px] whitespace-nowrap"

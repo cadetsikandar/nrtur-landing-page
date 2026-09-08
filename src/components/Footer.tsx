@@ -1,12 +1,11 @@
 import Link from 'next/link'
 import { Twitter, Linkedin, Github, Mail } from 'lucide-react'
 import Logo from './Logo'
-import CookieSettingsButton from './CookieSettingsButton'
 
 const links = {
   Product: [
     { label: 'Features', href: '/#features' },
-    { label: 'Pricing', href: '/#pricing' },
+    { label: 'Pricing', href: '/pricing/' },
     { label: 'Changelog', href: '#' },
     { label: 'Roadmap', href: '#' },
     { label: 'Status', href: '#' },
@@ -142,7 +141,6 @@ export default function Footer() {
                 {item.label}
               </Link>
             ))}
-            <CookieSettingsButton className="text-xs text-ink-4 hover:text-ink-2 transition-colors" />
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-1.5 h-1.5 rounded-full bg-pos" />

@@ -19,7 +19,7 @@ export const LEGAL = {
   email: 'ops@nrtur.io',
   site: 'nrtur.io',
   effective: 'August 18, 2026',
-  updated: 'August 18, 2026',
+  updated: 'September 8, 2026',
 } as const
 
 /** Content blocks a legal section can be built from. Text supports two inline forms:

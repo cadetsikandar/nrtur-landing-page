@@ -6,10 +6,11 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import Logo from './Logo'
+import { WAITLIST_URL } from '../lib/links'
 
 const links = [
   { label: 'Features', href: '/#features' },
-  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Pricing', href: '/pricing/' },
   { label: 'Compare', href: '/compare/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'About', href: '/about/' },
@@ -61,7 +62,7 @@ export default function Navbar() {
             Sign in
           </a>
           <a
-            href="https://forms.gle/sb2mHm97oRNFRmUY9"
+            href={WAITLIST_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary text-sm py-2 px-5"
@@ -107,7 +108,7 @@ export default function Navbar() {
               Sign in
             </a>
             <a
-              href="https://forms.gle/sb2mHm97oRNFRmUY9"
+              href={WAITLIST_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-sm justify-center"
