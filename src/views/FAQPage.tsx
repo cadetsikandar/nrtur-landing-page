@@ -5,6 +5,7 @@ import { ChevronDown, ArrowRight } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useRotatingPhrase } from '../hooks/useRotatingPhrase'
 import { faqs } from '../lib/schema'
+import { WAITLIST_URL } from '../lib/links'
 
 const phrases = ['need to know.', 'wanted to ask.', 'need before switching.']
 
@@ -94,7 +95,7 @@ export default function FAQPage() {
               <h2 className="text-2xl font-serif font-semibold tracking-tight text-ink mb-2">Still have a question?</h2>
               <p className="text-sm text-ink-2 mb-5">Ask us anything — a founder reads every message.</p>
               <a
-                href="https://forms.gle/sb2mHm97oRNFRmUY9"
+                href={WAITLIST_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary text-sm py-[11px] px-6"

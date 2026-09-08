@@ -3,6 +3,7 @@
 import { ArrowRight, Play, Sparkles, Clock, CreditCard, Unlock } from 'lucide-react'
 import { useRotatingPhrase } from '../hooks/useRotatingPhrase'
 import HeroDemoWindow from './hero/HeroDemoWindow'
+import { WAITLIST_URL } from '../lib/links'
 
 const rotatingPhrases = [
   'actually want to use.',
@@ -14,13 +15,13 @@ const rotatingPhrases = [
 ]
 
 const trustChips = [
-  { icon: Clock, label: '14-day free trial', bg: 'bg-accent-soft', border: 'border-accent-line', color: 'text-accent-ink' },
+  { icon: Clock, label: '21-day free trial', bg: 'bg-accent-soft', border: 'border-accent-line', color: 'text-accent-ink' },
   { icon: CreditCard, label: 'No credit card required', bg: 'bg-pos-soft', border: 'border-line', color: 'text-pos-ink' },
   { icon: Unlock, label: 'Cancel anytime', bg: 'bg-warn-soft', border: 'border-line', color: 'text-warn-ink' },
 ]
 
 const stats = [
-  { value: '$9', label: 'Starting price' },
+  { value: '$12', label: 'Starting price' },
   { value: '5 min', label: 'Average setup' },
   { value: '$0', label: 'Setup fees' },
   { value: '1–20+', label: 'Team size it fits' },
@@ -77,7 +78,7 @@ export default function Hero() {
             style={{ animationDelay: '0.3s', animationFillMode: 'both' }}
           >
             <a
-              href="https://forms.gle/sb2mHm97oRNFRmUY9"
+              href={WAITLIST_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-base px-8 py-3.5 w-full sm:w-auto justify-center"

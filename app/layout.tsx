@@ -7,7 +7,6 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import HashScroll from '@/components/HashScroll'
 import Analytics from '@/components/Analytics'
-import CookieConsent from '@/components/CookieConsent'
 import { SITE_URL } from '@/lib/metadata'
 
 // UI / body
@@ -46,13 +45,14 @@ export const metadata: Metadata = {
     template: '%s · nrtur',
   },
   description:
-    "An affordable CRM for small teams — manage contacts, close deals, and automate follow-ups without HubSpot's price tag. Start free for 14 days.",
+    "An affordable CRM for small teams — manage contacts, close deals, and automate follow-ups without HubSpot's price tag. Start free for 21 days.",
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     siteName: 'nrtur',
     title: 'nrtur — The CRM small teams actually want to use',
-    description: 'Affordable CRM for small teams. $29/user/mo. 14-day free trial, no credit card required.',
+    description:
+      'CRM for small teams, from $12 a month with a mailbox and phone line per user. 21-day free trial, no card to start.',
     url: SITE_URL,
   },
   icons: { icon: '/favicon.svg' },
@@ -86,7 +86,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <main>{children}</main>
         <Footer />
         <Analytics />
-        <CookieConsent />
       </body>
     </html>
   )

@@ -4,10 +4,10 @@
 
 export const faqs = [
   {
-    q: 'How does the 14-day free trial work?',
-    a: "Sign up and get full access to your chosen plan for 14 days — no credit card required. You'll have access to all features without restrictions. If you decide nrtur isn't right for you, just cancel before the trial ends and you'll never be charged.",
+    q: 'How does the 21-day free trial work?',
+    a: "Sign up and get 21 days on Pro features, for up to 3 users, with no card to start. A card is needed before you connect a mailbox or claim a phone line — both cost us money from the first day. Trials hold up to 2,500 records, and CSV export unlocks once a card is added. If nrtur isn't right for you, do nothing: the workspace goes read-only with an export link rather than disappearing, and you are never charged.",
     shortA:
-      "Sign up and get full access to your chosen plan for 14 days — no credit card required. Cancel before the trial ends and you'll never be charged.",
+      '21 days on Pro features for up to 3 users, with no card to start. A card is needed before connecting a mailbox or claiming a phone line, and trials hold up to 2,500 records.',
   },
   {
     q: 'Can I import my existing contacts from HubSpot or another CRM?',
@@ -17,9 +17,9 @@ export const faqs = [
   },
   {
     q: 'What email providers does nrtur sync with?',
-    a: 'We currently support Gmail and Google Workspace, plus Outlook and Microsoft 365. Email sync is two-way: threads you send or receive from contacts are automatically logged in their contact record and the associated deal. Additional email accounts can be added as an add-on for $5/mo each.',
+    a: 'Gmail and Google Workspace, Outlook and Microsoft 365, plus iCloud and any IMAP account. Email sync is two-way: threads you send or receive from contacts are automatically logged in their contact record and the associated deal. Every plan includes a mailbox — one per user above Solo — and additional mailboxes are $5/mo each.',
     shortA:
-      'Gmail, Google Workspace, Outlook, and Microsoft 365. Email sync is two-way and threads are automatically logged to the right contact and deal.',
+      'Gmail, Google Workspace, Outlook, Microsoft 365, iCloud and IMAP. Sync is two-way, every plan includes a mailbox, and extra mailboxes are $5/mo each.',
   },
   {
     q: 'Is nrtur secure? Where is my data stored?',
@@ -29,15 +29,15 @@ export const faqs = [
   },
   {
     q: 'Can I cancel at any time?',
-    a: "Yes, always. nrtur is month-to-month with no annual contracts required (though we offer 20% off for yearly billing). Cancel from your settings at any time and you'll keep access until the end of your current billing period.",
+    a: "Yes, always. nrtur is month-to-month with no annual contracts required (though paying yearly saves up to 22%). Cancel from your settings at any time and you'll keep access until the end of your current billing period.",
     shortA:
-      'Yes. nrtur is month-to-month with no annual contracts required. Cancel from your settings anytime and keep access until the end of the billing period.',
+      'Yes. nrtur is month-to-month with no annual contracts required, though paying yearly saves up to 22%. Cancel anytime and keep access until the end of the billing period.',
   },
   {
     q: "What's the difference between Pro and Business?",
-    a: "Pro is designed for teams of up to 10 who need full pipeline + automation power. Business adds unlimited users, SSO/SAML, audit logs, custom webhook integrations, a dedicated onboarding specialist, and SLA-backed support. If you're unsure, start with Pro — upgrading takes seconds.",
+    a: "Pro is for a sales team running real outbound — sequences, lead scoring, 500,000 records, API access and webhooks, and no ceiling on seats. Business adds single sign-on (SAML), an audit log, custom objects, a sandbox, eight hours of data migration from one source, and phone support with a named contact. Business starts at five users, because that support is real people. If you're unsure, start with Pro — upgrading takes seconds.",
     shortA:
-      'Pro fits teams of up to 10 with full pipeline and automation power. Business adds unlimited users, SSO/SAML, audit logs, custom webhooks, and SLA support.',
+      'Pro covers sequences, lead scoring, 500,000 records and API access, with no seat ceiling. Business adds SAML single sign-on, an audit log, custom objects, a sandbox, eight hours of migration and phone support, and starts at five users.',
   },
   {
     q: 'Does nrtur have a mobile app?',
@@ -47,9 +47,9 @@ export const faqs = [
   },
   {
     q: 'How long does onboarding take?',
-    a: "For most small teams, you can import contacts, set up your first pipeline, and connect email in under 30 minutes. We also offer free 1:1 onboarding sessions for Pro and Business customers to make sure you're set up for success from day one.",
+    a: 'For most small teams, you can import contacts, set up your first pipeline, and connect email in under 30 minutes. There is no onboarding fee on any plan. Business includes eight hours of hands-on data migration from one source; on every other plan you import by CSV, and we are happy to help you map your fields.',
     shortA:
-      'Most small teams import contacts, set up a pipeline, and connect email in under 30 minutes. Free 1:1 onboarding is available for Pro and Business.',
+      'Most small teams import contacts, set up a pipeline, and connect email in under 30 minutes. There is no onboarding fee on any plan, and Business includes eight hours of migration from one source.',
   },
   {
     q: 'What integrations does nrtur support?',

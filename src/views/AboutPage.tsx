@@ -1,5 +1,6 @@
 'use client'
 
+import { WAITLIST_URL } from '../lib/links'
 import { useState, type ReactNode } from 'react'
 import {
   Linkedin,
@@ -742,7 +743,7 @@ export default function AboutPage() {
                   nrtur becomes.
                 </p>
                 <a
-                  href="https://forms.gle/sb2mHm97oRNFRmUY9"
+                  href={WAITLIST_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary text-[15px] px-7 py-3.5"

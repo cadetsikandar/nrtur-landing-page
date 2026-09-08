@@ -154,7 +154,7 @@ export const privacyDoc: LegalDoc = {
               'Website analytics',
               'Pages viewed, session length, coarse country-level location, traffic source',
               'To see which pages and articles are actually useful',
-              'Consent — collected only if you accept the cookie banner',
+              'Legitimate interest in improving the site. Collected in aggregate, with nothing stored on your device',
             ],
           ],
         },
@@ -208,13 +208,13 @@ export const privacyDoc: LegalDoc = {
       blocks: [
         {
           t: 'p',
-          text: 'A cookie is a small piece of text a website asks your browser to store. We use a deliberately short list — and the only optional item on it is off until you say otherwise.',
+          text: 'A cookie is a small piece of text a website asks your browser to store. We use a deliberately short list — and website analytics is not on it.',
         },
         {
           t: 'note',
           tone: 'pos',
-          title: 'Nothing loads before you choose',
-          text: 'Analytics are blocked by default. Google Analytics is not requested, not loaded, and sets no cookie unless you press Accept on the banner. Declining is one click, in the same place, at the same size — and the site behaves identically either way.',
+          title: 'Our analytics do not use cookies, which is why there is no banner',
+          text: 'Google Analytics runs on this site in cookieless mode. It sets no cookie, stores no identifier on your device, and cannot recognise you between visits or across sites. It tells us how many times a page was read, not who read it. There is no cookie banner because there is nothing on your device for you to agree to.',
         },
         {
           t: 'table',
@@ -226,39 +226,33 @@ export const privacyDoc: LegalDoc = {
               'No — it is stored in your browser only and never sent to us. Technically not a cookie at all.',
             ],
             [
-              'Your cookie choice',
-              'Records that you accepted or declined analytics, so we stop asking.',
-              'No — remembering a refusal is what makes the refusal work.',
-            ],
-            [
               'Session and security',
               'Keeps you signed in to the app and protects forms against cross-site request forgery.',
               'No — strictly necessary to provide a service you asked for.',
             ],
             [
               'Google Analytics 4',
-              'Tells us which pages get read, roughly where visitors come from, and which articles are worth writing more of. IP addresses are not logged by GA4.',
-              '**Yes** — only runs if you accept, and only ever for analytics.',
+              'Counts page views and roughly where visitors came from, in aggregate. Runs with storage switched off: no cookie, no client identifier, nothing persisted between visits. IP addresses are not logged by GA4.',
+              'No — with nothing stored on or read from your device, there is nothing to consent to.',
             ],
           ],
         },
         {
           t: 'p',
-          text: 'We do **not** run advertising or retargeting pixels, we do not use third-party marketing cookies, and Google Consent Mode is configured to keep every advertising signal denied even when you have accepted analytics.',
+          text: 'We do **not** run advertising or retargeting pixels, and we do not use third-party marketing cookies. Google Consent Mode is configured with analytics storage and every advertising signal permanently denied — not as a default we later change, but as the only mode this site runs in.',
         },
-        { t: 'h3', text: 'Changing your mind' },
+        { t: 'h3', text: 'Opting out anyway' },
         {
           t: 'ul',
           items: [
-            'Click **Cookie settings** in the footer of any page. That clears your stored choice, deletes any Google Analytics cookies already on your device, and brings the banner back.',
-            'Send a **Global Privacy Control** signal from your browser or extension. We treat GPC — and legacy Do Not Track — as a standing refusal: analytics never load and we do not show you the banner at all.',
-            'Block cookies in your browser settings or use a content blocker. Nothing here breaks if you do.',
+            'Send a **Global Privacy Control** signal from your browser or extension. We treat GPC — and legacy Do Not Track — as a standing refusal, and Google Analytics is then not requested or loaded at all.',
+            'Block scripts in your browser settings or use a content blocker. Nothing on this site breaks if you do.',
             `Or just email us at [${LEGAL.email}](mailto:${LEGAL.email}) and we will handle it.`,
           ],
         },
         {
           t: 'p',
-          text: 'Withdrawing is as easy as consenting, and we do not treat a declined banner as a reason to ask again on the next page.',
+          text: 'If we ever move analytics back onto cookies, a consent banner comes back with it and this section will say so before that happens.',
         },
       ],
     },
@@ -315,7 +309,7 @@ export const privacyDoc: LegalDoc = {
             ],
             [
               '[Google Analytics](https://policies.google.com/privacy)',
-              'Website analytics — only if you accept the cookie banner',
+              'Website analytics — cookieless, aggregate only',
               'Pages viewed, coarse location, traffic source',
               'United States / EU',
             ],

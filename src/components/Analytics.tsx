@@ -2,32 +2,45 @@
 
 import { useEffect, useState } from 'react'
 import Script from 'next/script'
-import { readConsent, subscribeConsent, type Consent } from '@/lib/consent'
+import { hasOptOutSignal } from '@/lib/privacy-signals'
 
 /**
- * Google Analytics 4 (gtag.js), gated on consent.
+ * Google Analytics 4 (gtag.js), running cookieless.
  *
- * Two conditions have to hold before a single request goes to Google: the host env
- * must set NEXT_PUBLIC_GA_MEASUREMENT_ID, and the visitor must have accepted
- * analytics in the cookie banner. Until both are true this renders nothing — no
- * script tag, no cookie, no network call — which is what makes the site lawful to
- * serve in the EU/UK without a pre-consent grace period.
+ * There is no consent banner on this site, so the tag is configured never to store
+ * anything on the visitor's device:
+ *
+ *  - Consent Mode ships with `analytics_storage` denied and every advertising signal
+ *    denied, and nothing ever updates them to granted. GA4 then sends cookieless
+ *    pings — enough for page counts and traffic sources, and no device identifier.
+ *  - `client_storage: 'none'` is the belt to that braces: no _ga cookie, no
+ *    localStorage fallback, no client id persisted between visits.
+ *
+ * That combination is what removes the need to ask. ePrivacy consent attaches to
+ * storing or reading information on the device; with no storage there is nothing to
+ * consent to. The trade is real and deliberate: no returning-visitor or cross-session
+ * stitching, so treat the numbers as page counts, not people.
+ *
+ * A Global Privacy Control or Do Not Track signal still suppresses the tag entirely —
+ * that is a refusal of the measurement, not just of the storage.
+ *
+ * If analytics ever need cookies again, the consent banner has to come back with them.
+ * `git show bb94596` has the original gated implementation.
  *
  * strategy="afterInteractive" keeps gtag off the critical path. GA4 enhanced
  * measurement records App Router route changes on its own, so no manual page_views.
  */
 export default function Analytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-  const [consent, setConsent] = useState<Consent | null>(null)
+  // Assume opted out until the client has actually been able to check. This also
+  // keeps the server render tag-free, so there is no hydration mismatch.
+  const [optedOut, setOptedOut] = useState(true)
 
   useEffect(() => {
-    setConsent(readConsent())
-    // Re-read rather than trusting the event payload — readConsent is the only place
-    // that knows about opt-out signals, and it must be able to override a stale grant.
-    return subscribeConsent(() => setConsent(readConsent()))
+    setOptedOut(hasOptOutSignal())
   }, [])
 
-  if (!gaId || consent !== 'granted') return null
+  if (!gaId || optedOut) return null
 
   return (
     <>
@@ -36,9 +49,8 @@ export default function Analytics() {
         {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});
-gtag('consent','update',{'analytics_storage':'granted'});
 gtag('js', new Date());
-gtag('config', '${gaId}', { anonymize_ip: true });`}
+gtag('config', '${gaId}', { anonymize_ip: true, client_storage: 'none' });`}
       </Script>
     </>
   )
