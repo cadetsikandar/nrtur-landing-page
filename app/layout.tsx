@@ -55,6 +55,9 @@ export const metadata: Metadata = {
       'CRM for small teams, from $12 a month with a mailbox and phone line per user. 21-day free trial, no card to start.',
     url: SITE_URL,
   },
+  // og:image / twitter:image come from app/opengraph-image.tsx + twitter-image.tsx
+  // (file-based, applies to every route). Large card so the image actually shows.
+  twitter: { card: 'summary_large_image' },
   icons: { icon: '/favicon.svg' },
   // Search-engine ownership verification. Each meta tag renders only when its
   // env var is set — Google Search Console (URL-prefix property) and Bing
