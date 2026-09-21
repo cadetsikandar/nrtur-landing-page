@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import HashScroll from '@/components/HashScroll'
 import Analytics from '@/components/Analytics'
-import { SITE_URL } from '@/lib/metadata'
+import { SITE_URL, ogImage } from '@/lib/metadata'
 
 // UI / body
 const inter = Inter({
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
     description:
       'CRM for small teams, from $12 a month with a mailbox and phone line per user. 21-day free trial, no card to start.',
     url: SITE_URL,
+    images: [ogImage()],
   },
-  // og:image / twitter:image come from app/opengraph-image.tsx + twitter-image.tsx
-  // (file-based, applies to every route). Large card so the image actually shows.
+  // X/Twitter fall back to og:image; large card so the image actually shows.
   twitter: { card: 'summary_large_image' },
   icons: { icon: '/favicon.svg' },
   // Search-engine ownership verification. Each meta tag renders only when its

@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import { getPostUrl, TAG_LABELS, type Post } from '@/lib/ghost'
 import { fetchPostBySlug, getAllPosts, decodeEntities } from '@/lib/blog-content'
-import { SITE_URL } from '@/lib/metadata'
+import { SITE_URL, ogImage } from '@/lib/metadata'
 import { TagPill, AuthorAvatar } from '@/components/PostCard'
 import TableOfContents from '@/components/TableOfContents'
 
@@ -35,6 +35,8 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       url,
+      // Per-article card (app/og/blog/[slug]/route.tsx) — the post's own headline.
+      images: [ogImage(`/og/blog/${post.slug}/`, post.title)],
     },
   }
 }
