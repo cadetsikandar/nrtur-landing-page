@@ -1,5 +1,5 @@
-// Shared social-card (Open Graph / Twitter) renderer. Used by the file-based
-// `opengraph-image.tsx` / `twitter-image.tsx` routes so every page unfurls with a
+// Shared social-card (Open Graph / Twitter) renderer. Used by the /og/ route handlers
+// (app/og/route.tsx, app/og/blog/[slug]/route.tsx) so every page unfurls with a
 // 1200×630 card on LinkedIn, Slack, X, iMessage, etc. Without an og:image those
 // platforms render no card at all — a bare URL — even though the HTML is fine.
 //
@@ -208,6 +208,15 @@ export async function renderOgCard({ eyebrow, title, footer }: OgCardProps) {
         />
       </div>
     ),
-    { ...OG_SIZE, fonts },
+    {
+      ...OG_SIZE,
+      fonts,
+      // Let Vercel's CDN serve the card warm: social crawlers have short fetch
+      // timeouts and a cold Satori render is ~2–4 s. A day at the edge, a week of
+      // stale-while-revalidate; a redesign shows up within a day.
+      headers: {
+        'Cache-Control': 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800',
+      },
+    },
   )
 }

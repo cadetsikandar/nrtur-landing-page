@@ -1,23 +1,20 @@
-// Per-article social card: the post's own title on the shared template, so a shared
-// blog link unfurls with its headline rather than the generic site card.
+// GET /og/blog/<slug>/ — per-article social card: the post's own title on the shared
+// template, so a shared blog link unfurls with its headline rather than the generic
+// site card. Referenced from app/blog/[cluster]/[slug]/page.tsx via ogImage().
 //
 // Runs on the Edge runtime (see src/lib/og-image.tsx), so it can't read content/blog
 // with fs like the page does. It reads the frontmatter manifest that
 // scripts/build-post-manifest.mjs generates before every dev/build instead.
 import { authors, TAG_LABELS, type TagSlug } from '@/lib/ghost'
-import { renderOgCard, OG_SIZE, OG_CONTENT_TYPE } from '@/lib/og-image'
+import { renderOgCard } from '@/lib/og-image'
 import manifest from '@/generated/post-manifest.json'
 
 export const runtime = 'edge'
 
-export const alt = 'nrtur blog'
-export const size = OG_SIZE
-export const contentType = OG_CONTENT_TYPE
-
 type ManifestEntry = { title: string; tag: string; author?: string; date?: string }
 const posts = manifest as Record<string, ManifestEntry>
 
-export default function Image({ params }: { params: { cluster: string; slug: string } }) {
+export function GET(_req: Request, { params }: { params: { slug: string } }) {
   const post = posts[params.slug]
   if (!post) {
     // Unknown slug (e.g. a Ghost-only post): generic blog card rather than a 404 image.

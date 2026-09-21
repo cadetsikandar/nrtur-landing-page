@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { SITE_URL } from '@/lib/metadata'
+import { SITE_URL, ogImage } from '@/lib/metadata'
 import Home from '@/views/Home'
 
 const title = 'nrtur — The CRM small teams actually want to use'
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     title,
     description,
     url: `${SITE_URL}/`,
+    images: [ogImage()],
   },
 }
 
