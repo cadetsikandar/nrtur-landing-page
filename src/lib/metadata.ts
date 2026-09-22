@@ -4,13 +4,16 @@ export const SITE_URL = 'https://nrtur.io'
 
 /** Social-card (og:image) descriptor for a page.
  *
- *  Cards are served by route handlers under /og/ (app/og/…/route.tsx) rather than
- *  Next's file-based `opengraph-image` convention. The convention always emits a
- *  slash-less URL (`/opengraph-image?hash`), which `trailingSlash: true` turns into a
- *  308 — and LinkedIn's image fetcher does not follow redirects on og:image, so the
- *  card showed a blank placeholder. A trailing-slash route handler answers 200
- *  directly. `path` must therefore start and end with "/". */
-export function ogImage(path = '/og/', alt = 'nrtur — The CRM small teams actually want to use') {
+ *  Marketing pages share the static product card public/og/home.png (headline + a
+ *  real screenshot of the hero's app frame; regenerate with `npm run og:home`).
+ *  Blog articles get a per-post editorial card from app/og/blog/[slug]/route.tsx.
+ *
+ *  Neither uses Next's file-based `opengraph-image` convention: it always emits a
+ *  slash-less URL (`/opengraph-image?hash`), which `trailingSlash: true` turns into
+ *  a 308 — and LinkedIn's image fetcher does not follow redirects on og:image, so
+ *  the card showed a blank placeholder. A static file, or a route handler at a
+ *  trailing-slash path, answers 200 directly. */
+export function ogImage(path = '/og/home.png', alt = 'nrtur — The CRM small teams actually want to use') {
   return { url: path, width: 1200, height: 630, type: 'image/png', alt }
 }
 
