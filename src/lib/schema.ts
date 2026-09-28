@@ -5,9 +5,9 @@
 export const faqs = [
   {
     q: 'How does the 21-day free trial work?',
-    a: "Sign up and get 21 days on Pro features, for up to 3 users, with no card to start. A card is needed before you connect a mailbox or claim a phone line — both cost us money from the first day. Trials hold up to 2,500 records, and CSV export unlocks once a card is added. If nrtur isn't right for you, do nothing: the workspace goes read-only with an export link rather than disappearing, and you are never charged.",
+    a: "Sign up and get 21 days for up to 3 users, with no card to start. The trial includes the full CRM, every report, CSV import and export, and automations that assign, create tasks, tag, update fields and call webhooks, with up to 2,500 records of each type. Email sync, phone lines, sequences and automated sending unlock when you choose a plan — each costs us money from the first day. If nrtur isn't right for you, do nothing: the workspace goes read-only with an export link rather than disappearing, and you are never charged.",
     shortA:
-      '21 days on Pro features for up to 3 users, with no card to start. A card is needed before connecting a mailbox or claiming a phone line, and trials hold up to 2,500 records.',
+      '21 days for up to 3 users, with no card to start: the full CRM, reports, CSV import and export and simple automations, up to 2,500 records of each type. Email sync, phone lines, sequences and automated sending unlock when you choose a plan.',
   },
   {
     q: 'Can I import my existing contacts from HubSpot or another CRM?',

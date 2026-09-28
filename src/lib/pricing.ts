@@ -158,7 +158,7 @@ export const matrix: MatrixBand[] = [
     band: 'What you can store',
     rows: [
       {
-        label: 'Records — contacts, leads, companies and deals combined',
+        label: 'Records — each of contacts, leads, companies and deals',
         values: ['5,000', '50,000', '500,000', '2,000,000'],
       },
       { label: 'Pipelines', values: ['1', '3', '25', '100'] },

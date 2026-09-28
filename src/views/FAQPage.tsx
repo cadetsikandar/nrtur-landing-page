@@ -28,10 +28,14 @@ function FAQItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boo
           <ChevronDown size={14} className={`transition-colors ${isOpen ? 'text-accent' : 'text-ink-4'}`} />
         </div>
       </button>
+      {/* Animates the row from 0fr to 1fr rather than to a fixed max-height, which cut long
+          answers off on phones (a 384px cap vs. ~540px of text at 375px wide). */}
       <div
-        className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100 pb-5' : 'max-h-0 opacity-0'}`}
+        className={`grid transition-all duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
-        <p className="text-base text-ink-2 leading-relaxed pr-12">{a}</p>
+        <div className="min-h-0 overflow-hidden">
+          <p className="text-base text-ink-2 leading-relaxed pr-12 pb-5">{a}</p>
+        </div>
       </div>
     </div>
   )
