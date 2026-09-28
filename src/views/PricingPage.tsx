@@ -157,13 +157,13 @@ export default function PricingPage() {
               The trial
             </h2>
             <p className="text-lg text-ink font-medium mb-4">
-              {TRIAL_DAYS} days on Pro features. Up to {TRIAL_USERS} users. No card to start.
+              {TRIAL_DAYS} days. Up to {TRIAL_USERS} users. No card to start.
             </p>
             <ul className="space-y-2.5 text-sm text-ink-2 mb-5">
               {[
-                `Trials hold up to ${TRIAL_RECORD_CAP.toLocaleString('en-US')} records.`,
-                'A card is required before you connect a mailbox or claim a phone line — both cost us money from the first day.',
-                'CSV export unlocks once a card is added.',
+                'The full CRM, every report, CSV import and export, and automations that assign, create tasks, tag, update fields and call webhooks.',
+                `Up to ${TRIAL_RECORD_CAP.toLocaleString('en-US')} records of each type — contacts, leads, companies and deals.`,
+                'Email sync, phone lines, sequences and automated sending unlock when you choose a plan — each costs us money from the first day.',
                 'When a trial ends the workspace goes read-only for 12 months, with an export link, rather than vanishing.',
               ].map((item) => (
                 <li key={item} className="flex gap-2.5">

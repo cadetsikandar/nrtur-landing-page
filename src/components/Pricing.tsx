@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import PlanCards from './pricing/PlanCards'
-import { MAX_YEARLY_SAVING_PCT, TRIAL_DAYS, TRIAL_USERS } from '../lib/pricing'
+import { MAX_YEARLY_SAVING_PCT, TRIAL_DAYS, TRIAL_RECORD_CAP, TRIAL_USERS } from '../lib/pricing'
 
 /** Homepage teaser. The full rate card — add-ons, the wallet, the comparison matrix and the
  *  billing rules — lives at /pricing/, and src/lib/pricing.ts is the source for both. */
@@ -65,8 +65,10 @@ export default function Pricing() {
 
         <div className="reveal text-center mt-8">
           <p className="text-[13px] text-ink-3 mb-5">
-            Every plan starts with a {TRIAL_DAYS}-day free trial of Pro, for up to {TRIAL_USERS}{' '}
-            users — no card to start.
+            Every plan starts with a {TRIAL_DAYS}-day free trial — the full CRM, up to{' '}
+            {TRIAL_USERS} users, {TRIAL_RECORD_CAP.toLocaleString('en-US')} of each record type, and
+            automations that keep your pipeline moving. Email sync, phone lines, sequences and
+            automated sending unlock when you choose a plan. No card to start.
           </p>
           <Link href="/pricing/" className="btn-secondary text-sm py-2.5 px-5">
             See the full rate card
