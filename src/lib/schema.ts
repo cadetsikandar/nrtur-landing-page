@@ -195,7 +195,7 @@ export const aboutJsonLd = {
       '@type': 'Person',
       '@id': 'https://nrtur.io/about#saqib-hassan',
       name: 'Saqib Hassan',
-      jobTitle: 'Founding Engineer & Technical Lead',
+      jobTitle: 'Cofounder & CTO',
       worksFor: { '@id': 'https://nrtur.io/#organization' },
       homeLocation: { '@type': 'Place', name: 'Islamabad, Pakistan' },
       image: 'https://nrtur.io/team/Saqib-hassan.png',

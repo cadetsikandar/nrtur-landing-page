@@ -3,7 +3,6 @@
 import { WAITLIST_URL } from '../lib/links'
 import { useState, type ReactNode } from 'react'
 import {
-  Linkedin,
   MapPin,
   DollarSign,
   Zap,
@@ -28,7 +27,6 @@ type TeamMember = {
   initials: string
   role: string
   bio?: string
-  linkedin: string
   ring: string
   /** Full path to the headshot in /public (any extension). Falls back to /team/{slug}.jpg. */
   photo?: string
@@ -36,34 +34,13 @@ type TeamMember = {
 
 const team: TeamMember[] = [
   {
-    slug: 'touqeer-hassan',
-    name: 'Touqeer Hassan',
-    initials: 'TH',
-    role: 'Founder',
-    bio: 'Founder of nrtur. Sets the product direction and works shoulder-to-shoulder with the team to build a CRM that stays simple as it grows.',
-    linkedin: 'https://www.linkedin.com/in/touqeerhassan/',
-    ring: 'from-avatar-indigo to-avatar-violet',
-    photo: '/team/touqeer-hassan.jpeg',
-  },
-  {
     slug: 'saqib-hassan',
     name: 'Saqib Hassan',
     initials: 'SH',
-    role: 'Founding Engineer & Technical Lead',
-    bio: "Founding engineer and technical lead — owns nrtur's architecture and the hard engineering calls that keep the product fast and dependable as it grows.",
-    linkedin: 'https://www.linkedin.com/in/saqib-hassan-2b79511b3/',
+    role: 'Cofounder & CTO',
+    bio: "Cofounder and CTO — owns nrtur's architecture and the hard engineering calls that keep the product fast and dependable as it grows.",
     ring: 'from-avatar-pink to-avatar-pink',
     photo: '/team/Saqib-hassan.png',
-  },
-  {
-    slug: 'sikandar-ali',
-    name: 'Sikandar Ali',
-    initials: 'SA',
-    role: 'Software Engineer',
-    bio: "Built nrtur's first working prototype and continues to shape the front-end — turning rough ideas into polished, intuitive screens.",
-    linkedin: 'https://www.linkedin.com/in/sikandar-ali-nrtur',
-    ring: 'from-avatar-green to-avatar-teal',
-    photo: '/team/Sikandar-Ali.png',
   },
   {
     slug: 'mujahid-raja',
@@ -71,7 +48,6 @@ const team: TeamMember[] = [
     initials: 'MR',
     role: 'Software Engineer',
     bio: 'Software engineer focused on the product core — building the features and integrations that keep everything running smoothly behind the scenes.',
-    linkedin: 'https://www.linkedin.com/in/mujahid-raja-nrtur',
     ring: 'from-avatar-amber to-avatar-amber',
     photo: '/team/Mujahid-raja.png',
   },
@@ -81,19 +57,8 @@ const team: TeamMember[] = [
     initials: 'QI',
     role: 'Backend Engineer',
     bio: "Backend engineer behind nrtur's data layer — designs and tunes the databases, SQL, and APIs that keep every contact, deal, and automation in sync.",
-    linkedin: 'https://www.linkedin.com/in/qamar-ul-islam-193378202/',
     ring: 'from-avatar-blue to-avatar-teal',
     photo: '/team/Qamar.png',
-  },
-  {
-    slug: 'shahbaz-khalid',
-    name: 'Shahbaz Khalid',
-    initials: 'SK',
-    role: 'Software Engineer',
-    bio: 'Full-stack engineer who builds and ships the features that keep nrtur fast, reliable, and easy to live in day to day.',
-    linkedin: 'https://www.linkedin.com/in/shahbazkhalidweb/',
-    ring: 'from-avatar-violet to-avatar-blue',
-    photo: '/team/shahbaz-khalid.jpg',
   },
 ]
 
@@ -657,19 +622,7 @@ export default function AboutPage() {
 
                   <h3 className="text-lg font-bold text-ink mb-1">{member.name}</h3>
                   <p className="text-sm text-accent font-medium mb-4">{member.role}</p>
-                  <div className="flex-1 mb-5">
-                    {member.bio && <p className="text-sm text-ink-2 leading-relaxed">{member.bio}</p>}
-                  </div>
-
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 bg-surface border border-line text-ink-2 text-sm font-medium py-2.5 px-4 rounded-[10px] transition-all duration-200 hover:bg-[#0a66c2]/[0.15] hover:border-[#0a66c2]/40 hover:text-ink"
-                  >
-                    <Linkedin size={15} className="text-[#0a66c2]" fill="#0a66c2" />
-                    Connect on LinkedIn
-                  </a>
+                  {member.bio && <p className="text-sm text-ink-2 leading-relaxed">{member.bio}</p>}
                 </div>
               ))}
             </div>
